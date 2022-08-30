@@ -2,6 +2,13 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
+  images: {
+    domains: [
+      "raw.githubusercontent.com",
+      "avatars.githubusercontent.com",
+      "opgg-static.akamaized.net",
+    ],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
