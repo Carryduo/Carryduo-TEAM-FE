@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import PageContainer from "../../components/common/PageContainer";
 import { MyProfile } from "../../config/Recoil/MyProfile";

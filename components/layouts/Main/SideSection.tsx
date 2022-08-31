@@ -1,3 +1,4 @@
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -7,6 +8,7 @@ import { MyProfile } from "../../../config/Recoil/MyProfile";
 const SideSection = () => {
   const router = useRouter();
   const { id, image } = useRecoilValue(MyProfile);
+  const { theme, setTheme } = useTheme();
   const onClickPageRouter = (id: string) => {
     router.push({
       pathname: `/profile/${id}`,
@@ -19,7 +21,9 @@ const SideSection = () => {
       </div>
       <Link href="/champions">챔피언 리스트</Link>
       <Link href="/simulation">가상 시뮬레이션</Link>
-      <button>다크모드</button>
+      <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+        다크모드
+      </button>
       <Link href="/">메인</Link>
     </section>
   );

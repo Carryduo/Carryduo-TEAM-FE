@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { useQuery } from "react-query";
+import { instance } from "../../config/Axios/Axios";
 
 interface Champions {
   name: string;
@@ -14,7 +15,7 @@ export const useChampions = () => {
   return useQuery<IChampions, AxiosError, IChampions>(
     ["getChampionsData"],
     () => {
-      return axios.get("https://62a09c0fa9866630f8134879.mockapi.io/champions");
+      return instance.get("/champions");
     }
   );
 };
