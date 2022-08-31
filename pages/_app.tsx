@@ -8,6 +8,7 @@ import SideSection from "../components/layouts/Main/SideSection";
 import LayoutMain from "../components/layouts/Main/LayoutMain";
 import { RecoilRoot } from "recoil";
 import DarkContainer from "../components/layouts/Main/DarkContainer";
+import { ThemeProvider } from "next-themes";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = React.useState(() => new QueryClient());
@@ -17,20 +18,22 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
     default: {
       return (
-        <RecoilRoot>
-          <QueryClientProvider client={queryClient}>
-            <Hydrate state={pageProps.dehydratedState}>
-              <ReactQueryDevtools initialIsOpen={true} />
-              <DarkContainer>
-                <HeaderMain />
-                <LayoutMain>
-                  <SideSection />
-                  <Component {...pageProps} />
-                </LayoutMain>
-              </DarkContainer>
-            </Hydrate>
-          </QueryClientProvider>
-        </RecoilRoot>
+        <ThemeProvider attribute="class">
+          <RecoilRoot>
+            <QueryClientProvider client={queryClient}>
+              <Hydrate state={pageProps.dehydratedState}>
+                <ReactQueryDevtools initialIsOpen={true} />
+                <DarkContainer>
+                  <HeaderMain />
+                  <LayoutMain>
+                    <SideSection />
+                    <Component {...pageProps} />
+                  </LayoutMain>
+                </DarkContainer>
+              </Hydrate>
+            </QueryClientProvider>
+          </RecoilRoot>
+        </ThemeProvider>
       );
     }
   }
