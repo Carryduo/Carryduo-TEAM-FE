@@ -12,31 +12,24 @@ import { ThemeProvider } from "next-themes";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = React.useState(() => new QueryClient());
-  switch (pageProps.layout) {
-    case "intro": {
-      return <Component {...pageProps} />;
-    }
-    default: {
-      return (
-        <ThemeProvider attribute="class">
-          <RecoilRoot>
-            <QueryClientProvider client={queryClient}>
-              <Hydrate state={pageProps.dehydratedState}>
-                <ReactQueryDevtools initialIsOpen={true} />
-                <DarkContainer>
-                  <HeaderMain />
-                  <LayoutMain>
-                    <SideSection />
-                    <Component {...pageProps} />
-                  </LayoutMain>
-                </DarkContainer>
-              </Hydrate>
-            </QueryClientProvider>
-          </RecoilRoot>
-        </ThemeProvider>
-      );
-    }
-  }
+  return (
+    <ThemeProvider attribute="class">
+      <RecoilRoot>
+        <QueryClientProvider client={queryClient}>
+          <Hydrate state={pageProps.dehydratedState}>
+            <ReactQueryDevtools initialIsOpen={true} />
+            <DarkContainer>
+              <HeaderMain />
+              <LayoutMain>
+                <SideSection />
+                <Component {...pageProps} />
+              </LayoutMain>
+            </DarkContainer>
+          </Hydrate>
+        </QueryClientProvider>
+      </RecoilRoot>
+    </ThemeProvider>
+  );
 }
 
 export default MyApp;
