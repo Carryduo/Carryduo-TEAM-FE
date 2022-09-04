@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  span {
+    @apply text-white text-lg font-semibold
+  }
+}
