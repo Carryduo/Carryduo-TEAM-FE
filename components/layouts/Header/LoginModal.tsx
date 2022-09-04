@@ -11,6 +11,7 @@ const style = {
   height: 124,
   bgcolor: "background.paper",
   boxShadow: 12,
+  outline: "none",
 };
 
 const LoginModal = () => {
@@ -19,7 +20,7 @@ const LoginModal = () => {
   const handleClose = () => setOpen(false);
   return (
     <React.Fragment>
-      <div onClick={handleOpen}>로그인</div>
+      <span onClick={handleOpen}>로그인</span>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style} className="rounded-xl">
           <div className=" flex flex-col items-center justify-around">

@@ -4,7 +4,9 @@ interface ContainerSizeProp {
 
 const PageContainer = ({ children }: ContainerSizeProp) => {
   return (
-    <div className={`relative h-full w-[1220px] flex-col bg-sky-400`}>{children}</div>
+    <div className={`relative flex h-[665px] w-full space-x-4 rounded-xl`}>
+      {children}
+    </div>
   );
 };
 
