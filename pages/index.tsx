@@ -8,7 +8,7 @@ const MainPage = () => {
         <span>챔피언 리스트</span>
       </Grid>
       <Grid width="w-full" height="100%">
-        <span>듀오 승률 리스트</span>
+        <span>듀오 승률 순위표</span>
       </Grid>
     </PageContainer>
   );
