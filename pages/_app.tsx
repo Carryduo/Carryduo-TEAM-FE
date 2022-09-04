@@ -4,31 +4,20 @@ import HeaderMain from "../components/layouts/Main/HeaderMain";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import React from "react";
-import SideSection from "../components/layouts/Main/SideSection";
-import LayoutMain from "../components/layouts/Main/LayoutMain";
-import { RecoilRoot } from "recoil";
-import DarkContainer from "../components/layouts/Main/DarkContainer";
-import { ThemeProvider } from "next-themes";
+import MainContainer from "../components/layouts/Main/MainContainer";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = React.useState(() => new QueryClient());
   return (
-    <ThemeProvider attribute="class">
-      <RecoilRoot>
-        <QueryClientProvider client={queryClient}>
-          <Hydrate state={pageProps.dehydratedState}>
-            <ReactQueryDevtools initialIsOpen={true} />
-            <DarkContainer>
-              <HeaderMain />
-              <LayoutMain>
-                <SideSection />
-                <Component {...pageProps} />
-              </LayoutMain>
-            </DarkContainer>
-          </Hydrate>
-        </QueryClientProvider>
-      </RecoilRoot>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <Hydrate state={pageProps.dehydratedState}>
+        <ReactQueryDevtools initialIsOpen={true} />
+        <MainContainer>
+          <HeaderMain />
+          <Component {...pageProps} />
+        </MainContainer>
+      </Hydrate>
+    </QueryClientProvider>
   );
 }
 
