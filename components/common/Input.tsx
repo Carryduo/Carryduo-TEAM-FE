@@ -17,7 +17,7 @@ const Input = ({
 }: InputProps) => {
   return (
     <input
-      className={`h-8 w-[300px] rounded-2xl bg-white bg-opacity-[${opacity}%] px-4 outline-none text-white`}
+      className={`h-8 w-[300px] rounded-2xl bg-white bg-opacity-[${opacity}%] px-4 outline-none`}
       placeholder={placeHolder}
       autoFocus={autoFocus}
       {...register}
