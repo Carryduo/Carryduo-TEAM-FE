@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Grid from "../components/common/Grid";
 import PageContainer from "../components/common/PageContainer";
@@ -11,13 +12,19 @@ const MainPage = () => {
       <Seo title="Home" />
       <Grid width="w-[40rem]" height="100%">
         <span>챔피언 리스트</span>
-        <div className="grid h-[calc(100%-2.5rem)] grid-cols-5 gap-2 overflow-y-scroll">
-          {Champions?.data.map((data) => {
+        <div className="grid h-[calc(100%-2.5rem)] grid-cols-5 gap-2 overflow-hidden overflow-y-scroll">
+          {Champions?.map((data: any, i) => {
+            console.log(data);
             return (
-              <div key={data.id} className="h-8 w-8 bg-white">
-                <Link href={`/champions/${data.name}`}>
-                  {data.name.substring(0, 3)}
-                </Link>
+              <div key={i} className="h-20 w-14 text-center">
+                <Image
+                  alt=""
+                  src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data[0]}.png`}
+                  width={56}
+                  height={56}
+                  loading="eager"
+                />
+                <span className="text-xs">{data[1].name}</span>
               </div>
             );
           })}
