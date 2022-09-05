@@ -4,7 +4,12 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head lang="kr">
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Qwitcher+Grypen&display=swap" rel="stylesheet"/>
+          <meta property="og:title" content="Carryduo" />
+          <meta property="og:description" content="롤 듀오 서칭 플랫폼" />
+          <meta
+            property="og:image"
+            content="https://cdn.discordapp.com/attachments/969400866668937217/980686401953734656/1.png"
+          />
         </Head>
         <body>
           <Main />

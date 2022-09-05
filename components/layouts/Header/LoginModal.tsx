@@ -20,14 +20,16 @@ const LoginModal = () => {
   const handleClose = () => setOpen(false);
   return (
     <React.Fragment>
-      <span onClick={handleOpen}>로그인</span>
+      <span className="cursor-pointer" onClick={handleOpen}>
+        로그인
+      </span>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style} className="rounded-xl">
           <div className=" flex flex-col items-center justify-around">
             <div className="pt-[20px] text-xl font-bold">
               <span>{`로그인을 해주세요:)`}</span>
             </div>
-            <KakaoLogin />
+            <KakaoLogin close={handleClose} />
           </div>
         </Box>
       </Modal>
