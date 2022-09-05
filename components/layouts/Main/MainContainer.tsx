@@ -1,15 +1,15 @@
 import Image from "next/image";
 import mainImage from "../../../public/summonersrift.jpg";
 import React from "react";
-import { useToggleMode } from "../../../util/hooks/useToggleMode";
 import { getShadowColor } from "../../../core/config/shadowColor";
+import { useShadow } from "../../../util/hooks/useShadow";
 
 interface DarkContainerProps {
   children: React.ReactNode;
 }
 
 const MainContainer = ({ children }: DarkContainerProps) => {
-  const [color] = useToggleMode(getShadowColor);
+  const [color] = useShadow(getShadowColor);
   return (
     <div className="relative flex h-screen w-full items-center justify-center bg-black bg-opacity-60">
       <Image
