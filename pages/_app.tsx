@@ -3,21 +3,32 @@ import type { AppProps } from "next/app";
 import HeaderMain from "../components/layouts/Main/HeaderMain";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MainContainer from "../components/layouts/Main/MainContainer";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = React.useState(() => new QueryClient());
+  const [isWindows, setIsWindows] = useState<boolean>(true);
+  useEffect(() => {
+    const window = navigator.userAgent.includes("Windows");
+    setIsWindows(Boolean(window));
+  }, []);
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <ReactQueryDevtools initialIsOpen={true} />
-        <MainContainer>
-          <HeaderMain />
-          <Component {...pageProps} />
-        </MainContainer>
-      </Hydrate>
-    </QueryClientProvider>
+    <>
+      {isWindows ? (
+        <QueryClientProvider client={queryClient}>
+          <Hydrate state={pageProps.dehydratedState}>
+            <ReactQueryDevtools initialIsOpen={true} />
+            <MainContainer>
+              <HeaderMain />
+              <Component {...pageProps} />
+            </MainContainer>
+          </Hydrate>
+        </QueryClientProvider>
+      ) : (
+        "mobile 환경은 지원하지 않습니다 chrome으로 접속해주세요"
+      )}
+    </>
   );
 }
 
