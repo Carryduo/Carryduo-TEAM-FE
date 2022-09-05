@@ -12,6 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const window = navigator.userAgent.includes("Windows");
     setIsWindows(Boolean(window));
+    console.log(navigator.userAgent);
   }, []);
   return (
     <>
