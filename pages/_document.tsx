@@ -8,7 +8,7 @@ class MyDocument extends Document {
           <meta property="og:description" content="롤 듀오 서칭 플랫폼" />
           <meta
             property="og:image"
-            content="https://cdn.discordapp.com/attachments/969400866668937217/980686401953734656/1.png"
+            content="https://avatars.githubusercontent.com/u/79081800?v=4"
           />
         </Head>
         <body>
