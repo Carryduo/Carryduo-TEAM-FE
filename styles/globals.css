@@ -4,6 +4,14 @@
 
 @layer base {
   span {
-    @apply text-white text-lg font-semibold
+    @apply text-white font-semibold
+  }
+  
+  ::-webkit-scrollbar {
+    @apply w-1 h-1 rounded-md
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-blue-400 rounded-md
   }
 }
