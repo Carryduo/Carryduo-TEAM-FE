@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil";
 import React from "react";
 
-export function useToggleMode(atom: any) {
+export function useShadow(atom: any) {
   const [isInitial, setIsInitial] = React.useState(true);
   const [atomName, SetAtomName] = useRecoilState(atom);
 
