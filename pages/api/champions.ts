@@ -1,22 +1,17 @@
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import { useQuery } from "react-query";
-import { instance } from "../../core/api/axios";
-
-interface Champions {
-  name: string;
-  id: string;
-  image: string;
-}
 
 interface IChampions {
-  data: Champions[];
+  data: {
+    data: any;
+  };
 }
 
 export const useChampions = () => {
-  return useQuery<IChampions, AxiosError, IChampions>(
-    ["getChampionsData"],
-    () => {
-      return instance.get("/champions");
-    }
-  );
+  return useQuery(["getChampionsData"], async () => {
+    const { data }: IChampions = await axios.get(
+      "https://ddragon.leagueoflegends.com/cdn/12.16.1/data/ko_KR/champion.json"
+    );
+    return Object.entries(data.data);
+  });
 };
