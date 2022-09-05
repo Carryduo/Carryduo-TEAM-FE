@@ -14,7 +14,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       navigator.userAgent.includes("Windows") ||
       navigator.userAgent.includes("Macintosh");
     setIsWindows(Boolean(window));
-    console.log(navigator.userAgent);
   }, []);
   return (
     <>

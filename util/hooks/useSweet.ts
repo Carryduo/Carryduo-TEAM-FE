@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 
 // SweetAlert CustomHook
 export const useSweet = (timer: any, icon: any, title: any) => {
-  Swal.mixin({
+  return Swal.mixin({
     toast: true,
     position: "top",
     showConfirmButton: false,
