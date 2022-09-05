@@ -1,14 +1,14 @@
-import Image from "next/image";
-import { useRecoilValue } from "recoil";
+import Grid from "../../components/common/Grid";
 import PageContainer from "../../components/common/PageContainer";
+import Seo from "../../components/common/Seo";
 
 const Profile = () => {
   return (
     <PageContainer>
-      <div className="flex h-full w-full flex-col items-center justify-center">
-        <span>Challenger 1023p</span>
-        <div>모스트 픽 캐릭터 변경</div>
-      </div>
+      <Seo title="설정" />
+      <Grid width="w-full" height="h-full">
+        <span>설정</span>
+      </Grid>
     </PageContainer>
   );
 };

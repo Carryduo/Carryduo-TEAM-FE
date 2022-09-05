@@ -5,6 +5,7 @@ import { instance } from "../../core/api/axios";
 interface Champions {
   name: string;
   id: string;
+  image: string;
 }
 
 interface IChampions {

@@ -1,10 +1,11 @@
 interface ContainerSizeProp {
   children: React.ReactNode;
+  space?: string;
 }
 
-const PageContainer = ({ children }: ContainerSizeProp) => {
+const PageContainer = ({ children, space }: ContainerSizeProp) => {
   return (
-    <div className={`relative flex h-[665px] w-full space-x-4 rounded-xl`}>
+    <div className={`relative flex h-[42rem] w-full ${space} rounded-xl`}>
       {children}
     </div>
   );
