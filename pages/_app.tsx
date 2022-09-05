@@ -10,7 +10,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = React.useState(() => new QueryClient());
   const [isWindows, setIsWindows] = useState<boolean>(true);
   useEffect(() => {
-    const window = navigator.userAgent.includes("Windows");
+    const window =
+      navigator.userAgent.includes("Windows") ||
+      navigator.userAgent.includes("Macintosh");
     setIsWindows(Boolean(window));
     console.log(navigator.userAgent);
   }, []);
@@ -27,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           </Hydrate>
         </QueryClientProvider>
       ) : (
-        "mobile 환경은 지원하지 않습니다 chrome으로 접속해주세요"
+        "mobile 환경은 지원하지 않습니다 pc로 접속해주세요"
       )}
     </>
   );
