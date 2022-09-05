@@ -13,7 +13,6 @@ interface FormProps {
 const HeaderMain = () => {
   const { register, handleSubmit } = useForm<FormProps>();
   const router = useRouter();
-  console.log(router);
   const onValid: SubmitHandler<FormProps> = ({ nickName }) => {
     router.push({
       pathname: `/summoners/${nickName}`,

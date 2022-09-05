@@ -1,6 +1,6 @@
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
 import { useQuery } from "react-query";
-import { instance } from "../../config/Axios/Axios";
+import { instance } from "../../core/api/axios";
 
 interface Champions {
   name: string;
