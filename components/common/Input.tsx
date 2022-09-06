@@ -3,12 +3,14 @@ import SearchIcon from "@mui/icons-material/Search";
 
 interface InputProps {
   register?: UseFormRegisterReturn;
-  type: "text" | "password" | "email" | "file";
+  type: "text" | "password" | "email" | "file" | "radio";
   autoFocus?: boolean;
-  placeHolder: string;
+  placeHolder?: string;
   onChange?: _.DebouncedFunc<(e: React.ChangeEvent<HTMLInputElement>) => void>;
-  width: string;
-  rounded: string;
+  width?: string;
+  rounded?: string;
+  value?: string;
+  openSearch?: boolean;
 }
 
 const Input = ({
@@ -19,6 +21,8 @@ const Input = ({
   onChange,
   width,
   rounded,
+  value,
+  openSearch,
 }: InputProps) => {
   return (
     <div className="relative">
@@ -29,10 +33,13 @@ const Input = ({
         onChange={onChange}
         {...register}
         type={type}
+        value={value}
       />
-      <div className="absolute top-[2px] right-3 text-gray-400">
-        <SearchIcon />
-      </div>
+      {openSearch ? (
+        <div className="absolute top-[2px] right-3 text-gray-400">
+          <SearchIcon />
+        </div>
+      ) : null}
     </div>
   );
 };

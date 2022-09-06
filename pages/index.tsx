@@ -8,7 +8,7 @@ const MainPage = () => {
     <PageContainer space="space-x-4">
       <Seo title="Home" />
       <Grid width="w-[40rem]" height="100%">
-        <ChampionsContainer />
+        <ChampionsContainer toLink={true} height="h-[calc(100%-3.5rem)]" />
       </Grid>
       <Grid width="w-full" height="100%">
         <span>듀오 승률 순위표</span>
