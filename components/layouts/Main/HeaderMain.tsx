@@ -33,7 +33,8 @@ const HeaderMain = () => {
             autoFocus={false}
             type="text"
             register={register("nickName", { required: true })}
-          />
+            openSearch={true}
+         />
         </form>
       </div>
       <div className="space-x-12">
