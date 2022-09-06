@@ -22,9 +22,13 @@ const HeaderMain = () => {
   return (
     <header className="flex h-24 w-full items-center justify-between">
       <div className="flex space-x-14">
-        <span className="cursor-pointer text-2xl font-semibold">LOGO</span>
+        <Link href="/">
+          <span className="cursor-pointer text-2xl font-semibold">LOGO</span>
+        </Link>
         <form onSubmit={handleSubmit(onValid)}>
           <Input
+            rounded="rounded-2xl"
+            width="w-[20rem]"
             placeHolder="소환사명 입력"
             autoFocus={false}
             type="text"
