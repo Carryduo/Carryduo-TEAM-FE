@@ -6,6 +6,13 @@
   span {
     @apply text-white font-semibold
   }
+
+  input[type=radio] {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: -9999px;
+  }
   
   ::-webkit-scrollbar {
     @apply w-1 h-1 rounded-md
