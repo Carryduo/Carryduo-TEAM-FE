@@ -16,7 +16,7 @@ import { PickChampion } from "../../../core/config/pickChampion";
 
 import Input from "../../common/Input";
 import ChampionsContainer from "../Home/ChampionsContainer";
-import ColorButton from "../../common/colorButton";
+import ColorButton from "../../common/ColorButton";
 
 interface FormProps {
   nickName: string;
