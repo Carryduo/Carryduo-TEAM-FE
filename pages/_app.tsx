@@ -8,7 +8,6 @@ import MainContainer from "../components/layouts/Main/MainContainer";
 import { RecoilRoot } from "recoil";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  console.log(pageProps);
   const [queryClient] = React.useState(() => new QueryClient());
   const [isWindows, setIsWindows] = useState<boolean>(true);
   useEffect(() => {

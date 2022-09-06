@@ -21,12 +21,14 @@ const MainContainer = ({ children }: DarkContainerProps) => {
         loading="eager"
       />
       <div
-        className={`z-50 h-[800px] w-[1500px] overflow-hidden rounded-xl bg-black bg-opacity-30 px-10 shadow-[0_0_40px_1px]  ${
+        className={`z-50 h-[85%] w-[80%] overflow-hidden rounded-xl bg-black bg-opacity-30 px-10 shadow-[0_0_40px_1px]  ${
           color === 1
             ? "shadow-blue-200"
             : color === 2
             ? "shadow-green-200"
-            : "shadow-red-200"
+            : color === 3
+            ? "shadow-red-200"
+            : "shadow-white"
         }`}
       >
         {children}

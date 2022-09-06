@@ -1,9 +1,14 @@
 import axios, { AxiosError } from "axios";
 import { useQuery } from "react-query";
 
+interface Champions {
+  id: string;
+  name: string;
+}
+
 interface IChampions {
   data: {
-    data: any;
+    data: Champions[];
   };
 }
 
@@ -12,6 +17,10 @@ export const useChampions = () => {
     const { data }: IChampions = await axios.get(
       "https://ddragon.leagueoflegends.com/cdn/12.16.1/data/ko_KR/champion.json"
     );
-    return Object.entries(data.data);
+    let res = [];
+    for (let [, value] of Object.entries(data.data)) {
+      res.push(value);
+    }
+    return res;
   });
 };
