@@ -44,7 +44,7 @@ const SignupFormContainer = ({ setting }: SignupFormContainerProps) => {
     <div className="grid h-full w-full grid-cols-3 justify-center">
       <div></div>
       <div className="w-full space-y-4">
-        <span className="text-3xl">정보를 추가로 입력해주세요!</span>
+        <span className="text-2xl">정보를 추가로 입력해주세요!</span>
         <form onSubmit={handleSubmit(onValid)} className="space-y-4">
           <div>
             <span>닉네임</span>
