@@ -16,8 +16,6 @@ import Challenger from "../../../public/tier/challenger.png";
 import { useRecoilValue } from "recoil";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { PickChampion } from "../../../core/config/pickChampion";
-import ToggleOffIcon from "@mui/icons-material/ToggleOff";
-import ToggleOnIcon from "@mui/icons-material/ToggleOn";
 import Input from "../../common/Input";
 import ChampionsContainer from "../Home/ChampionsContainer";
 import ColorButton from "../../common/ColorButton";
