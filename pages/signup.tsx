@@ -1,7 +1,7 @@
 import Grid from "../components/common/Grid";
 import PageContainer from "../components/common/PageContainer";
 import Seo from "../components/common/Seo";
-import SignupFormContainer from "../components/layouts/Signup/SignupFormContainer";
+import SignupFormContainer from "../components/layouts/SignupFormContainer";
 
 const Signup = () => {
   return (
