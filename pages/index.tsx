@@ -2,6 +2,7 @@ import Grid from "../components/common/Grid";
 import PageContainer from "../components/common/PageContainer";
 import Seo from "../components/common/Seo";
 import ChampionsContainer from "../components/layouts/Home/ChampionsContainer";
+import DuoRankContainer from "../components/layouts/Home/DuoRankContainer";
 
 const MainPage = () => {
   return (
@@ -11,7 +12,7 @@ const MainPage = () => {
         <ChampionsContainer toLink={true} height="h-[calc(100%-3.5rem)]" />
       </Grid>
       <Grid width="w-full" height="100%">
-        <span>듀오 승률 순위표</span>
+        <DuoRankContainer />
       </Grid>
     </PageContainer>
   );
