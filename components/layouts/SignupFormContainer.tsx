@@ -8,10 +8,11 @@ import Grid from "../common/Grid";
 import NickName from "./Signup/NickName";
 import Introduce from "./Signup/Introduce";
 import Tier from "./Signup/Tier";
-import Position from "./Signup/position";
+
 import SignupHeader from "./Signup/SignupHeader";
 import SignupFooter from "./Signup/SignupFooter";
 import MyChamp from "./Signup/MyChamp";
+import Position from "./Signup/Position";
 
 interface FormProps {
   nickName: string;
