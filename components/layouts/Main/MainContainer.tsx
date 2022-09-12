@@ -28,7 +28,7 @@ const MainContainer = ({ children }: DarkContainerProps) => {
             ? "shadow-green-200"
             : color === 3
             ? "shadow-red-200"
-            : "shadow-white"
+            : "shadow-gray-700"
         }`}
       >
         {children}
