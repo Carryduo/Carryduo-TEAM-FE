@@ -4,7 +4,7 @@ interface SignupFooterProps {
 
 const SignupFooter = ({ setting }: SignupFooterProps) => {
   return (
-    <div className="h-[30%] w-full">
+    <div className="h-[30%] w-full mt-4">
       <header className="h-10 w-full space-x-12 border-b-[1px] pl-4">
         <span>제작소개</span>
         <span>이용약관</span>
