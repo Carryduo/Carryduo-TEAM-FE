@@ -1,4 +1,5 @@
 import { Switch } from "@mui/material";
+import { signOut } from "next-auth/react";
 import ColorButton from "../../common/ColorButton";
 
 interface SignupHeaderProps {
@@ -14,7 +15,7 @@ const SignupHeader = ({ setting, loading, setLoading }: SignupHeaderProps) => {
         <span className="text-2xl">환경설정</span>
         {setting ? (
           <button type="button">
-            <span>로그아웃</span>
+            <span onClick={() => signOut()}>로그아웃</span>
           </button>
         ) : null}
         <button type="submit">

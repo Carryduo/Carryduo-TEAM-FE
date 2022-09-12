@@ -14,11 +14,9 @@ const KakaoLogin = ({ close }: modalProps) => {
 
   return (
     <div onClick={onClick} className="relative">
-      <Link href="/signup">
-        <button className=" h-[54px] w-[314px] rounded-lg bg-[#F8E326] font-bold text-black">
-          카카오 로그인
-        </button>
-      </Link>
+      <button className=" h-[54px] w-[314px] rounded-lg bg-[#F8E326] font-bold text-black">
+        카카오 로그인
+      </button>
       <div className="absolute top-[14px] left-[14px]">
         <Image
           alt=""
