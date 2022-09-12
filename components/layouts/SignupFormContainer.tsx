@@ -13,6 +13,8 @@ import SignupHeader from "./Signup/SignupHeader";
 import SignupFooter from "./Signup/SignupFooter";
 import MyChamp from "./Signup/MyChamp";
 import Position from "./Signup/Position";
+import { useSession } from "next-auth/react";
+import KakaoLogin from "../common/LoginButton";
 
 interface FormProps {
   nickName: string;
@@ -27,7 +29,7 @@ interface SignupFormContainerProps {
 
 const SignupFormContainer = ({ setting }: SignupFormContainerProps) => {
   const { register, handleSubmit, watch } = useForm<FormProps>();
-
+  const { status } = useSession();
   const champion = useRecoilValue(PickChampion);
   const [open, setOpen] = React.useState<boolean>(false);
   const [loading, setLoading] = React.useState(true);
@@ -42,7 +44,13 @@ const SignupFormContainer = ({ setting }: SignupFormContainerProps) => {
           <ChampionsContainer height="h-[calc(100%-3.5rem)]" toLink={false} />
         ) : null}
       </Grid>
-      <div className="h-full w-full space-y-4">
+      <div className="relative h-full w-full">
+        {status === "authenticated" ? null : (
+          <div className="absolute z-50 flex h-[70%] w-full items-center justify-center bg-black bg-opacity-90">
+            <span>로그인 후 이용가능</span>
+            <KakaoLogin />
+          </div>
+        )}
         <Grid width="w-full" height="h-[70%]">
           <form
             onSubmit={handleSubmit(onValid)}

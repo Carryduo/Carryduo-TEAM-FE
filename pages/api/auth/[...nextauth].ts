@@ -12,6 +12,11 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
         clientSecret: process.env.KAKAO_CLIENT_SECRET || "",
       }),
     ],
+    callbacks: {
+      async session({ session, token }) {
+        return { ...session, ...token };
+      },
+    },
     pages: {
       signIn: "/",
       signOut: "/",
