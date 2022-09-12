@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import React, { useEffect, useState } from "react";
 import MainContainer from "../components/layouts/Main/MainContainer";
 import { RecoilRoot } from "recoil";
+import { SessionProvider } from "next-auth/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = React.useState(() => new QueryClient());
@@ -19,17 +20,19 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       {isWindows ? (
-        <RecoilRoot>
-          <QueryClientProvider client={queryClient}>
-            <Hydrate state={pageProps.dehydratedState}>
-              <ReactQueryDevtools initialIsOpen={true} />
-              <MainContainer>
-                <HeaderMain />
-                <Component {...pageProps} />
-              </MainContainer>
-            </Hydrate>
-          </QueryClientProvider>
-        </RecoilRoot>
+        <SessionProvider session={pageProps.session}>
+          <RecoilRoot>
+            <QueryClientProvider client={queryClient}>
+              <Hydrate state={pageProps.dehydratedState}>
+                <ReactQueryDevtools initialIsOpen={true} />
+                <MainContainer>
+                  <HeaderMain />
+                  <Component {...pageProps} />
+                </MainContainer>
+              </Hydrate>
+            </QueryClientProvider>
+          </RecoilRoot>
+        </SessionProvider>
       ) : (
         "mobile 환경은 지원하지 않습니다 pc로 접속해주세요"
       )}
