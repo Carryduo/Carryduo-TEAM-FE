@@ -1,11 +1,10 @@
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useSweet } from "../../../util/hooks/useSweet";
 import Input from "../../common/Input";
-
-import LoginModal from "../Header/LoginModal";
 
 interface FormProps {
   nickName: string;
@@ -47,10 +46,9 @@ const HeaderMain = () => {
         >
           대전 시뮬레이션
         </span>
-        <Link href={`/setting/봄날의 햇살 룰루`}>
+        <Link href={`/setting`}>
           <span className="cursor-pointer">설정</span>
         </Link>
-        <LoginModal />
       </div>
     </header>
   );
