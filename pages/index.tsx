@@ -1,4 +1,3 @@
-import { useSession } from "next-auth/react";
 import Grid from "../components/common/Grid";
 import PageContainer from "../components/common/PageContainer";
 import Seo from "../components/common/Seo";
@@ -6,8 +5,6 @@ import ChampionsContainer from "../components/layouts/Home/ChampionsContainer";
 import DuoRankContainer from "../components/layouts/Home/DuoRankContainer";
 
 const MainPage = () => {
-  const { status, data } = useSession();
-  console.log(status, data);
   return (
     <PageContainer space="space-x-4">
       <Seo title="Home" />
