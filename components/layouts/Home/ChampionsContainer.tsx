@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { PickChampion } from "../../../core/config/pickChampion";
-import { useChampions } from "../../../pages/apis/champions";
+import { useChampions } from "../../../pages/api/champions";
 import Input from "../../common/Input";
 
 interface ChampionsContainerProps {
