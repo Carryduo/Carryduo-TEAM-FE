@@ -11,7 +11,6 @@ interface SignupHeaderProps {
 
 const SignupHeader = ({ setting, loading, setLoading }: SignupHeaderProps) => {
   const { status } = useSession();
-  console.log(status);
   return (
     <header className="items- col-span-2 flex justify-between">
       <div className="mt-2 flex items-start space-x-2">
