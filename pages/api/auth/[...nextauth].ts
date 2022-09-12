@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function auth(req: NextApiRequest, res: NextApiResponse) {
   return await NextAuth(req, res, {
-    secret: process.env.SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
     providers: [
       KakaoProvider({
         name: "kakao",
