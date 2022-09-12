@@ -1,4 +1,5 @@
 // import { KAKAO_AUTH_URL } from "../../servers/OAuth";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,7 +8,7 @@ interface modalProps {
 }
 const KakaoLogin = ({ close }: modalProps) => {
   const onClick = () => {
-    // window.location.href = KAKAO_AUTH_URL;
+    signIn("kakao");
     close(false);
   };
 

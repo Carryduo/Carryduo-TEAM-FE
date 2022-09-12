@@ -41,6 +41,7 @@ const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
         }).map((data, i) => {
           return (
             <div key={i} className="h-20 w-14 cursor-pointer text-center">
+              {/* 이 부분 link 쪽 이상해짐 나중에 데이터 가져올때 확인 필요*/}
               {toLink ? (
                 <Link href={`/champions/${data.id}`}>
                   <Image
