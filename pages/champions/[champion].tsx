@@ -18,7 +18,6 @@ const Champion = () => {
             <Image
               width={120}
               height={100}
-              loading="eager"
               alt=""
               src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${data?.id}_0.jpg`}
             />
@@ -31,7 +30,6 @@ const Champion = () => {
                       width={30}
                       height={30}
                       alt=""
-                      loading="eager"
                       src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/spell/${data.image.full}`}
                     />
                   </div>
