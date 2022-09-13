@@ -29,6 +29,7 @@ const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
         type="text"
         openSearch={true}
       />
+
       <div
         className={`mt-4 grid ${height} grid-cols-5 gap-2 overflow-hidden overflow-y-scroll`}
       >
@@ -41,7 +42,6 @@ const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
         }).map((data, i) => {
           return (
             <div key={i} className="h-20 w-14 cursor-pointer text-center">
-              {/* 이 부분 link 쪽 이상해짐 나중에 데이터 가져올때 확인 필요*/}
               {toLink ? (
                 <Link href={`/champions/${data.id}`} passHref>
                   <a>
@@ -52,6 +52,8 @@ const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
                       height={56}
                       layout="fixed"
                       loading="eager"
+                      placeholder="blur"
+                      blurDataURL={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.id}.png`}
                     />
                   </a>
                 </Link>
@@ -64,6 +66,8 @@ const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
                   layout="fixed"
                   loading="eager"
                   onClick={() => setChampion(data.id)}
+                  placeholder="blur"
+                  blurDataURL={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.id}.png`}
                 />
               )}
               <span className="whitespace-nowrap text-xs">
