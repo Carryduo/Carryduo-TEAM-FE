@@ -22,3 +22,12 @@
     @apply bg-blue-400 rounded-md
   }
 }
+
+.slick-dots {
+  position: absolute;
+  top:0;
+}
+
+.slick-dots li.slick-active button:before{
+  color: white !important;
+}

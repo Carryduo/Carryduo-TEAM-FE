@@ -1,6 +1,5 @@
 import { UseFormRegisterReturn } from "react-hook-form";
 import SearchIcon from "@mui/icons-material/Search";
-import { Session } from "next-auth";
 
 interface InputProps {
   register?: UseFormRegisterReturn;
@@ -25,7 +24,6 @@ const Input = ({
   rounded,
   value,
   openSearch,
-  defaultValue,
 }: InputProps) => {
   return (
     <div className="relative">
