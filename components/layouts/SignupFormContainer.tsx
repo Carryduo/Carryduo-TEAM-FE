@@ -15,6 +15,7 @@ import MyChamp from "./Signup/MyChamp";
 import Position from "./Signup/Position";
 import { useSession } from "next-auth/react";
 import KakaoLogin from "../common/LoginButton";
+import IntroContainer from "./Signup/IntroContainer";
 
 interface FormProps {
   nickName: string;
@@ -23,11 +24,7 @@ interface FormProps {
   intro: string;
 }
 
-interface SignupFormContainerProps {
-  setting: boolean;
-}
-
-const SignupFormContainer = ({ setting }: SignupFormContainerProps) => {
+const SignupFormContainer = () => {
   const { register, handleSubmit, watch } = useForm<FormProps>();
   const { status } = useSession();
   const champion = useRecoilValue(PickChampion);
@@ -42,7 +39,9 @@ const SignupFormContainer = ({ setting }: SignupFormContainerProps) => {
       <Grid width="w-[40rem]" height="h-[calc(100%+1rem)]">
         {open ? (
           <ChampionsContainer height="h-[calc(100%-3.5rem)]" toLink={false} />
-        ) : null}
+        ) : (
+          <IntroContainer />
+        )}
       </Grid>
       <div className="relative h-full w-full">
         {status === "authenticated" ? null : (
@@ -56,11 +55,7 @@ const SignupFormContainer = ({ setting }: SignupFormContainerProps) => {
             onSubmit={handleSubmit(onValid)}
             className="grid grid-cols-2 grid-rows-4 gap-2"
           >
-            <SignupHeader
-              setting={setting}
-              loading={loading}
-              setLoading={setLoading}
-            />
+            <SignupHeader loading={loading} setLoading={setLoading} />
             <NickName register={register("nickName")} />
             <Introduce register={register("intro")} />
             <Tier register={register("tier")} watch={watch("tier")} />
@@ -71,7 +66,7 @@ const SignupFormContainer = ({ setting }: SignupFormContainerProps) => {
             <MyChamp setOpen={setOpen} />
           </form>
         </Grid>
-        <SignupFooter setting={setting} />
+        <SignupFooter />
       </div>
     </>
   );
