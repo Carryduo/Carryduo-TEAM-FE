@@ -3,12 +3,22 @@ import { useQuery } from "react-query";
 import Grid from "../../components/common/Grid";
 import PageContainer from "../../components/common/PageContainer";
 import Seo from "../../components/common/Seo";
-import { getChamps } from "../api/champions";
+import { Champion, getChamp } from "../../core/api/champion";
 
-const Champion = (props: any) => {
-  const { data } = useQuery(["test"], () => getChamps(String(props.name)), {
-    initialData: props.champ,
-  });
+interface PageProps {
+  params: {
+    champion: string;
+  };
+}
+
+const Champion = (props: { name: string; champ: Champion }) => {
+  const { data } = useQuery<Champion>(
+    ["champion", props.name],
+    () => getChamp(String(props.name)),
+    {
+      initialData: props.champ,
+    }
+  );
   return (
     <PageContainer space="space-x-4">
       <Seo title={String(props.name)} />
@@ -24,7 +34,7 @@ const Champion = (props: any) => {
             />
             <span className="text-2xl">{data?.id}</span>
             <div>
-              {data?.spells?.map((data: any) => {
+              {data?.spells.map((data) => {
                 return (
                   <div key={data.id}>
                     <Image
@@ -32,7 +42,6 @@ const Champion = (props: any) => {
                       height={30}
                       alt=""
                       src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/spell/${data.image.full}`}
-                      priority
                     />
                   </div>
                 );
@@ -53,11 +62,10 @@ const Champion = (props: any) => {
 
 export default Champion;
 
-export async function getServerSideProps(context: { params: any }) {
+export const getServerSideProps = async (context: PageProps) => {
   const {
     params: { champion: name },
   } = context;
-  const champ = await getChamps(name);
-  console.log(champ);
+  const champ = await getChamp(name);
   return { props: { champ, name } };
-}
+};
