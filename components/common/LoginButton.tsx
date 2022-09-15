@@ -1,9 +1,9 @@
-import { signIn } from "next-auth/react";
 import Image from "next/image";
+import { KAKAO_AUTH_URL } from "../../util/servers/OAuth";
 
 const KakaoLogin = () => {
   const onClick = () => {
-    signIn("kakao");
+    window.location.href = KAKAO_AUTH_URL
   };
 
   return (

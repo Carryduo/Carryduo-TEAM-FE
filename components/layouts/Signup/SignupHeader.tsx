@@ -1,5 +1,4 @@
 import { Switch } from "@mui/material";
-import { signOut, useSession } from "next-auth/react";
 import ColorButton from "../../common/ColorButton";
 import KakaoLogin from "../../common/LoginButton";
 
@@ -9,26 +8,11 @@ interface SignupHeaderProps {
 }
 
 const SignupHeader = ({ loading, setLoading }: SignupHeaderProps) => {
-  const { status } = useSession();
   return (
     <header className="items- col-span-2 flex justify-between">
       <div className="mt-2 flex items-start space-x-2">
         <span className="text-2xl">환경설정</span>
-        {status === "authenticated" ? (
-          <button type="button">
-            <span
-              onClick={() =>
-                signOut({
-                  callbackUrl: "/",
-                })
-              }
-            >
-              로그아웃
-            </span>
-          </button>
-        ) : (
-          <KakaoLogin />
-        )}
+        <KakaoLogin />
         <button type="submit">
           <span>저장</span>
         </button>

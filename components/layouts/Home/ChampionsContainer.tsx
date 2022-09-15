@@ -1,10 +1,12 @@
 import _ from "lodash";
+import { GetServerSideProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useQuery } from "react-query";
 import { useSetRecoilState } from "recoil";
 import { PickChampion } from "../../../core/config/pickChampion";
-import { useChampions } from "../../../pages/api/champions";
+import { Champions, getChamps } from "../../../core/api/champions";
 import Input from "../../common/Input";
 
 interface ChampionsContainerProps {
@@ -12,8 +14,17 @@ interface ChampionsContainerProps {
   toLink: boolean;
 }
 
-const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
-  const { data: Champions, isLoading } = useChampions();
+const ChampionsContainer = (
+  { height, toLink }: ChampionsContainerProps,
+  props: { champ: Champions[] }
+) => {
+  const { data: Champions } = useQuery<Champions[], Error>(
+    ["champions"],
+    getChamps,
+    {
+      initialData: props.champ,
+    }
+  );
   const setChampion = useSetRecoilState(PickChampion);
   const [value, setValue] = useState<string>("");
   const onChange = _.debounce((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -84,3 +95,8 @@ const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
 };
 
 export default ChampionsContainer;
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const champ = await getChamps();
+  return { props: { champ } };
+};
