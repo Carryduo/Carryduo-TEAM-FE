@@ -1,17 +1,17 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useQuery } from "react-query";
 import Grid from "../../components/common/Grid";
 import PageContainer from "../../components/common/PageContainer";
 import Seo from "../../components/common/Seo";
-import { useChampion } from "../api/champion";
+import { getChamps } from "../api/champions";
 
-const Champion = () => {
-  const router = useRouter();
-  const { data } = useChampion(String(router.query.champion));
-  console.log(data);
+const Champion = (props: any) => {
+  const { data } = useQuery(["test"], () => getChamps(String(props.name)), {
+    initialData: props.champ,
+  });
   return (
     <PageContainer space="space-x-4">
-      <Seo title={String(router.query.champion)} />
+      <Seo title={String(props.name)} />
       <div className="h-full w-full space-y-4">
         <Grid width="w-[700px]" height="h-1/2">
           <div className="flex">
@@ -20,10 +20,11 @@ const Champion = () => {
               height={100}
               alt=""
               src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${data?.id}_0.jpg`}
+              priority
             />
             <span className="text-2xl">{data?.id}</span>
             <div>
-              {data?.spells?.map((data) => {
+              {data?.spells?.map((data: any) => {
                 return (
                   <div key={data.id}>
                     <Image
@@ -31,6 +32,7 @@ const Champion = () => {
                       height={30}
                       alt=""
                       src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/spell/${data.image.full}`}
+                      priority
                     />
                   </div>
                 );
@@ -50,3 +52,12 @@ const Champion = () => {
 };
 
 export default Champion;
+
+export async function getServerSideProps(context: { params: any }) {
+  const {
+    params: { champion: name },
+  } = context;
+  const champ = await getChamps(name);
+  console.log(champ);
+  return { props: { champ, name } };
+}
