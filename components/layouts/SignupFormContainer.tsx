@@ -13,6 +13,9 @@ import SignupFooter from "./Signup/SignupFooter";
 import MyChamp from "./Signup/MyChamp";
 import Position from "./Signup/Position";
 import IntroContainer from "./Signup/IntroContainer";
+import { getCookie } from "../../util/servers/cookie";
+import KakaoLogin from "../common/LoginButton";
+import { useToken } from "../../util/hooks/useToken";
 
 interface FormProps {
   nickName: string;
@@ -26,7 +29,8 @@ const SignupFormContainer = () => {
   const champion = useRecoilValue(PickChampion);
   const [open, setOpen] = React.useState<boolean>(false);
   const [loading, setLoading] = React.useState(true);
-
+  const res = useToken("/user/option");
+  console.log(res);
   const onValid: SubmitHandler<FormProps> = (data) => {
     console.log(data, champion, loading);
   };
@@ -40,16 +44,22 @@ const SignupFormContainer = () => {
         )}
       </Grid>
       <div className="relative h-full w-full">
-        {/* <div className="absolute z-50 flex h-[70%] w-full items-center justify-center bg-black bg-opacity-90">
+        {getCookie("myToken") === undefined ? (
+          <div className="absolute z-50 flex h-[70%] w-full items-center justify-center bg-black bg-opacity-90">
             <span>로그인 후 이용가능</span>
             <KakaoLogin />
-           </div> */}
+          </div>
+        ) : null}
         <Grid width="w-full" height="h-[70%]">
           <form
             onSubmit={handleSubmit(onValid)}
             className="grid grid-cols-2 grid-rows-4 gap-2"
           >
-            <SignupHeader loading={loading} setLoading={setLoading} />
+            <SignupHeader
+              token={getCookie("myToken")}
+              loading={loading}
+              setLoading={setLoading}
+            />
             <NickName register={register("nickName")} />
             <Introduce register={register("intro")} />
             <Tier register={register("tier")} watch={watch("tier")} />
