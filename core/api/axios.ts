@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { getCookie } from "../../util/servers/cookie";
 
 export const instance = axios.create({
@@ -8,7 +8,8 @@ export const instance = axios.create({
   },
 });
 
-instance.interceptors.request.use((config: any) => {
-  config.headers.common["authorization"] = `Bearer ${getCookie("myToken")}`;
+instance.interceptors.request.use((config: AxiosRequestConfig) => {
+  if (config.headers === undefined) return;
+  config.headers["authorization"] = `Bearer ${getCookie("myToken")}`;
   return config;
 });

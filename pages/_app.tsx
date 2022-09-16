@@ -6,16 +6,38 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import React, { useEffect, useState } from "react";
 import MainContainer from "../components/layouts/Main/MainContainer";
 import { RecoilRoot } from "recoil";
+import Router from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = React.useState(() => new QueryClient());
   const [isWindows, setIsWindows] = useState<boolean>(true);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
+    const start = () => {
+      setLoading(true);
+    };
+    const end = () => {
+      setLoading(false);
+    };
+    console.log();
     const window =
       navigator.userAgent.includes("Windows") ||
       navigator.userAgent.includes("Macintosh");
     setIsWindows(Boolean(window));
-  }, []);
+
+    if (pageProps.prop === "Lazy Loading") {
+      Router.events.on("routeChangeStart", start);
+      Router.events.on("routeChangeComplete", end);
+      Router.events.on("routeChangeError", end);
+
+      return () => {
+        Router.events.off("routeChangeStart", start);
+        Router.events.off("routeChangeComplete", end);
+        Router.events.off("routeChangeError", end);
+      };
+    } else setLoading(false);
+  }, [pageProps]);
   return (
     <>
       {isWindows ? (
@@ -25,7 +47,11 @@ function MyApp({ Component, pageProps }: AppProps) {
               <ReactQueryDevtools initialIsOpen={true} />
               <MainContainer>
                 <HeaderMain />
-                <Component {...pageProps} />
+                {loading ? (
+                  <span>Loading</span>
+                ) : (
+                  <Component {...pageProps} />
+                )}{" "}
               </MainContainer>
             </Hydrate>
           </QueryClientProvider>

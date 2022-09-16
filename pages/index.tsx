@@ -19,3 +19,11 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
+export const getStaticProps = () => {
+  return {
+    props: {
+      prop: "Lazy Loading",
+    },
+  };
+};
