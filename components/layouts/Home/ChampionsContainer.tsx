@@ -14,16 +14,10 @@ interface ChampionsContainerProps {
   toLink: boolean;
 }
 
-const ChampionsContainer = (
-  { height, toLink }: ChampionsContainerProps,
-  props: { champ: Champions[] }
-) => {
+const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
   const { data: Champions } = useQuery<Champions[], Error>(
     ["champions"],
-    getChamps,
-    {
-      initialData: props.champ,
-    }
+    getChamps
   );
   const setChampion = useSetRecoilState(PickChampion);
   const [value, setValue] = useState<string>("");
@@ -95,8 +89,3 @@ const ChampionsContainer = (
 };
 
 export default ChampionsContainer;
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const champ = await getChamps();
-  return { props: { champ } };
-};
