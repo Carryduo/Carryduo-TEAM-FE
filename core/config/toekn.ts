@@ -7,7 +7,7 @@ interface ProfileProps {
   bio: string;
   enableChat: boolean;
   nickname: string;
-  preferPosition: string[];
+  preferPosition: string;
   profileImg: string;
   tier: string;
   userId: string;
@@ -19,7 +19,7 @@ export const getMyProfile = atom<ProfileProps>({
     bio: "",
     enableChat: true,
     nickname: "",
-    preferPosition: [],
+    preferPosition: "",
     profileImg: "",
     tier: "",
     userId: "",
