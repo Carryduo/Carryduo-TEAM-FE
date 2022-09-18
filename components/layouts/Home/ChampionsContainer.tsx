@@ -36,7 +36,7 @@ const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
       />
 
       <div
-        className={`mt-4 grid ${height} grid-cols-5 grid-rows-[repeat(auto-fill,90px)] gap-2 overflow-hidden overflow-y-scroll`}
+        className={`mt-4 grid ${height} grid-cols-5 grid-rows-[repeat(auto-fill,85px)] gap-2 overflow-hidden overflow-y-scroll`}
       >
         {Champions?.filter((val) => {
           if (value === "") {
@@ -46,7 +46,7 @@ const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
           }
         }).map((data, i) => {
           return (
-            <div key={i} className="h-[90px] w-14 cursor-pointer text-center">
+            <div key={i} className="h-[85px] w-14 cursor-pointer text-center">
               {toLink ? (
                 <Link href={`/champions/${data.id}`} passHref>
                   <a>
