@@ -56,7 +56,7 @@ const Tier = ({ register, watch }: TierFormProp) => {
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
-              watch !== "Silver" ? "opacity-30" : ""
+              watch !== "실버" ? "opacity-30" : ""
             }`}
             layout="fixed"
             loading="eager"

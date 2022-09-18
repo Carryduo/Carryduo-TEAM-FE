@@ -21,13 +21,13 @@ const SignupHeader = ({ token, loading, setLoading }: SignupHeaderProps) => {
       <div>
         <div className="flex">
           <div className="flex items-center">
-            <span>채팅 활성화</span>
+            {/* <span>채팅 활성화</span>
             <Switch
               checked={loading}
               onChange={() => setLoading(!loading)}
               name="loading"
               color="primary"
-            />
+            /> */}
           </div>
           <div className="flex items-center space-x-2">
             <span>테두리 색상</span>
