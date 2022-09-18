@@ -16,21 +16,30 @@ import IntroContainer from "./Signup/IntroContainer";
 import { getCookie } from "../../util/servers/cookie";
 import KakaoLogin from "../common/LoginButton";
 import { useToken } from "../../util/hooks/useToken";
+import { getMyProfile } from "../../core/config/toekn";
 
 interface FormProps {
   nickName: string;
   position: string;
   tier: string;
-  intro: string;
+  bio: string;
+  preferPosition: string;
 }
 
 const SignupFormContainer = () => {
-  const { register, handleSubmit, watch } = useForm<FormProps>();
+  useToken("/user/option");
+  const profile = useRecoilValue(getMyProfile);
+  const { register, handleSubmit, watch } = useForm<FormProps>({
+    defaultValues: {
+      nickName: profile.nickname,
+      bio: profile.bio,
+      tier: profile.tier,
+      preferPosition: profile.preferPosition,
+    },
+  });
   const champion = useRecoilValue(PickChampion);
   const [open, setOpen] = React.useState<boolean>(false);
   const [loading, setLoading] = React.useState(true);
-  const res = useToken("/user/option");
-  console.log(res);
   const onValid: SubmitHandler<FormProps> = (data) => {
     console.log(data, champion, loading);
   };
@@ -61,11 +70,11 @@ const SignupFormContainer = () => {
               setLoading={setLoading}
             />
             <NickName register={register("nickName")} />
-            <Introduce register={register("intro")} />
+            <Introduce register={register("bio")} />
             <Tier register={register("tier")} watch={watch("tier")} />
             <Position
-              register={register("position")}
-              watch={watch("position")}
+              register={register("preferPosition")}
+              watch={watch("preferPosition")}
             />
             <MyChamp setOpen={setOpen} />
           </form>

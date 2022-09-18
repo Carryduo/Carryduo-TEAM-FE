@@ -53,7 +53,7 @@ const Position = ({ register, watch }: PositionFormProp) => {
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
-              watch !== "Mid" ? "opacity-30" : ""
+              watch !== "MID" ? "opacity-30" : ""
             }`}
             layout="fixed"
             loading="eager"
