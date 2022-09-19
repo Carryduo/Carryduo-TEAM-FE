@@ -20,7 +20,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     const end = () => {
       setLoading(false);
     };
-    console.log();
     const window =
       navigator.userAgent.includes("Windows") ||
       navigator.userAgent.includes("Macintosh");
