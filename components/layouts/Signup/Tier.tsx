@@ -16,6 +16,7 @@ interface TierFormProp {
 }
 
 const Tier = ({ register, watch }: TierFormProp) => {
+  console.log(watch)
   return (
     <div className="col-span-2 space-y-2">
       <span>현재 티어</span>
