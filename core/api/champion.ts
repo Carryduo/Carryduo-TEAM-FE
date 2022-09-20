@@ -1,32 +1,29 @@
 import axios from "axios";
+import { useQuery } from "react-query";
+import { instance } from "./axios";
 
 interface ChampionSpells {
   id: string;
+  description:string;
   name: string;
-  image: {
-    full: string;
-  };
+  sillImg: string;
+  tootip: string;
 }
 
 export interface Champion {
   id: string;
-  name: string;
-  spells: ChampionSpells[];
+  champNameKo: string;
+  champNameEn: string;
+  champImg: string;
+  skill: ChampionSpells[];
 }
 
 interface IChampions {
-  data: {
-    data: Champion[];
-  };
+  data: Champion;
 }
 
-export const getChamp = async (name: string) => {
-  const { data }: IChampions = await axios.get(
-    `https://ddragon.leagueoflegends.com/cdn/12.16.1/data/ko_KR/champion/${name}.json`
-  );
-  let res = [];
-  for (let [, value] of Object.entries(data.data)) {
-    res.push(value);
-  }
-  return res[0];
+export const useGetChampDetail = (id: number) => {
+  return useQuery<IChampions>(["Champ", id], () => {
+    return instance.get(`/champ/${id}`);
+  });
 };

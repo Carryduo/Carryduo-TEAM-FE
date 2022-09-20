@@ -1,23 +1,19 @@
-import axios from "axios";
+import { useQuery } from "react-query";
+import { instance } from "./axios";
 
 export interface Champions {
   id: string;
-  name: string;
+  champNameKo: string;
+  champNameEn: string;
+  champImg: string;
 }
 
 export interface IChampions {
-  data: {
-    data: Champions[];
-  };
+  data: Champions[];
 }
 
-export const getChamps = async () => {
-  const { data }: IChampions = await axios.get(
-    "https://ddragon.leagueoflegends.com/cdn/12.16.1/data/ko_KR/champion.json"
-  );
-  let res = [];
-  for (let [, value] of Object.entries(data.data)) {
-    res.push(value);
-  }
-  return res;
+export const useGetChamps = () => {
+  return useQuery<IChampions>(["Champs"], () => {
+    return instance.get("/champ");
+  });
 };
