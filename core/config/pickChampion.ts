@@ -1,6 +1,14 @@
 import { atom } from "recoil";
 
-export const PickChampion = atom<string>({
+interface ChampionProps {
+  id: number;
+  name: string;
+}
+
+export const PickChampion = atom<ChampionProps>({
   key: "pickChampion",
-  default: "",
+  default: {
+    id: 0,
+    name: "",
+  },
 });

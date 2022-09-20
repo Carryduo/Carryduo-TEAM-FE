@@ -9,14 +9,17 @@ const Kakao = () => {
   const router = useRouter();
   useEffect(() => {
     const code = new URL(window.location.href).searchParams.get("code");
-    instance.get(`/admin/kakao/callback?code=${code}`).then((res) => {
-      setCookie("myToken", res.data.token, {
-        expires: useTime(60 * 24 * 14),
+    instance
+      .get(`/admin/kakao/callback?code=${code}`)
+      .then((res) => {
+        setCookie("myToken", res.data.token, {
+          expires: useTime(60 * 24 * 14),
+        });
+      })
+      .finally(() => {
+        router.push("/");
       });
-    });
-    router.push("/");
   }, []);
-
   return <div>안녕</div>;
 };
 

@@ -7,7 +7,6 @@ import Grid from "../common/Grid";
 import NickName from "./Signup/NickName";
 import Introduce from "./Signup/Introduce";
 import Tier from "./Signup/Tier";
-
 import SignupHeader from "./Signup/SignupHeader";
 import SignupFooter from "./Signup/SignupFooter";
 import MyChamp from "./Signup/MyChamp";
@@ -17,6 +16,7 @@ import { getCookie } from "../../util/servers/cookie";
 import KakaoLogin from "../common/LoginButton";
 import { useToken } from "../../util/hooks/useToken";
 import { getMyProfile } from "../../core/config/toekn";
+import { usePostMyProfile } from "../../core/api/myProfile";
 
 interface FormProps {
   nickName: string;
@@ -28,6 +28,7 @@ interface FormProps {
 
 const SignupFormContainer = () => {
   useToken("/user/option");
+  /* useQuery */
   const profile = useRecoilValue(getMyProfile);
   const { register, handleSubmit, watch } = useForm<FormProps>({
     defaultValues: {
@@ -37,11 +38,24 @@ const SignupFormContainer = () => {
       preferPosition: profile.preferPosition,
     },
   });
-  const champion = useRecoilValue(PickChampion);
+  const { id } = useRecoilValue(PickChampion);
   const [open, setOpen] = React.useState<boolean>(false);
   const [loading, setLoading] = React.useState(true);
+  const { mutate } = usePostMyProfile();
   const onValid: SubmitHandler<FormProps> = (data) => {
-    console.log(data, champion, loading);
+    const options = {
+      nickname: data.nickName,
+      profileImg: profile.profileImg,
+      bio: data.bio,
+      preferPosition: data.preferPosition,
+      tier: data.tier,
+      enableChat: loading,
+      preferChamp1: id,
+      preferChamp2: 85,
+      preferChamp3: 23,
+    };
+    console.log(options);
+    mutate(options);
   };
   return (
     <>

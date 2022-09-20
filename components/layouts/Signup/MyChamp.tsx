@@ -7,12 +7,12 @@ interface MyChampProps {
 }
 
 const MyChamp = ({ setOpen }: MyChampProps) => {
-  const champion = useRecoilValue(PickChampion);
+  const { name } = useRecoilValue(PickChampion);
   return (
     <div className="space-y-2">
       <span>선호챔피언</span>
       <div className="h-[54px]">
-        {champion === "" ? (
+        {name === "" ? (
           <div
             onClick={() => setOpen(true)}
             className="flex h-[54px] w-[54px] items-center justify-center bg-gray-900"
@@ -22,7 +22,7 @@ const MyChamp = ({ setOpen }: MyChampProps) => {
         ) : (
           <Image
             alt=""
-            src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${champion}.png`}
+            src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${name}.png`}
             width={45}
             height={45}
             layout="fixed"

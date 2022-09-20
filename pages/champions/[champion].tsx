@@ -1,24 +1,22 @@
 import Image from "next/image";
-import { useQuery } from "react-query";
+import { useRouter } from "next/router";
 import Grid from "../../components/common/Grid";
 import PageContainer from "../../components/common/PageContainer";
 import Seo from "../../components/common/Seo";
-import { Champion, getChamp } from "../../core/api/champion";
+import { useGetChampDetail } from "../../core/api/champion";
+import { useGetChampComments } from "../../core/api/championComments";
 
 interface PageProps {
-  params: {
+  query: {
     champion: string;
+    name: string;
+    category: string;
   };
 }
 
-const Champion = (props: { name: string; champ: Champion }) => {
-  const { data } = useQuery<Champion>(
-    ["champion", props.name],
-    () => getChamp(String(props.name)),
-    {
-      initialData: props.champ,
-    }
-  );
+const Champion = (props: { id: number; name: string; category: string }) => {
+  const { data: Champion } = useGetChampDetail(props.id);
+  const { data: Comments } = useGetChampComments(props.category, props.id);
   return (
     <PageContainer space="space-x-4">
       <Seo title={String(props.name)} />
@@ -29,19 +27,27 @@ const Champion = (props: { name: string; champ: Champion }) => {
               width={120}
               height={100}
               alt=""
-              src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${data?.id}_0.jpg`}
+              src={
+                Champion?.data.champImg === undefined
+                  ? "https://avatars.githubusercontent.com/u/79081800?v=4"
+                  : String(Champion?.data.champImg)
+              }
               priority
             />
-            <span className="text-2xl">{data?.id}</span>
+            <span className="text-2xl">{Champion?.data.champNameKo}</span>
             <div>
-              {data?.spells.map((data) => {
+              {Champion?.data.skill.map((data) => {
                 return (
                   <div key={data.id}>
                     <Image
                       width={30}
                       height={30}
                       alt=""
-                      src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/spell/${data.image.full}`}
+                      src={
+                        data.sillImg === undefined
+                          ? "https://avatars.githubusercontent.com/u/79081800?v=4"
+                          : String(data.sillImg)
+                      }
                     />
                   </div>
                 );
@@ -55,6 +61,9 @@ const Champion = (props: { name: string; champ: Champion }) => {
       </div>
       <Grid width="w-full" height="h-[calc(100%+1rem)]">
         <span>평판</span>
+        {Comments?.data.map((data) => {
+          return <span key={data.id}>{data.content}</span>;
+        })}
       </Grid>
     </PageContainer>
   );
@@ -63,9 +72,12 @@ const Champion = (props: { name: string; champ: Champion }) => {
 export default Champion;
 
 export const getServerSideProps = async (context: PageProps) => {
-  const {
-    params: { champion: name },
-  } = context;
-  const champ = await getChamp(name);
-  return { props: { champ, name } };
+  const propsData = context.query;
+  return {
+    props: {
+      id: Number(propsData.champion),
+      name: propsData.name,
+      category: propsData.category,
+    },
+  };
 };
