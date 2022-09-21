@@ -6,7 +6,7 @@ interface ChampionSpells {
   id: string;
   description:string;
   name: string;
-  sillImg: string;
+  image: string;
   tootip: string;
 }
 

@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { v1 } from "uuid";
 
 interface ChampionProps {
   id: number;
@@ -6,7 +7,7 @@ interface ChampionProps {
 }
 
 export const PickChampion = atom<ChampionProps>({
-  key: "pickChampion",
+  key: `pickChampion/${v1()}`,
   default: {
     id: 0,
     name: "",

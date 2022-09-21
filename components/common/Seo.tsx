@@ -7,7 +7,7 @@ interface SeoProps {
 const Seo = ({ title }: SeoProps) => {
   return (
     <Head>
-      <title>Carryduo | {title}</title>
+      <title>{`Carryduo | ${title}`}</title>
     </Head>
   );
 };

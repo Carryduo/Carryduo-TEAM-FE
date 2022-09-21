@@ -15,10 +15,10 @@
     "@mui/material": "^5.10.3",
     "@types/lodash": "^4.14.184",
     "@types/react-slick": "^0.23.10",
+    "@types/uuid": "^8.3.4",
     "axios": "^0.27.2",
     "lodash": "^4.17.21",
     "next": "12.2.5",
-    "next-themes": "^0.2.0",
     "react": "18.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "18.2.0",
@@ -27,7 +27,8 @@
     "react-slick": "^0.29.0",
     "recoil": "^0.7.5",
     "recoil-persist": "^4.2.0",
-    "sweetalert2": "^11.4.29"
+    "sweetalert2": "^11.4.29",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/node": "18.7.14",

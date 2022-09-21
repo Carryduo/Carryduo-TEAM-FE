@@ -3,8 +3,9 @@ import { useRouter } from "next/router";
 import Grid from "../../components/common/Grid";
 import PageContainer from "../../components/common/PageContainer";
 import Seo from "../../components/common/Seo";
+import CommentsFormContainer from "../../components/layouts/CommentsFormContainer";
 import { useGetChampDetail } from "../../core/api/champion";
-import { useGetChampComments } from "../../core/api/championComments";
+import { useGetChampComments } from "../../core/api/comments";
 
 interface PageProps {
   query: {
@@ -16,7 +17,7 @@ interface PageProps {
 
 const Champion = (props: { id: number; name: string; category: string }) => {
   const { data: Champion } = useGetChampDetail(props.id);
-  const { data: Comments } = useGetChampComments(props.category, props.id);
+
   return (
     <PageContainer space="space-x-4">
       <Seo title={String(props.name)} />
@@ -28,6 +29,11 @@ const Champion = (props: { id: number; name: string; category: string }) => {
               height={100}
               alt=""
               src={
+                Champion?.data.champImg === undefined
+                  ? "https://avatars.githubusercontent.com/u/79081800?v=4"
+                  : String(Champion?.data.champImg)
+              }
+              blurDataURL={
                 Champion?.data.champImg === undefined
                   ? "https://avatars.githubusercontent.com/u/79081800?v=4"
                   : String(Champion?.data.champImg)
@@ -44,10 +50,16 @@ const Champion = (props: { id: number; name: string; category: string }) => {
                       height={30}
                       alt=""
                       src={
-                        data.sillImg === undefined
+                        data.image === undefined
                           ? "https://avatars.githubusercontent.com/u/79081800?v=4"
-                          : String(data.sillImg)
+                          : String(data.image)
                       }
+                      blurDataURL={
+                        data.image === undefined
+                          ? "https://avatars.githubusercontent.com/u/79081800?v=4"
+                          : String(data.image)
+                      }
+                      priority
                     />
                   </div>
                 );
@@ -60,10 +72,7 @@ const Champion = (props: { id: number; name: string; category: string }) => {
         </Grid>
       </div>
       <Grid width="w-full" height="h-[calc(100%+1rem)]">
-        <span>평판</span>
-        {Comments?.data.map((data) => {
-          return <span key={data.id}>{data.content}</span>;
-        })}
+        <CommentsFormContainer category={props.category} id={props.id} />
       </Grid>
     </PageContainer>
   );

@@ -2,7 +2,8 @@ import { useQuery } from "react-query";
 import { instance } from "./axios";
 
 interface ChampionComment {
-  id: string;
+  champId: string;
+  commentId: string;
   category: string;
   content: string;
   reportNum: string;
