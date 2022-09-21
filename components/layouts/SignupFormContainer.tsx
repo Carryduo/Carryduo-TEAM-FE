@@ -14,9 +14,8 @@ import Position from "./Signup/Position";
 import IntroContainer from "./Signup/IntroContainer";
 import { getCookie } from "../../util/servers/cookie";
 import KakaoLogin from "../common/LoginButton";
-import { useToken } from "../../util/hooks/useToken";
-import { getMyProfile } from "../../core/config/toekn";
-import { usePostMyProfile } from "../../core/api/myProfile";
+import { useGetMyProfile, usePostMyProfile } from "../../core/api/myProfile";
+import { useQuery } from "react-query";
 
 interface FormProps {
   nickName: string;
@@ -27,17 +26,19 @@ interface FormProps {
 }
 
 const SignupFormContainer = () => {
-  useToken("/user/option");
-  /* useQuery */
-  const profile = useRecoilValue(getMyProfile);
-  const { register, handleSubmit, watch } = useForm<FormProps>({
-    defaultValues: {
-      nickName: profile.nickname,
-      bio: profile.bio,
-      tier: profile.tier,
-      preferPosition: profile.preferPosition,
-    },
+  const { data: profile } = useGetMyProfile();
+  const defaultValues = {
+    nickName: profile?.data.nickname,
+    bio: profile?.data.bio,
+    tier: profile?.data.tier,
+    preferPosition: profile?.data.preferPosition,
+  };
+  const { register, handleSubmit, watch, reset } = useForm<FormProps>({
+    defaultValues,
   });
+  React.useEffect(() => {
+    if (profile) reset({ ...defaultValues });
+  }, [profile]);
   const { id } = useRecoilValue(PickChampion);
   const [open, setOpen] = React.useState<boolean>(false);
   const [loading, setLoading] = React.useState(true);
@@ -45,7 +46,7 @@ const SignupFormContainer = () => {
   const onValid: SubmitHandler<FormProps> = (data) => {
     const options = {
       nickname: data.nickName,
-      profileImg: profile.profileImg,
+      profileImg: profile?.data.profileImg,
       bio: data.bio,
       preferPosition: data.preferPosition,
       tier: data.tier,
@@ -90,7 +91,10 @@ const SignupFormContainer = () => {
               register={register("preferPosition")}
               watch={watch("preferPosition")}
             />
-            <MyChamp setOpen={setOpen} />
+            <MyChamp
+              setOpen={setOpen}
+              img={profile?.data.preferChamp1.champNameEn}
+            />
           </form>
         </Grid>
         <SignupFooter />
