@@ -15,7 +15,6 @@ import IntroContainer from "./Signup/IntroContainer";
 import { getCookie } from "../../util/servers/cookie";
 import KakaoLogin from "../common/LoginButton";
 import { useGetMyProfile, usePostMyProfile } from "../../core/api/myProfile";
-import { useQuery } from "react-query";
 
 interface FormProps {
   nickName: string;
@@ -32,7 +31,9 @@ const SignupFormContainer = () => {
     bio: profile?.data.bio,
     tier: profile?.data.tier,
     preferPosition: profile?.data.preferPosition,
+    enableChat: profile?.data.enableChat,
   };
+
   const { register, handleSubmit, watch, reset } = useForm<FormProps>({
     defaultValues,
   });
@@ -41,21 +42,19 @@ const SignupFormContainer = () => {
   }, [profile]);
   const { id } = useRecoilValue(PickChampion);
   const [open, setOpen] = React.useState<boolean>(false);
-  const [loading, setLoading] = React.useState(true);
   const { mutate } = usePostMyProfile();
   const onValid: SubmitHandler<FormProps> = (data) => {
     const options = {
       nickname: data.nickName,
-      profileImg: profile?.data.profileImg,
-      bio: data.bio,
-      preferPosition: data.preferPosition,
-      tier: data.tier,
-      enableChat: loading,
-      preferChamp1: id,
+      profileImg: String(profile?.data.profileImg),
+      bio: data.bio === null ? "" : data.bio,
+      preferPosition: data.preferPosition === null ? "" : data.preferPosition,
+      tier: data.tier === null ? "" : data.tier,
+      enableChat: true,
+      preferChamp1: id === 0 ? Number(profile?.data?.preferChamp1?.id) : id,
       preferChamp2: 85,
       preferChamp3: 23,
     };
-    console.log(options);
     mutate(options);
   };
   return (
@@ -79,11 +78,7 @@ const SignupFormContainer = () => {
             onSubmit={handleSubmit(onValid)}
             className="grid grid-cols-2 grid-rows-4 gap-2"
           >
-            <SignupHeader
-              token={getCookie("myToken")}
-              loading={loading}
-              setLoading={setLoading}
-            />
+            <SignupHeader token={getCookie("myToken")} />
             <NickName register={register("nickName")} />
             <Introduce register={register("bio")} />
             <Tier register={register("tier")} watch={watch("tier")} />
@@ -93,7 +88,7 @@ const SignupFormContainer = () => {
             />
             <MyChamp
               setOpen={setOpen}
-              img={profile?.data.preferChamp1.champNameEn}
+              img={profile?.data?.preferChamp1?.champNameEn}
             />
           </form>
         </Grid>

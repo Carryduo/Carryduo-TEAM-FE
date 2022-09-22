@@ -4,7 +4,6 @@ import { instance } from "../core/api/axios";
 import { useTime } from "../util/hooks/useTime";
 import { setCookie } from "../util/servers/cookie";
 
-// 카카오 로그인 인가코드
 const Kakao = () => {
   const router = useRouter();
   useEffect(() => {

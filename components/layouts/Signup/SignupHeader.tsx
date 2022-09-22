@@ -1,26 +1,29 @@
 import { Switch } from "@mui/material";
+import { removeCookie } from "../../../util/servers/cookie";
 import ColorButton from "../../common/ColorButton";
 import KakaoLogin from "../../common/LoginButton";
 
 interface SignupHeaderProps {
-  loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   token: string;
 }
 
-const SignupHeader = ({ token, loading, setLoading }: SignupHeaderProps) => {
+const SignupHeader = ({ token }: SignupHeaderProps) => {
   return (
     <header className="items- col-span-2 flex justify-between">
       <div className="mt-2 flex items-start space-x-2">
         <span className="text-2xl">환경설정</span>
-        {token === undefined ? <KakaoLogin /> : <span>로그아웃</span>}
+        {token === undefined ? (
+          <KakaoLogin />
+        ) : (
+          <span onClick={() => removeCookie("myToken")}>로그아웃</span>
+        )}
         <button type="submit">
           <span>저장</span>
         </button>
       </div>
       <div>
         <div className="flex">
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <span>채팅 활성화</span>
             <Switch
               checked={loading}
@@ -28,7 +31,7 @@ const SignupHeader = ({ token, loading, setLoading }: SignupHeaderProps) => {
               name="loading"
               color="primary"
             />
-          </div>
+          </div> */}
           <div className="flex items-center space-x-2">
             <span>테두리 색상</span>
             <div className="flex items-center space-x-4">
