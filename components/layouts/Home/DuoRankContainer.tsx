@@ -24,7 +24,7 @@ const DuoRankContainer = () => {
           {data?.map((data) => {
             return (
               <div
-                className=" grid grid-cols-5 grid-rows-[repeat(auto-fill,50px)] overflow-y-scroll"
+                className=" grid grid-cols-5 grid-rows-[repeat(auto-fill,50px)]"
                 key={data.id}
               >
                 <span>{data.id}</span>
