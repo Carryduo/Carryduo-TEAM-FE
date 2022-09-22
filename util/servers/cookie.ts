@@ -14,3 +14,8 @@ export const setCookie = (
 export const getCookie = (name: string) => {
   return cookies.get(name);
 };
+
+export const removeCookie = (name: string) => {
+  window.location.href = "/";
+  return cookies.remove(name);
+};

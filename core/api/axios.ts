@@ -17,3 +17,14 @@ instance.interceptors.request.use((config: AxiosRequestConfig) => {
   config.headers["authorization"] = `Bearer ${getCookie("myToken")}`;
   return config;
 });
+
+instance.interceptors.response.use(
+  (res) => {
+    return res;
+  },
+  (err) => {
+    if (err.response.status === 404) {
+      return;
+    }
+  }
+);

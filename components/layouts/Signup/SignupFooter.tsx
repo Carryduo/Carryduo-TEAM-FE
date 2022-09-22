@@ -1,3 +1,6 @@
+import { instance } from "../../../core/api/axios";
+import { removeCookie } from "../../../util/servers/cookie";
+
 const SignupFooter = () => {
   return (
     <div className="mt-4 h-[30%] w-full">
@@ -9,7 +12,14 @@ const SignupFooter = () => {
       <footer className="flex h-[calc(100%-2.5rem)] w-full items-end">
         <div className="flex w-full items-end justify-between pl-4">
           <div>
-            <span className="font-light text-gray-700 underline">회원탈퇴</span>
+            <span
+              onClick={() => {
+                instance.delete("/admin").then(() => removeCookie("myToken"));
+              }}
+              className="font-light text-gray-700 underline"
+            >
+              회원탈퇴
+            </span>
           </div>
           <div className="flex flex-col items-end">
             <span className="text-4xl">LOGO</span>

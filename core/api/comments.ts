@@ -1,7 +1,13 @@
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
+import { queryClient } from "../../pages/_app";
+import { useSweet } from "../../util/hooks/useSweet";
 import { instance } from "./axios";
 
-interface ChampionComment {
+export interface ICommentProps {
+  content: string;
+}
+
+interface Comment {
   champId: string;
   commentId: string;
   category: string;
@@ -15,12 +21,47 @@ interface ChampionComment {
   };
 }
 
-interface IChampionComments {
-  data: ChampionComment[];
+interface IComments {
+  data: Comment[];
 }
 
-export const useGetChampComments = (category: string, target: number) => {
-  return useQuery<IChampionComments>(["ChampComments"], () => {
+export const useGetComments = (category: string, target: number) => {
+  return useQuery<IComments>(["Comments", target], () => {
     return instance.get(`/comments/${category}/${target}`);
+  });
+};
+
+export const usePostComments = (category: string, target: number) => {
+  return useMutation(async (post: ICommentProps) => {
+    await instance
+      .post(`/comments/${category}/${target}`, post)
+      .then((res) => {
+        useSweet(1000, "success", res.data.message);
+        queryClient.invalidateQueries(["Comments", target]);
+      })
+      .catch((err) => console.log(err));
+  });
+};
+
+export const useDeleteComments = (commentId: string, target: number) => {
+  return useMutation(async () => {
+    await instance
+      .delete(`/comments/${commentId}`)
+      .then((res) => {
+        useSweet(1000, "success", res.data.message);
+        queryClient.invalidateQueries(["Comments", target]);
+      })
+      .catch((err) => console.log(err));
+  });
+};
+
+export const usePatchComments = (commentId: string) => {
+  return useMutation(async () => {
+    await instance
+      .patch(`/comments/${commentId}`)
+      .then((res) => {
+        useSweet(1000, "success", res.data.message);
+      })
+      .catch((err) => console.log(err));
   });
 };

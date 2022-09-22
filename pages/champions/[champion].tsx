@@ -1,26 +1,30 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
 import Grid from "../../components/common/Grid";
 import PageContainer from "../../components/common/PageContainer";
 import Seo from "../../components/common/Seo";
 import CommentsFormContainer from "../../components/layouts/CommentsFormContainer";
-import { useGetChampDetail } from "../../core/api/champion";
-import { useGetChampComments } from "../../core/api/comments";
+import {
+  useGetChampDetail,
+  useGetMostChampSummoner,
+} from "../../core/api/champion";
 
 interface PageProps {
-  query: {
-    champion: string;
-    name: string;
-    category: string;
-  };
+  query: Props;
 }
 
-const Champion = (props: { id: number; name: string; category: string }) => {
-  const { data: Champion } = useGetChampDetail(props.id);
+interface Props {
+  champId: number;
+  name: string;
+  category: string;
+  champion: string;
+}
 
+const Champion = ({ champId, name, category }: Props) => {
+  const { data: Champion } = useGetChampDetail(champId);
+  const { data: MostSummoner } = useGetMostChampSummoner(champId);
   return (
     <PageContainer space="space-x-4">
-      <Seo title={String(props.name)} />
+      <Seo title={name} />
       <div className="h-full w-full space-y-4">
         <Grid width="w-[700px]" height="h-1/2">
           <div className="flex">
@@ -65,6 +69,15 @@ const Champion = (props: { id: number; name: string; category: string }) => {
                 );
               })}
             </div>
+            <div>
+              {MostSummoner?.data.map((data) => {
+                return (
+                  <span key={data.id}>
+                    {data.nickname} / {data.tier}
+                  </span>
+                );
+              })}
+            </div>
           </div>
         </Grid>
         <Grid width="w-[700px]" height="h-1/2">
@@ -72,7 +85,7 @@ const Champion = (props: { id: number; name: string; category: string }) => {
         </Grid>
       </div>
       <Grid width="w-full" height="h-[calc(100%+1rem)]">
-        <CommentsFormContainer category={props.category} id={props.id} />
+        <CommentsFormContainer category={category} champId={champId} />
       </Grid>
     </PageContainer>
   );
@@ -80,11 +93,11 @@ const Champion = (props: { id: number; name: string; category: string }) => {
 
 export default Champion;
 
-export const getServerSideProps = async (context: PageProps) => {
+export const getServerSideProps = (context: PageProps) => {
   const propsData = context.query;
   return {
     props: {
-      id: Number(propsData.champion),
+      champId: Number(propsData.champion),
       name: propsData.name,
       category: propsData.category,
     },

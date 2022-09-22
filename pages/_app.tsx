@@ -8,8 +8,9 @@ import MainContainer from "../components/layouts/Main/MainContainer";
 import { RecoilRoot } from "recoil";
 import Router from "next/router";
 
+export const queryClient = new QueryClient();
+
 function MyApp({ Component, pageProps }: AppProps) {
-  const [queryClient] = React.useState(() => new QueryClient());
   const [isWindows, setIsWindows] = useState<boolean>(true);
   const [loading, setLoading] = useState(false);
 
