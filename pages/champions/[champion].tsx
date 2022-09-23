@@ -7,6 +7,7 @@ import {
   useGetChampDetail,
   useGetMostChampSummoner,
 } from "../../core/api/champion";
+import { useTier } from "../../util/hooks/useTier";
 
 interface PageProps {
   query: Props;
@@ -37,11 +38,6 @@ const Champion = ({ champId, name, category }: Props) => {
                   ? "https://avatars.githubusercontent.com/u/79081800?v=4"
                   : String(Champion?.data.champImg)
               }
-              blurDataURL={
-                Champion?.data.champImg === undefined
-                  ? "https://avatars.githubusercontent.com/u/79081800?v=4"
-                  : String(Champion?.data.champImg)
-              }
               priority
             />
             <span className="text-2xl">{Champion?.data.champNameKo}</span>
@@ -58,22 +54,17 @@ const Champion = ({ champId, name, category }: Props) => {
                           ? "https://avatars.githubusercontent.com/u/79081800?v=4"
                           : String(data.image)
                       }
-                      blurDataURL={
-                        data.image === undefined
-                          ? "https://avatars.githubusercontent.com/u/79081800?v=4"
-                          : String(data.image)
-                      }
                       priority
                     />
                   </div>
                 );
               })}
             </div>
-            <div>
+            <div className="flex flex-col">
               {MostSummoner?.data.map((data) => {
                 return (
                   <span key={data.id}>
-                    {data.nickname} / {data.tier}
+                    {data.nickname} / {useTier(data.tier)}
                   </span>
                 );
               })}
@@ -95,6 +86,11 @@ export default Champion;
 
 export const getServerSideProps = (context: PageProps) => {
   const propsData = context.query;
+  if (propsData.name === undefined) {
+    return {
+      notFound: true,
+    };
+  }
   return {
     props: {
       champId: Number(propsData.champion),

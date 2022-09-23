@@ -29,7 +29,7 @@ const SignupFormContainer = () => {
   const defaultValues = {
     nickName: profile?.data.nickname,
     bio: profile?.data.bio,
-    tier: profile?.data.tier,
+    tier: String(profile?.data.tier),
     preferPosition: profile?.data.preferPosition,
     enableChat: profile?.data.enableChat,
   };
@@ -49,7 +49,7 @@ const SignupFormContainer = () => {
       profileImg: String(profile?.data.profileImg),
       bio: data.bio === null ? "" : data.bio,
       preferPosition: data.preferPosition === null ? "" : data.preferPosition,
-      tier: data.tier === null ? "" : data.tier,
+      tier: data.tier === null ? 0 : Number(data.tier),
       enableChat: true,
       preferChamp1: id === 0 ? Number(profile?.data?.preferChamp1?.id) : id,
       preferChamp2: 85,
@@ -68,7 +68,7 @@ const SignupFormContainer = () => {
       </Grid>
       <div className="relative h-full w-full">
         {getCookie("myToken") === undefined ? (
-          <div className="absolute z-50 flex h-[70%] w-full items-center justify-center bg-black bg-opacity-90">
+          <div className="absolute z-50 flex h-[70%] w-full items-center justify-center bg-black bg-opacity-95">
             <span>로그인 후 이용가능</span>
             <KakaoLogin />
           </div>
@@ -78,7 +78,7 @@ const SignupFormContainer = () => {
             onSubmit={handleSubmit(onValid)}
             className="grid grid-cols-2 grid-rows-4 gap-2"
           >
-            <SignupHeader token={getCookie("myToken")} />
+            <SignupHeader />
             <NickName register={register("nickName")} />
             <Introduce register={register("bio")} />
             <Tier register={register("tier")} watch={watch("tier")} />

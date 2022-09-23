@@ -9,7 +9,7 @@ interface InputProps {
   onChange?: _.DebouncedFunc<(e: React.ChangeEvent<HTMLInputElement>) => void>;
   width?: string;
   rounded?: string;
-  value?: string;
+  value?: string
   defaultValue?: string;
   openSearch?: boolean;
 }

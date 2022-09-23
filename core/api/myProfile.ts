@@ -10,7 +10,7 @@ interface ProfileProps {
     nickname: string;
     preferPosition: string;
     profileImg: string;
-    tier: string;
+    tier: number;
     userId: string;
     preferChamp1: {
       champNameEn: string;
@@ -26,7 +26,7 @@ interface UpdateProfileProps {
   profileImg: string;
   bio: string;
   preferPosition: string;
-  tier: string;
+  tier: number;
   enableChat: boolean;
   preferChamp1: number;
   preferChamp2: number;
