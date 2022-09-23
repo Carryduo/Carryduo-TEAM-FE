@@ -25,7 +25,7 @@ interface ChampionMostSummoner {
   id: string;
   nickname: string;
   profileImg: string;
-  tier: string;
+  tier: number;
 }
 interface IChampionMostSummoner {
   data: ChampionMostSummoner[];

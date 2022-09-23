@@ -21,112 +21,112 @@ const Tier = ({ register, watch }: TierFormProp) => {
       <span>현재 티어</span>
       <div className="flex w-full space-x-2 overflow-x-scroll">
         <label>
-          <Input type="radio" value="Provisional" register={register} />
+          <Input type="radio" value="0" register={register} />
           <Image
             alt=""
             src={Provisional}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
-              watch !== "Provisional" ? "opacity-30" : ""
+              watch !== "0" ? "opacity-30" : ""
             }`}
             layout="fixed"
             loading="eager"
           />
         </label>
         <label>
-          <Input type="radio" value="Bronze" register={register} />
+          <Input type="radio" value="1" register={register} />
           <Image
             alt=""
             src={Bronze}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
-              watch !== "Bronze" ? "opacity-30" : ""
+              watch !== "1" ? "opacity-30" : ""
             }`}
             layout="fixed"
             loading="eager"
           />
         </label>
         <label>
-          <Input type="radio" value="Silver" register={register} />
+          <Input type="radio" value="2" register={register} />
           <Image
             alt=""
             src={Silver}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
-              watch !== "실버" ? "opacity-30" : ""
+              watch !== "2" ? "opacity-30" : ""
             }`}
             layout="fixed"
             loading="eager"
           />
         </label>
         <label>
-          <Input type="radio" value="Gold" register={register} />
+          <Input type="radio" value="3" register={register} />
           <Image
             alt=""
             src={Gold}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
-              watch !== "Gold" ? "opacity-30" : ""
+              watch !== "3" ? "opacity-30" : ""
             }`}
             layout="fixed"
             loading="eager"
           />
         </label>
         <label>
-          <Input type="radio" value="Platinum" register={register} />
+          <Input type="radio" value="4" register={register} />
           <Image
             alt=""
             src={Platinum}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
-              watch !== "Platinum" ? "opacity-30" : ""
+              watch !== "4" ? "opacity-30" : ""
             }`}
             layout="fixed"
             loading="eager"
           />
         </label>
         <label>
-          <Input type="radio" value="Diamond" register={register} />
+          <Input type="radio" value="5" register={register} />
           <Image
             alt=""
             src={Diamond}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
-              watch !== "Diamond" ? "opacity-30" : ""
+              watch !== "5" ? "opacity-30" : ""
             }`}
             layout="fixed"
             loading="eager"
           />
         </label>
         <label>
-          <Input type="radio" value="Master" register={register} />
+          <Input type="radio" value="6" register={register} />
           <Image
             alt=""
             src={Master}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
-              watch !== "Master" ? "opacity-30" : ""
+              watch !== "6" ? "opacity-30" : ""
             }`}
             layout="fixed"
             loading="eager"
           />
         </label>
         <label>
-          <Input type="radio" value="Challenger" register={register} />
+          <Input type="radio" value="7" register={register} />
           <Image
             alt=""
             src={Challenger}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
-              watch !== "Challenger" ? "opacity-30" : ""
+              watch !== "7" ? "opacity-30" : ""
             }`}
             layout="fixed"
             loading="eager"
