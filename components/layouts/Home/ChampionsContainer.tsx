@@ -48,7 +48,7 @@ const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
                   <Link
                     href={{
                       pathname: `/champions/${data.id}`,
-                      query: { name: data.champNameKo , category: "champ"},
+                      query: { name: data.champNameKo, category: "champ" },
                     }}
                     passHref
                   >
@@ -60,8 +60,6 @@ const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
                         height={56}
                         layout="fixed"
                         loading="eager"
-                        placeholder="blur"
-                        blurDataURL={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
                       />
                     </a>
                   </Link>
@@ -79,8 +77,6 @@ const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
                         name: data.champNameEn,
                       })
                     }
-                    placeholder="blur"
-                    blurDataURL={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
                   />
                 )}
                 <span className="whitespace-nowrap text-xs">
