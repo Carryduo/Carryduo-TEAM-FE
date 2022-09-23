@@ -28,39 +28,62 @@ const Champion = ({ champId, name, category }: Props) => {
       <Seo title={name} />
       <div className="h-full w-full space-y-4">
         <Grid width="w-[700px]" height="h-1/2">
-          <div className="flex">
-            <Image
-              width={120}
-              height={100}
-              alt=""
-              src={
-                Champion?.data.champImg === undefined
-                  ? "https://avatars.githubusercontent.com/u/79081800?v=4"
-                  : String(Champion?.data.champImg)
-              }
-              priority
-            />
-            <span className="text-2xl">{Champion?.data.champNameKo}</span>
+          <div className="flex h-full items-center space-x-10 p-2">
             <div>
-              {Champion?.data.skill.map((data) => {
-                return (
-                  <div key={data.id}>
-                    <Image
-                      width={30}
-                      height={30}
-                      alt=""
-                      src={
-                        data.image === undefined
-                          ? "https://avatars.githubusercontent.com/u/79081800?v=4"
-                          : String(data.image)
-                      }
-                      priority
-                    />
-                  </div>
-                );
-              })}
+              <Image
+                width={200}
+                height={200}
+                alt=""
+                src={
+                  Champion?.data.champImg === undefined
+                    ? "https://avatars.githubusercontent.com/u/79081800?v=4"
+                    : String(Champion?.data.champImg)
+                }
+                priority
+              />
+            </div>
+            <div className="flex flex-col space-y-8">
+              <span className="text-2xl">{Champion?.data.champNameKo}</span>
+              <div className="flex space-x-2 ">
+                <div>
+                  <Image
+                    width={30}
+                    height={30}
+                    alt=""
+                    src={
+                      Champion?.data.skill[4].image === undefined
+                        ? "https://avatars.githubusercontent.com/u/79081800?v=4"
+                        : String(Champion?.data.skill[4].image)
+                    }
+                    priority
+                  />
+                </div>
+                {Champion?.data.skill.slice(0, 4).map((data) => {
+                  return (
+                    <div key={data.id}>
+                      <Image
+                        width={45}
+                        height={45}
+                        alt=""
+                        src={
+                          data.image === undefined
+                            ? "https://avatars.githubusercontent.com/u/79081800?v=4"
+                            : String(data.image)
+                        }
+                        priority
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="flex space-x-2 text-sm">
+                <span>승률 67%</span>
+                <span>픽률 33%</span>
+                <span>벤률 13%</span>
+              </div>
             </div>
             <div className="flex flex-col">
+              <span>선호 챔피언 유저</span>
               {MostSummoner?.data.map((data) => {
                 return (
                   <span key={data.id}>
