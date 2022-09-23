@@ -1,6 +1,6 @@
 import React from "react";
 import { useDeleteComments, usePatchComments } from "../../core/api/comments";
-import { useTimeZone } from "../../util/hooks/useTimezone";
+import { useTimeZone } from "../../util/hooks/useTimeZone";
 
 interface CommentProps {
   commentId: string;
