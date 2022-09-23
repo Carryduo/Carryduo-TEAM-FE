@@ -10,7 +10,7 @@ import Input from "../common/Input";
 
 interface CommentsProps {
   category: string;
-  champId: number;
+  champId: number | string;
 }
 
 const CommentsFormContainer = ({ category, champId }: CommentsProps) => {
@@ -26,22 +26,25 @@ const CommentsFormContainer = ({ category, champId }: CommentsProps) => {
       <form onSubmit={handleSubmit(onValid)}>
         <Input
           rounded="rounded-2xl"
-          width="w-[20rem]"
+          width="w-full"
           placeHolder="평판 입력"
           autoFocus={false}
           type="text"
           register={register("content", { required: true })}
+          openSubmit={true}
         />
       </form>
-      <span>평판</span>
-      <div className="flex flex-col">
+      <div className="flex flex-col space-y-4 mt-4">
         {Comments?.data.map((data) => {
           return (
-            <div key={data.commentId}>
+            <div key={data.id} className="px-4 bg-gray-700 rounded-md min-h-[50px]">
               <CommentBox
-                commentId={data.commentId}
+                commentId={data.id}
                 content={data.content}
                 target={champId}
+                createdAt={data.createdAt}
+                userId={data.userId.id}
+                userNickName={data.userId.nickname}
               />
             </div>
           );

@@ -9,10 +9,11 @@ export interface ICommentProps {
 
 interface Comment {
   champId: string;
-  commentId: string;
+  id: string;
   category: string;
   content: string;
   reportNum: string;
+  createdAt: string;
   userId: {
     enableChat: boolean;
     id: string;
@@ -25,13 +26,13 @@ interface IComments {
   data: Comment[];
 }
 
-export const useGetComments = (category: string, target: number) => {
+export const useGetComments = (category: string, target: number | string) => {
   return useQuery<IComments>(["Comments", target], () => {
     return instance.get(`/comments/${category}/${target}`);
   });
 };
 
-export const usePostComments = (category: string, target: number) => {
+export const usePostComments = (category: string, target: number | string) => {
   return useMutation(async (post: ICommentProps) => {
     await instance
       .post(`/comments/${category}/${target}`, post)
@@ -39,11 +40,14 @@ export const usePostComments = (category: string, target: number) => {
         useSweet(1000, "success", res.data.message);
         queryClient.invalidateQueries(["Comments", target]);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.response));
   });
 };
 
-export const useDeleteComments = (commentId: string, target: number) => {
+export const useDeleteComments = (
+  commentId: string,
+  target: number | string
+) => {
   return useMutation(async () => {
     await instance
       .delete(`/comments/${commentId}`)
@@ -51,7 +55,7 @@ export const useDeleteComments = (commentId: string, target: number) => {
         useSweet(1000, "success", res.data.message);
         queryClient.invalidateQueries(["Comments", target]);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.response));
   });
 };
 
@@ -62,6 +66,6 @@ export const usePatchComments = (commentId: string) => {
       .then((res) => {
         useSweet(1000, "success", res.data.message);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.response));
   });
 };
