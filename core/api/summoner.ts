@@ -9,8 +9,10 @@ interface mostChamp {
 }
 
 export interface Summoner {
+  id: string;
   summonerName: string;
   summonerIcon: string;
+  summonerLevel: string;
   tier: string;
   tierImg: string;
   lp: number;

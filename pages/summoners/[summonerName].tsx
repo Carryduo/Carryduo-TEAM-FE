@@ -2,6 +2,7 @@ import Image from "next/image";
 import Grid from "../../components/common/Grid";
 import PageContainer from "../../components/common/PageContainer";
 import Seo from "../../components/common/Seo";
+import CommentsFormContainer from "../../components/layouts/CommentsFormContainer";
 import { useGetSummoner } from "../../core/api/summoner";
 
 interface pageProps {
@@ -10,9 +11,10 @@ interface pageProps {
 
 interface Props {
   summonerName: string;
+  category: string;
 }
 
-const Summoners = ({ summonerName }: Props) => {
+const Summoners = ({ summonerName, category }: Props) => {
   const { data } = useGetSummoner(summonerName);
   return (
     <PageContainer space="space-x-4">
@@ -48,12 +50,13 @@ const Summoners = ({ summonerName }: Props) => {
                   }
                 />
                 <span>{`승률 : ${data.data.winRate}%`}</span>
+                <span>{`레벨: ${data.data.summonerLevel}`}</span>
               </div>
             </Grid>
             <Grid width="w-[700px]" height="h-1/2">
               <span>소환사 모스트 픽</span>
               <div className="flex space-x-4">
-                {data.data.mostChamps.map((data,i) => {
+                {data.data.mostChamps.map((data, i) => {
                   return (
                     <div key={data.id}>
                       <Image
@@ -66,7 +69,7 @@ const Summoners = ({ summonerName }: Props) => {
                             : String(data.champImg)
                         }
                       />
-                      <span>{i+1}등</span>
+                      <span>{i + 1}등</span>
                     </div>
                   );
                 })}
@@ -74,7 +77,7 @@ const Summoners = ({ summonerName }: Props) => {
             </Grid>
           </div>
           <Grid width="w-full" height="h-[calc(100%+1rem)]">
-            <span>평판</span>
+            <CommentsFormContainer category={category} champId={data.data.id} />
           </Grid>
         </>
       )}
@@ -89,6 +92,7 @@ export const getServerSideProps = (context: pageProps) => {
   return {
     props: {
       summonerName: propsData.summonerName,
+      category: "summoner",
     },
   };
 };
