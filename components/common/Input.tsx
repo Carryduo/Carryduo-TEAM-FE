@@ -1,5 +1,6 @@
 import { UseFormRegisterReturn } from "react-hook-form";
 import SearchIcon from "@mui/icons-material/Search";
+import AddIcon from '@mui/icons-material/Add';
 
 interface InputProps {
   register?: UseFormRegisterReturn;
@@ -9,9 +10,10 @@ interface InputProps {
   onChange?: _.DebouncedFunc<(e: React.ChangeEvent<HTMLInputElement>) => void>;
   width?: string;
   rounded?: string;
-  value?: string
+  value?: string;
   defaultValue?: string;
   openSearch?: boolean;
+  openSubmit?: boolean;
 }
 
 const Input = ({
@@ -24,6 +26,7 @@ const Input = ({
   rounded,
   value,
   openSearch,
+  openSubmit,
 }: InputProps) => {
   return (
     <div className="relative">
@@ -35,11 +38,23 @@ const Input = ({
         {...register}
         type={type}
         value={value}
+        autoComplete="off"
       />
       {openSearch ? (
-        <div className="absolute top-[2px] right-3 text-gray-400">
+        <button
+          type="submit"
+          className="absolute top-[2px] right-3 text-gray-400"
+        >
           <SearchIcon />
-        </div>
+        </button>
+      ) : null}
+      {openSubmit ? (
+        <button
+          type="submit"
+          className="absolute top-[2px] right-3 text-gray-400"
+        >
+          <AddIcon />
+        </button>
       ) : null}
     </div>
   );
