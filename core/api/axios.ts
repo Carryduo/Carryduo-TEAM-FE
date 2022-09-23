@@ -23,7 +23,7 @@ instance.interceptors.response.use(
     return res;
   },
   (err) => {
-    if (err.response.status === 404) {
+    if (err.response.status) {
       return;
     }
   }
