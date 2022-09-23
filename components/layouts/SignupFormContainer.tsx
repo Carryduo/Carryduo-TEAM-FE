@@ -47,9 +47,9 @@ const SignupFormContainer = () => {
     const options = {
       nickname: data.nickName,
       profileImg: String(profile?.data.profileImg),
-      bio: data.bio === null ? "" : data.bio,
-      preferPosition: data.preferPosition === null ? "" : data.preferPosition,
-      tier: data.tier === null ? 0 : Number(data.tier),
+      bio: data.bio,
+      preferPosition: data.preferPosition,
+      tier: Number(data.tier),
       enableChat: true,
       preferChamp1: id === 0 ? Number(profile?.data?.preferChamp1?.id) : id,
       preferChamp2: 85,
