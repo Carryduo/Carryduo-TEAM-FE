@@ -8,10 +8,10 @@ const MainPage = () => {
   return (
     <PageContainer space="space-x-4">
       <Seo title="Home" />
-      <Grid width="w-[40rem]" height="100%">
+      <Grid width="w-[40rem]" height="h-full">
         <ChampionsContainer toLink={true} height="max-h-[calc(100%-3.5rem)]" />
       </Grid>
-      <Grid width="w-full" height="100%">
+      <Grid width="w-full" height="h-full">
         <DuoRankContainer />
       </Grid>
     </PageContainer>

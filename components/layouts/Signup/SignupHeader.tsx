@@ -1,22 +1,13 @@
 import { Switch } from "@mui/material";
 import { removeCookie } from "../../../util/servers/cookie";
 import ColorButton from "../../common/ColorButton";
-import KakaoLogin from "../../common/LoginButton";
 
-interface SignupHeaderProps {
-  token: string;
-}
-
-const SignupHeader = ({ token }: SignupHeaderProps) => {
+const SignupHeader = () => {
   return (
     <header className="items- col-span-2 flex justify-between">
       <div className="mt-2 flex items-start space-x-2">
         <span className="text-2xl">환경설정</span>
-        {token === undefined ? (
-          <KakaoLogin />
-        ) : (
-          <span onClick={() => removeCookie("myToken")}>로그아웃</span>
-        )}
+        <span onClick={() => removeCookie("myToken")}>로그아웃</span>
         <button type="submit">
           <span>저장</span>
         </button>
