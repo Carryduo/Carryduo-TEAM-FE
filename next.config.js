@@ -7,6 +7,7 @@ const nextConfig = {
       "avatars.githubusercontent.com",
       "ddragon.leagueoflegends.com",
       "raw.githubusercontent.com",
+      "erunjrun.com"
     ],
   },
 };
