@@ -2,7 +2,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { PickChampion } from "../../core/config/pickChampion";
-import ChampionsContainer from "./Home/ChampionsContainer";
+import ChampionsContainer from "./ChampionsContainer";
 import Grid from "../common/Grid";
 import NickName from "./Signup/NickName";
 import Introduce from "./Signup/Introduce";
@@ -67,7 +67,7 @@ const SignupFormContainer = () => {
         )}
       </Grid>
       <div className="relative h-full w-full">
-        {getCookie("myToken") === undefined ? (
+        {getCookie("myToken") !== undefined ? (
           <div className="absolute z-50 flex h-[70%] w-full items-center justify-center bg-black bg-opacity-95">
             <span>로그인 후 이용가능</span>
             <KakaoLogin />

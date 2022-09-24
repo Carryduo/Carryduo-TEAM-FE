@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { getDuo } from "../../../core/api/duoChamps";
+import { getDuo } from "../../core/api/duoChamps";
 
 const DuoRankContainer = () => {
   const [pick, setPick] = React.useState<string>("combination");

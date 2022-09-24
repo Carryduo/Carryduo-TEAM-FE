@@ -14,6 +14,7 @@ const NickName = ({ register }: NickNameFormProp) => {
         type="text"
         register={register}
         placeHolder="15자 이내"
+        maxLength={15}
       />
     </div>
   );

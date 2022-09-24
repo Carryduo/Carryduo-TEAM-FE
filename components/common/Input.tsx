@@ -1,6 +1,6 @@
 import { UseFormRegisterReturn } from "react-hook-form";
 import SearchIcon from "@mui/icons-material/Search";
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from "@mui/icons-material/Add";
 
 interface InputProps {
   register?: UseFormRegisterReturn;
@@ -14,6 +14,7 @@ interface InputProps {
   defaultValue?: string;
   openSearch?: boolean;
   openSubmit?: boolean;
+  maxLength?: number;
 }
 
 const Input = ({
@@ -27,6 +28,7 @@ const Input = ({
   value,
   openSearch,
   openSubmit,
+  maxLength,
 }: InputProps) => {
   return (
     <div className="relative">
@@ -39,6 +41,7 @@ const Input = ({
         type={type}
         value={value}
         autoComplete="off"
+        maxLength={maxLength}
       />
       {openSearch ? (
         <button
