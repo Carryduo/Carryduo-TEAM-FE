@@ -21,7 +21,7 @@ const HeaderMain = () => {
     <header className="flex h-24 w-full items-center justify-between">
       <div className="flex space-x-14">
         <Link href="/">
-          <span className="cursor-pointer text-2xl font-semibold">LOGO</span>
+          <span className="cursor-pointer text-2xl font-semibold">Carryduo</span>
         </Link>
         <form onSubmit={handleSubmit(onValid)}>
           <Input

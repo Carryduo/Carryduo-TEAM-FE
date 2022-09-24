@@ -15,6 +15,7 @@ const Introduce = ({ register }: IntroduceFormProp) => {
         type="text"
         register={register}
         placeHolder="50자 이내"
+        maxLength={50}
       />
     </div>
   );
