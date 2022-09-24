@@ -28,15 +28,19 @@ const SignupHeader = () => {
             <div className="flex items-center space-x-4">
               <ColorButton
                 colorNumber={1}
-                backgroundRing="bg-blue-200 ring-blue-200"
+                backgroundRing="bg-blue-100 ring-blue-100"
               />
               <ColorButton
                 colorNumber={2}
-                backgroundRing="bg-green-200 ring-green-200"
+                backgroundRing="bg-[#5F99FF] ring-[#5F99FF]"
               />
               <ColorButton
                 colorNumber={3}
-                backgroundRing="bg-red-200 ring-red-200"
+                backgroundRing="bg-[#00D39E] ring-[#00D39E]"
+              />
+              <ColorButton
+                colorNumber={4}
+                backgroundRing="bg-[#FF7637] ring-[#FF7637]"
               />
             </div>
           </div>
