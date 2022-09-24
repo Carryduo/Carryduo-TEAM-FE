@@ -1,12 +1,7 @@
 import dynamic from "next/dynamic";
 import PageContainer from "../components/common/PageContainer";
 import Seo from "../components/common/Seo";
-const SignupFormContainer = dynamic(
-  () => import("../components/layouts/SignupFormContainer"),
-  {
-    ssr: false,
-  }
-);
+import SignupFormContainer from "../components/layouts/SignupFormContainer";
 
 const Profile = () => {
   return (
