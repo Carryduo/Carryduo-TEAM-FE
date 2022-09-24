@@ -1,8 +1,8 @@
 import Grid from "../components/common/Grid";
 import PageContainer from "../components/common/PageContainer";
 import Seo from "../components/common/Seo";
-import ChampionsContainer from "../components/layouts/Home/ChampionsContainer";
-import DuoRankContainer from "../components/layouts/Home/DuoRankContainer";
+import ChampionsContainer from "../components/layouts/ChampionsContainer";
+import DuoRankContainer from "../components/layouts/DuoRankContainer";
 
 const MainPage = () => {
   return (
