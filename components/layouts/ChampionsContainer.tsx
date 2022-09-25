@@ -25,7 +25,7 @@ const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
         openSearch={true}
       />
       <div
-        className={`mt-4 grid ${height} grid-cols-5 grid-rows-[repeat(auto-fill,85px)] gap-2 overflow-hidden overflow-y-scroll`}
+        className={`relative mt-4 grid ${height} grid-cols-5 grid-rows-[repeat(auto-fill,85px)] gap-2 overflow-hidden overflow-y-scroll`}
       >
         <ChampionsList toLink={toLink} value={value} />
       </div>

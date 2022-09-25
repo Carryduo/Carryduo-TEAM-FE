@@ -35,7 +35,7 @@ const CommentsFormContainer = ({ category, champId }: CommentsProps) => {
         />
       </form>
       <div className="flex flex-col space-y-4 mt-4">
-        {Comments?.data.map((data) => {
+        {Comments?.data.length === 0 ? <span>등록된 평판이 없습니다.</span> : Comments?.data.map((data) => {
           return (
             <div key={data.id} className="px-4 bg-gray-700 rounded-md min-h-[50px]">
               <CommentBox

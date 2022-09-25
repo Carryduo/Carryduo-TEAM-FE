@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import MainContainer from "../components/layouts/Main/MainContainer";
 import { RecoilRoot } from "recoil";
 import Router from "next/router";
+import LoadingPage from "../components/layouts/LoadingPage";
 
 export const queryClient = new QueryClient();
 
@@ -47,11 +48,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               <ReactQueryDevtools initialIsOpen={true} />
               <MainContainer>
                 <HeaderMain />
-                {loading ? (
-                  <span>Loading</span>
-                ) : (
-                  <Component {...pageProps} />
-                )}{" "}
+                {loading ? <LoadingPage /> : <Component {...pageProps} />}{" "}
               </MainContainer>
             </Hydrate>
           </QueryClientProvider>
