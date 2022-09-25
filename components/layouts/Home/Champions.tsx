@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 import { useSetRecoilState } from "recoil";
 import { useGetChamps } from "../../../core/api/champions";
 import { PickChampion } from "../../../core/config/pickChampion";
@@ -12,17 +13,21 @@ interface ChampionsContainerProps {
 const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
   const { data: Champions } = useGetChamps();
   const setChampion = useSetRecoilState(PickChampion);
+  const data = Champions?.data.filter((val) => {
+    if (value === "") {
+      return val;
+    } else if (val.champNameKo.includes(value)) {
+      return val;
+    }
+  });
   return (
     <>
-      {Champions?.data
-        .filter((val) => {
-          if (value === "") {
-            return val;
-          } else if (val.champNameKo.includes(value)) {
-            return val;
-          }
-        })
-        .map((data, i) => {
+      {data?.length === 0 ? (
+        <div className="absolute">
+          <span>결과를 찾을 수 없습니다.</span>
+        </div>
+      ) : (
+        data?.map((data, i) => {
           return (
             <div key={i} className="h-[85px] w-14 cursor-pointer text-center">
               {toLink ? (
@@ -67,9 +72,10 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
               </span>
             </div>
           );
-        })}
+        })
+      )}
     </>
   );
 };
 
-export default ChampionsList;
+export default React.memo(ChampionsList);
