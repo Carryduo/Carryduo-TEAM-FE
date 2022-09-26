@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               <ReactQueryDevtools initialIsOpen={true} />
               <MainContainer>
                 <HeaderMain />
-                {loading ? <LoadingPage /> : <Component {...pageProps} />}{" "}
+                {loading ? <LoadingPage /> : <Component {...pageProps} />}
               </MainContainer>
             </Hydrate>
           </QueryClientProvider>

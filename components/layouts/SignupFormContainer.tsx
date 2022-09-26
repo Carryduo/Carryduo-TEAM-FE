@@ -68,7 +68,7 @@ const SignupFormContainer = () => {
       </Grid>
       <div className="relative h-full w-full">
         {getCookie("myToken") === undefined ? (
-          <div className="absolute z-50 flex h-[70%] w-full items-center justify-center bg-black bg-opacity-95">
+          <div className="absolute z-50 flex h-[70%] w-full items-center justify-center bg-black bg-opacity-95 border-gray-700 border rounded-md">
             <span>로그인 후 이용가능</span>
             <KakaoLogin />
           </div>

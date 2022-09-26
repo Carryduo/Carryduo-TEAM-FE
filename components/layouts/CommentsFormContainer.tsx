@@ -34,21 +34,28 @@ const CommentsFormContainer = ({ category, champId }: CommentsProps) => {
           openSubmit={true}
         />
       </form>
-      <div className="flex flex-col space-y-4 mt-4">
-        {Comments?.data.length === 0 ? <span>등록된 평판이 없습니다.</span> : Comments?.data.map((data) => {
-          return (
-            <div key={data.id} className="px-4 bg-gray-700 rounded-md min-h-[50px]">
-              <CommentBox
-                commentId={data.id}
-                content={data.content}
-                target={champId}
-                createdAt={data.createdAt}
-                userId={data.userId.id}
-                userNickName={data.userId.nickname}
-              />
-            </div>
-          );
-        })}
+      <div className="mt-4 flex flex-col space-y-4">
+        {Comments?.length === 0 ? (
+          <span>등록된 평판이 없습니다.</span>
+        ) : (
+          Comments?.map((data) => {
+            return (
+              <div
+                key={data.id}
+                className="min-h-[50px] rounded-md bg-gray-700 px-4"
+              >
+                <CommentBox
+                  commentId={data.id}
+                  content={data.content}
+                  target={champId}
+                  createdAt={data.createdAt}
+                  userId={data.userId.id}
+                  userNickName={data.userId.nickname}
+                />
+              </div>
+            );
+          })
+        )}
       </div>
     </>
   );

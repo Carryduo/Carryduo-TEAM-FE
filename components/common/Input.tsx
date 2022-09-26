@@ -39,7 +39,7 @@ const Input = ({
         onChange={onChange}
         {...register}
         type={type}
-        value={value}
+        defaultValue={value}
         autoComplete="off"
         maxLength={maxLength}
       />

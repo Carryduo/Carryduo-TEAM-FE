@@ -13,7 +13,7 @@ interface ChampionsContainerProps {
 const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
   const { data: Champions } = useGetChamps();
   const setChampion = useSetRecoilState(PickChampion);
-  const data = Champions?.data.filter((val) => {
+  const ChampionList = Champions?.filter((val) => {
     if (value === "") {
       return val;
     } else if (val.champNameKo.includes(value)) {
@@ -22,12 +22,12 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
   });
   return (
     <>
-      {data?.length === 0 ? (
+      {ChampionList?.length === 0 ? (
         <div className="absolute">
           <span>결과를 찾을 수 없습니다.</span>
         </div>
       ) : (
-        data?.map((data, i) => {
+        ChampionList?.map((data, i) => {
           return (
             <div key={i} className="h-[85px] w-14 cursor-pointer text-center">
               {toLink ? (

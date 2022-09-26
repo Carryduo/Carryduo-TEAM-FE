@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../../pages/_app";
 import { useSweet } from "../../util/hooks/useSweet";
@@ -27,9 +28,15 @@ interface IComments {
 }
 
 export const useGetComments = (category: string, target: number | string) => {
-  return useQuery<IComments>(["Comments", target], () => {
-    return instance.get(`/comments/${category}/${target}`);
-  });
+  return useQuery<IComments, AxiosError, Comment[]>(
+    ["Comments", target],
+    () => {
+      return instance.get(`/comments/${category}/${target}`);
+    },
+    {
+      select: (data) => data.data,
+    }
+  );
 };
 
 export const usePostComments = (category: string, target: number | string) => {
@@ -55,6 +62,21 @@ export const useDeleteComments = (
         useSweet(1000, "success", res.data.message);
         queryClient.invalidateQueries(["Comments", target]);
       })
+      .catch((err) => console.log(err.data));
+  });
+};
+
+export const useUpdateComments = (
+  commentId: string,
+  target: number | string
+) => {
+  return useMutation(async (post: ICommentProps) => {
+    await instance
+      .patch(`/comments/${commentId}`, post)
+      .then((res) => {
+        useSweet(1000, "success", res.data.message);
+        queryClient.invalidateQueries(["Comments", target]);
+      })
       .catch((err) => console.log(err.response));
   });
 };
@@ -62,9 +84,9 @@ export const useDeleteComments = (
 export const usePatchComments = (commentId: string) => {
   return useMutation(async () => {
     await instance
-      .patch(`/comments/${commentId}`)
+      .patch(`/comments/report/${commentId}`)
       .then((res) => {
-        useSweet(1000, "success", res.data.message);
+        useSweet(1000, "error", res.data.message);
       })
       .catch((err) => console.log(err.response));
   });
