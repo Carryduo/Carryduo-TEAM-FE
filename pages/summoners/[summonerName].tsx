@@ -15,11 +15,11 @@ interface Props {
 }
 
 const Summoners = ({ summonerName, category }: Props) => {
-  const { data } = useGetSummoner(summonerName);
+  const { data: Summoner } = useGetSummoner(summonerName);
   return (
     <PageContainer space="space-x-4">
-      <Seo title={data === undefined ? "정보없음" : summonerName} />
-      {data === undefined ? (
+      <Seo title={Summoner === undefined ? "정보없음" : summonerName} />
+      {Summoner === undefined ? (
         <Grid width="w-full" height="h-full">
           <span>사용자 정보가 없습니다</span>
         </Grid>
@@ -34,29 +34,32 @@ const Summoners = ({ summonerName, category }: Props) => {
                   height={50}
                   alt=""
                   src={
-                    data.data.tierImg === undefined
+                    Summoner?.tierImg === undefined
                       ? "https://avatars.githubusercontent.com/u/79081800?v=4"
-                      : String(data.data.tierImg)
+                      : String(Summoner.tierImg)
                   }
                 />
                 <Image
-                  width={50}
-                  height={50}
+                  width={100}
+                  height={100}
                   alt=""
                   src={
-                    data.data.summonerIcon === undefined
+                    Summoner.summonerIcon === undefined
                       ? "https://avatars.githubusercontent.com/u/79081800?v=4"
-                      : String(data.data.summonerIcon)
+                      : String(Summoner.summonerIcon)
                   }
+                  className="rounded-3xl"
                 />
-                <span>{`승률 : ${data.data.winRate}%`}</span>
-                <span>{`레벨: ${data.data.summonerLevel}`}</span>
+                <span>{`승률 : ${Summoner.winRate}%`}</span>
+                <span>{`레벨: ${Summoner.summonerLevel}`}</span>
+                <span>{`티어: ${Summoner.tier}`}</span>
+                <span>{`LP: ${Summoner.lp}`}</span>
               </div>
             </Grid>
             <Grid width="w-[700px]" height="h-1/2">
               <span>소환사 모스트 픽</span>
               <div className="flex space-x-4">
-                {data.data.mostChamps.map((data, i) => {
+                {Summoner.mostChamps.map((data, i) => {
                   return (
                     <div key={data.id}>
                       <Image
@@ -77,7 +80,7 @@ const Summoners = ({ summonerName, category }: Props) => {
             </Grid>
           </div>
           <Grid width="w-full" height="h-[calc(100%+1rem)]">
-            <CommentsFormContainer category={category} champId={data.data.id} />
+            <CommentsFormContainer category={category} champId={Summoner.id} />
           </Grid>
         </>
       )}

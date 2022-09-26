@@ -35,15 +35,16 @@ const Champion = ({ champId, name, category }: Props) => {
                 height={200}
                 alt=""
                 src={
-                  Champion?.data.champImg === undefined
+                  Champion?.champImg === undefined
                     ? "https://avatars.githubusercontent.com/u/79081800?v=4"
-                    : String(Champion?.data.champImg)
+                    : String(Champion?.champImg)
                 }
                 priority
+                className="rounded-3xl"
               />
             </div>
             <div className="flex flex-col space-y-8">
-              <span className="text-2xl">{Champion?.data.champNameKo}</span>
+              <span className="text-2xl">{Champion?.champNameKo}</span>
               <div className="flex space-x-2 ">
                 <div>
                   <Image
@@ -51,14 +52,14 @@ const Champion = ({ champId, name, category }: Props) => {
                     height={30}
                     alt=""
                     src={
-                      Champion?.data.skill[4].image === undefined
+                      Champion?.skill[4].image === undefined
                         ? "https://avatars.githubusercontent.com/u/79081800?v=4"
-                        : String(Champion?.data.skill[4].image)
+                        : String(Champion?.skill[4].image)
                     }
                     priority
                   />
                 </div>
-                {Champion?.data.skill.slice(0, 4).map((data) => {
+                {Champion?.skill.slice(0, 4).map((data) => {
                   return (
                     <div key={data.id}>
                       <Image
@@ -84,13 +85,17 @@ const Champion = ({ champId, name, category }: Props) => {
             </div>
             <div className="flex flex-col">
               <span>선호 챔피언 유저</span>
-              {MostSummoner?.data.map((data) => {
-                return (
-                  <span key={data.id}>
-                    {data.nickname} / {useTier(data.tier)}
-                  </span>
-                );
-              })}
+              {MostSummoner?.length === 0 ? (
+                <span>없음</span>
+              ) : (
+                MostSummoner?.map((data) => {
+                  return (
+                    <span key={data.id}>
+                      {data.nickname} / {useTier(data.tier)}
+                    </span>
+                  );
+                })
+              )}
             </div>
           </div>
         </Grid>
