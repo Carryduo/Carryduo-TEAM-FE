@@ -1,7 +1,18 @@
+import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../../pages/_app";
 import { useSweet } from "../../util/hooks/useSweet";
 import { instance } from "./axios";
+
+interface userId {
+  nickname: string;
+  profileImg: string;
+  userId: string;
+}
+
+interface userOptions {
+  data: userId;
+}
 
 interface ProfileProps {
   data: {
@@ -32,6 +43,18 @@ interface UpdateProfileProps {
   preferChamp2: number;
   preferChamp3: number;
 }
+
+export const useGetUserId = () => {
+  return useQuery<userOptions, AxiosError, userId>(
+    ["getUserId"],
+    () => {
+      return instance.get("/user");
+    },
+    {
+      select: (data) => data.data,
+    }
+  );
+};
 
 export const useGetMyProfile = () => {
   return useQuery<ProfileProps>(["getMyProfile"], () => {

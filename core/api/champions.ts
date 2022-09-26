@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import { useQuery } from "react-query";
 import { instance } from "./axios";
 
@@ -13,7 +14,13 @@ export interface IChampions {
 }
 
 export const useGetChamps = () => {
-  return useQuery<IChampions>(["Champs"], () => {
-    return instance.get("/champ");
-  });
+  return useQuery<IChampions, AxiosError, Champions[]>(
+    ["Champs"],
+    () => {
+      return instance.get("/champ");
+    },
+    {
+      select: (data) => data.data,
+    }
+  );
 };

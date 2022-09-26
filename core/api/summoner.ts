@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import { useQuery } from "react-query";
 import { instance } from "./axios";
 
@@ -27,7 +28,13 @@ interface ISummoner {
 }
 
 export const useGetSummoner = (summonerName: string) => {
-  return useQuery<ISummoner>(["Summoner", summonerName], () => {
-    return instance.get(`/summoner/${summonerName}`);
-  });
+  return useQuery<ISummoner, AxiosError, Summoner>(
+    ["Summoner", summonerName],
+    () => {
+      return instance.get(`/summoner/${summonerName}`);
+    },
+    {
+      select: (data) => data.data,
+    }
+  );
 };
