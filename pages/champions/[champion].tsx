@@ -41,6 +41,7 @@ const Champion = ({ champId, name, category }: Props) => {
                 }
                 priority
                 className="rounded-3xl"
+                layout="fixed"
               />
             </div>
             <div className="flex flex-col space-y-8">
@@ -48,8 +49,8 @@ const Champion = ({ champId, name, category }: Props) => {
               <div className="flex space-x-2 ">
                 <div>
                   <Image
-                    width={30}
-                    height={30}
+                    width={32}
+                    height={32}
                     alt=""
                     src={
                       Champion?.skill[4].image === undefined
@@ -57,14 +58,15 @@ const Champion = ({ champId, name, category }: Props) => {
                         : String(Champion?.skill[4].image)
                     }
                     priority
+                    layout="fixed"
                   />
                 </div>
                 {Champion?.skill.slice(0, 4).map((data) => {
                   return (
                     <div key={data.id}>
                       <Image
-                        width={45}
-                        height={45}
+                        width={48}
+                        height={48}
                         alt=""
                         src={
                           data.image === undefined
@@ -72,6 +74,7 @@ const Champion = ({ champId, name, category }: Props) => {
                             : String(data.image)
                         }
                         priority
+                        layout="fixed"
                       />
                     </div>
                   );

@@ -38,6 +38,7 @@ const Summoners = ({ summonerName, category }: Props) => {
                       ? "https://avatars.githubusercontent.com/u/79081800?v=4"
                       : String(Summoner.tierImg)
                   }
+                  priority
                 />
                 <Image
                   width={100}
@@ -49,6 +50,7 @@ const Summoners = ({ summonerName, category }: Props) => {
                       : String(Summoner.summonerIcon)
                   }
                   className="rounded-3xl"
+                  priority
                 />
                 <span>{`승률 : ${Summoner.winRate}%`}</span>
                 <span>{`레벨: ${Summoner.summonerLevel}`}</span>
@@ -64,13 +66,14 @@ const Summoners = ({ summonerName, category }: Props) => {
                     <div key={data.id}>
                       <Image
                         width={150}
-                        height={150}
+                        height={256}
                         alt=""
                         src={
                           data.champImg === undefined
                             ? "https://avatars.githubusercontent.com/u/79081800?v=4"
                             : String(data.champImg)
                         }
+                        priority
                       />
                       <span>{i + 1}등</span>
                     </div>

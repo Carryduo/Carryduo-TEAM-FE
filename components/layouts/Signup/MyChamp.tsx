@@ -24,7 +24,7 @@ const MyChamp = ({ setOpen, img }: MyChampProps) => {
             width={45}
             height={45}
             layout="fixed"
-            loading="eager"
+            priority
             onClick={() => setOpen(true)}
           />
         ) : (
@@ -34,7 +34,7 @@ const MyChamp = ({ setOpen, img }: MyChampProps) => {
             width={45}
             height={45}
             layout="fixed"
-            loading="eager"
+            priority
             onClick={() => setOpen(true)}
           />
         )}
