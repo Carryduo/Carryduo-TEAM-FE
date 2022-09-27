@@ -22,8 +22,11 @@ const CommentsFormContainer = ({ category, champId }: CommentsProps) => {
     setValue("content", "");
   };
   return (
-    <>
-      <form onSubmit={handleSubmit(onValid)}>
+    <div className="relative h-full overflow-y-scroll px-2">
+      <form
+        onSubmit={handleSubmit(onValid)}
+        className="sticky top-0 z-50 w-full bg-box"
+      >
         <Input
           rounded="rounded-2xl"
           width="w-full"
@@ -57,7 +60,7 @@ const CommentsFormContainer = ({ category, champId }: CommentsProps) => {
           })
         )}
       </div>
-    </>
+    </div>
   );
 };
 

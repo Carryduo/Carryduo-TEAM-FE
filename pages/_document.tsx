@@ -4,6 +4,8 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head lang="kr">
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="description" content="Carryduo" />
           <meta property="og:title" content="Carryduo" />
           <meta property="og:description" content="롤 듀오 서칭 플랫폼" />
           <meta

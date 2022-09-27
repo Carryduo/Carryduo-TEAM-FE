@@ -4,11 +4,19 @@ import ColorButton from "../../common/ColorButton";
 
 const SignupHeader = () => {
   return (
-    <header className="items- col-span-2 flex justify-between">
-      <div className="mt-2 flex items-start space-x-2">
+    <header className="col-span-2 flex justify-between">
+      <div className="flex items-start space-x-2">
         <span className="text-2xl">환경설정</span>
-        <span onClick={() => removeCookie("myToken")}>로그아웃</span>
-        <button type="submit">
+        <span
+          className="cursor-pointer rounded-lg bg-gray-500 px-2 py-1"
+          onClick={() => removeCookie("myToken")}
+        >
+          로그아웃
+        </span>
+        <button
+          className="cursor-pointer rounded-lg bg-gray-500 px-2 py-1"
+          type="submit"
+        >
           <span>저장</span>
         </button>
       </div>
@@ -23,7 +31,7 @@ const SignupHeader = () => {
               color="primary"
             />
           </div> */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 mt-1">
             <span>테두리 색상</span>
             <div className="flex items-center space-x-4">
               <ColorButton
