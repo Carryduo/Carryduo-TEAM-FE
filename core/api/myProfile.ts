@@ -63,10 +63,6 @@ export const useGetMyProfile = () => {
   });
 };
 
-export const getProfile = () => {
-  return instance.get("/user/option");
-};
-
 export const usePostMyProfile = () => {
   return useMutation(async (post: UpdateProfileProps) => {
     await instance
