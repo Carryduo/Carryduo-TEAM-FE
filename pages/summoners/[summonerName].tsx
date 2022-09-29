@@ -4,6 +4,7 @@ import PageContainer from "../../components/common/PageContainer";
 import Seo from "../../components/common/Seo";
 import CommentsFormContainer from "../../components/layouts/CommentsFormContainer";
 import { useGetSummoner } from "../../core/api/summoner";
+import { getCookie } from "../../util/servers/cookie";
 
 interface pageProps {
   query: Props;
@@ -16,7 +17,6 @@ interface Props {
 
 const Summoners = ({ summonerName, category }: Props) => {
   const { data: Summoner, error } = useGetSummoner(summonerName);
-  console.log();
   return (
     <PageContainer space="space-x-4">
       <Seo title={Summoner === undefined ? "정보없음" : summonerName} />
@@ -99,7 +99,12 @@ const Summoners = ({ summonerName, category }: Props) => {
             </Grid>
           </div>
           <Grid width="w-full" height="h-[calc(100%+1rem)]">
-            <CommentsFormContainer category={category} champId={Summoner.id} />
+            {getCookie("myToken") === undefined ? null : (
+              <CommentsFormContainer
+                category={category}
+                champId={Summoner.summonerName}
+              />
+            )}
           </Grid>
         </>
       )}
