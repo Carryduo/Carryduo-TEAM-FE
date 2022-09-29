@@ -18,13 +18,6 @@ instance.interceptors.request.use((config: AxiosRequestConfig) => {
   return config;
 });
 
-instance.interceptors.response.use(
-  (res) => {
-    return res;
-  },
-  (err) => {
-    if (err.response.status) {
-      return;
-    }
-  }
-);
+instance.interceptors.response.use((res) => {
+  return res;
+});

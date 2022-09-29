@@ -47,7 +47,9 @@ export const usePostComments = (category: string, target: number | string) => {
         useSweet(1000, "success", res.data.message);
         queryClient.invalidateQueries(["Comments", target]);
       })
-      .catch((err) => console.log(err.response));
+      .catch((err) => {
+        useSweet(1000, "error", err.response.data.message);
+      });
   });
 };
 
@@ -62,7 +64,7 @@ export const useDeleteComments = (
         useSweet(1000, "success", res.data.message);
         queryClient.invalidateQueries(["Comments", target]);
       })
-      .catch((err) => console.log(err.data));
+      .catch((err) => useSweet(1000, "error", err.response.data.message));
   });
 };
 
@@ -77,7 +79,7 @@ export const useUpdateComments = (
         useSweet(1000, "success", res.data.message);
         queryClient.invalidateQueries(["Comments", target]);
       })
-      .catch((err) => console.log(err.response));
+      .catch((err) => useSweet(1000, "error", err.response.data.message));
   });
 };
 
@@ -88,6 +90,6 @@ export const usePatchComments = (commentId: string) => {
       .then((res) => {
         useSweet(1000, "error", res.data.message);
       })
-      .catch((err) => console.log(err.response));
+      .catch((err) => useSweet(1000, "error", err.response.data.message));
   });
 };

@@ -2,6 +2,7 @@ import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../../pages/_app";
 import { useSweet } from "../../util/hooks/useSweet";
+import { ErrorHandle } from "../config/ErrorType";
 import { instance } from "./axios";
 
 interface userId {
@@ -45,7 +46,7 @@ interface UpdateProfileProps {
 }
 
 export const useGetUserId = () => {
-  return useQuery<userOptions, AxiosError, userId>(
+  return useQuery<userOptions, ErrorHandle, userId>(
     ["getUserId"],
     () => {
       return instance.get("/user");
