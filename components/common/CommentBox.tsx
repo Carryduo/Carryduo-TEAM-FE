@@ -17,6 +17,7 @@ interface CommentProps {
   createdAt: string;
   userId: string;
   userNickName: string;
+  tokenId: string;
 }
 
 const CommentBox = ({
@@ -26,12 +27,12 @@ const CommentBox = ({
   createdAt,
   userId,
   userNickName,
+  tokenId,
 }: CommentProps) => {
   const { mutate: Delete } = useDeleteComments(commentId, target);
   const { mutate: Patch } = usePatchComments(commentId);
   const { mutateAsync: Update } = useUpdateComments(commentId, target);
   const { register, handleSubmit } = useForm<ICommentProps>();
-  const { data: id } = useGetUserId();
   const [open, setOpen] = React.useState<boolean>(false);
   const OpenInputComment = () => {
     setOpen((prev) => !prev);
@@ -68,7 +69,7 @@ const CommentBox = ({
         <span>{useTimeZone(createdAt)}</span>
       </div>
       <div>
-        {userId === id?.userId ? (
+        {userId === tokenId ? (
           <>
             <span className="text-blue-300" onClick={OpenInputComment}>
               수정

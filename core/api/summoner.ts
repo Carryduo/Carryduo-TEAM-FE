@@ -1,5 +1,6 @@
 import { AxiosError } from "axios";
 import { useQuery } from "react-query";
+import { ErrorHandle } from "../config/ErrorType";
 import { instance } from "./axios";
 
 interface mostChamp {
@@ -28,7 +29,7 @@ interface ISummoner {
 }
 
 export const useGetSummoner = (summonerName: string) => {
-  return useQuery<ISummoner, AxiosError, Summoner>(
+  return useQuery<ISummoner, ErrorHandle, Summoner>(
     ["Summoner", summonerName],
     () => {
       return instance.get(`/summoner/${summonerName}`);

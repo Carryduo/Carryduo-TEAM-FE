@@ -1,0 +1,2 @@
+export const BlurData =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFUlEQVR42mNUUFD+z0AEYBxVSF+FAAmpDd+36yrnAAAAAElFTkSuQmCC";

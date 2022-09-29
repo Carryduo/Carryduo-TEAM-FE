@@ -9,7 +9,16 @@ import { RecoilRoot } from "recoil";
 import Router from "next/router";
 import LoadingPage from "../components/layouts/LoadingPage";
 
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+      retry: false,
+    },
+  },
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isWindows, setIsWindows] = useState<boolean>(true);
@@ -27,17 +36,15 @@ function MyApp({ Component, pageProps }: AppProps) {
       navigator.userAgent.includes("Macintosh");
     setIsWindows(Boolean(window));
 
-    if (pageProps.prop === "Lazy Loading") {
-      Router.events.on("routeChangeStart", start);
-      Router.events.on("routeChangeComplete", end);
-      Router.events.on("routeChangeError", end);
+    Router.events.on("routeChangeStart", start);
+    Router.events.on("routeChangeComplete", end);
+    Router.events.on("routeChangeError", end);
 
-      return () => {
-        Router.events.off("routeChangeStart", start);
-        Router.events.off("routeChangeComplete", end);
-        Router.events.off("routeChangeError", end);
-      };
-    } else setLoading(false);
+    return () => {
+      Router.events.off("routeChangeStart", start);
+      Router.events.off("routeChangeComplete", end);
+      Router.events.off("routeChangeError", end);
+    };
   }, [pageProps]);
   return (
     <>
