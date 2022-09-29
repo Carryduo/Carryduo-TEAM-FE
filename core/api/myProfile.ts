@@ -15,7 +15,7 @@ interface userOptions {
   data: userId;
 }
 
-interface ProfileProps {
+export interface ProfileProps {
   data: {
     bio: string;
     enableChat: boolean;
@@ -61,6 +61,10 @@ export const useGetMyProfile = () => {
   return useQuery<ProfileProps>(["getMyProfile"], () => {
     return instance.get("/user/option");
   });
+};
+
+export const getProfile = () => {
+  return instance.get("/user/option");
 };
 
 export const usePostMyProfile = () => {

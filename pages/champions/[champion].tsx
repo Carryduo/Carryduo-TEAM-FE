@@ -3,6 +3,7 @@ import PageContainer from "../../components/common/PageContainer";
 import Seo from "../../components/common/Seo";
 import ChampionDetailContainer from "../../components/layouts/Champion/ChampionDetailContainer";
 import CommentsFormContainer from "../../components/layouts/CommentsFormContainer";
+import { getCookie } from "../../util/servers/cookie";
 
 interface PageProps {
   query: Props;
@@ -28,7 +29,9 @@ const Champion = ({ champId, name, category }: Props) => {
         </Grid>
       </div>
       <Grid width="w-full" height="h-[calc(100%+1rem)]">
-        <CommentsFormContainer category={category} champId={champId} />
+        {getCookie("myToken") === undefined ? null : (
+          <CommentsFormContainer category={category} champId={champId} />
+        )}
       </Grid>
     </PageContainer>
   );
