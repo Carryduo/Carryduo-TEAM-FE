@@ -24,8 +24,8 @@ interface FormProps {
   preferPosition: string;
 }
 
-const SignupFormContainer = () => {
-  const { data: profile } = useGetMyProfile();
+const SignupFormContainer = ({ profile }: any) => {
+  // const { data: profile } = useGetMyProfile();
   const defaultValues = {
     nickName: profile?.data.nickname,
     bio: profile?.data.bio,
