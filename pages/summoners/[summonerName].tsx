@@ -15,13 +15,14 @@ interface Props {
 }
 
 const Summoners = ({ summonerName, category }: Props) => {
-  const { data: Summoner } = useGetSummoner(summonerName);
+  const { data: Summoner, error } = useGetSummoner(summonerName);
+  console.log();
   return (
     <PageContainer space="space-x-4">
       <Seo title={Summoner === undefined ? "정보없음" : summonerName} />
       {Summoner === undefined ? (
         <Grid width="w-full" height="h-full">
-          <span>사용자 정보가 없습니다</span>
+          <span>{error?.response.data.message}</span>
         </Grid>
       ) : (
         <>

@@ -4,6 +4,7 @@ import {
   useGetMostChampSummoner,
 } from "../../../core/api/champion";
 import { useTier } from "../../../util/hooks/useTier";
+import { BlurData } from "../../../util/servers/BlurData";
 
 interface Props {
   champId: number;
@@ -16,52 +17,52 @@ const ChampionDetailContainer = ({ champId }: Props) => {
     <>
       <div className="flex h-full items-center space-x-10 p-2">
         <div>
-          <Image
-            width={200}
-            height={200}
-            alt=""
-            src={
-              Champion?.champImg === undefined
-                ? "https://avatars.githubusercontent.com/u/79081800?v=4"
-                : String(Champion?.champImg)
-            }
-            priority
-            className="rounded-xl"
-            layout="fixed"
-          />
+          {Champion?.champImg === undefined ? null : (
+            <Image
+              width={200}
+              height={200}
+              alt=""
+              src={String(Champion?.champImg)}
+              priority
+              className="rounded-xl"
+              layout="fixed"
+              placeholder="blur"
+              blurDataURL={BlurData}
+            />
+          )}
         </div>
         <div className="flex flex-col space-y-8">
           <span className="text-2xl">{Champion?.champNameKo}</span>
           <div className="flex items-end space-x-2">
             <div>
-              <Image
-                width={32}
-                height={32}
-                alt=""
-                src={
-                  Champion?.skill[4].image === undefined
-                    ? "https://avatars.githubusercontent.com/u/79081800?v=4"
-                    : String(Champion?.skill[4].image)
-                }
-                priority
-                layout="fixed"
-              />
+              {Champion?.skill[4].image && (
+                <Image
+                  width={40}
+                  height={40}
+                  alt=""
+                  src={String(Champion?.skill[4].image)}
+                  priority
+                  layout="fixed"
+                  placeholder="blur"
+                  blurDataURL={BlurData}
+                />
+              )}
             </div>
             {Champion?.skill.slice(0, 4).map((data) => {
               return (
                 <div key={data.id}>
-                  <Image
-                    width={48}
-                    height={48}
-                    alt=""
-                    src={
-                      data.image === undefined
-                        ? "https://avatars.githubusercontent.com/u/79081800?v=4"
-                        : String(data.image)
-                    }
-                    priority
-                    layout="fixed"
-                  />
+                  {data.image && (
+                    <Image
+                      width={48}
+                      height={48}
+                      alt=""
+                      src={String(data.image)}
+                      priority
+                      layout="fixed"
+                      placeholder="blur"
+                      blurDataURL={BlurData}
+                    />
+                  )}
                 </div>
               );
             })}
