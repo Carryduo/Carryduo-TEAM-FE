@@ -1,2 +1,1 @@
-export const BlurData =
-  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFUlEQVR42mNUUFD+z0AEYBxVSF+FAAmpDd+36yrnAAAAAElFTkSuQmCC";
+export const BlurData = "https://user-images.githubusercontent.com/79081800/193261138-32551be4-c88b-4eef-b233-f2064256349b.png"
