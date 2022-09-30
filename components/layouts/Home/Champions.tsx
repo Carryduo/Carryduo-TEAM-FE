@@ -45,7 +45,6 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                       width={56}
                       height={56}
                       layout="fixed"
-                      priority
                     />
                   </a>
                 </Link>
@@ -56,7 +55,6 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                   width={56}
                   height={56}
                   layout="fixed"
-                  priority
                   onClick={() =>
                     setChampion({
                       id: Number(data.id),

@@ -23,9 +23,7 @@ const ChampionDetailContainer = ({ champId }: Props) => {
               height={200}
               alt=""
               src={String(Champion?.champImg)}
-              priority
               className="rounded-xl"
-              layout="fixed"
               placeholder="blur"
               blurDataURL={BlurData}
             />
@@ -41,10 +39,9 @@ const ChampionDetailContainer = ({ champId }: Props) => {
                   height={40}
                   alt=""
                   src={String(Champion?.skill[4].image)}
-                  priority
-                  layout="fixed"
                   placeholder="blur"
                   blurDataURL={BlurData}
+                  className="rounded-md"
                 />
               )}
             </div>
@@ -57,10 +54,9 @@ const ChampionDetailContainer = ({ champId }: Props) => {
                       height={48}
                       alt=""
                       src={String(data.image)}
-                      priority
-                      layout="fixed"
                       placeholder="blur"
                       blurDataURL={BlurData}
+                      className="rounded-md"
                     />
                   )}
                 </div>
