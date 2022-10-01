@@ -17,7 +17,7 @@ const ChampionDetailContainer = ({ champId }: Props) => {
     <>
       <div className="flex h-full items-center space-x-10 p-2">
         <div>
-          {Champion?.champImg === undefined ? null : (
+          {Champion?.champImg &&(
             <Image
               width={200}
               height={200}
@@ -64,9 +64,9 @@ const ChampionDetailContainer = ({ champId }: Props) => {
             })}
           </div>
           <div className="flex space-x-2 text-sm">
-            <span>승률 67%</span>
-            <span>픽률 33%</span>
-            <span>벤률 13%</span>
+            <span>승률 {Champion?.winRate}%</span>
+            <span>픽률 {Champion?.pickRate}%</span>
+            <span>벤률 {Champion?.banRate}%</span>
           </div>
         </div>
         <div className="flex flex-col">
