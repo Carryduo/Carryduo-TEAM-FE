@@ -8,11 +8,7 @@ import { getCookie } from "../../util/servers/cookie";
 import LoadingContainer from "../../components/layouts/Handler/LoadingContainer";
 import { useRouter } from "next/router";
 
-interface Props {
-  category: string;
-}
-
-const Summoners = ({ category }: Props) => {
+const Summoners = () => {
   const { query } = useRouter();
   const {
     data: Summoner,
@@ -39,7 +35,7 @@ const Summoners = ({ category }: Props) => {
           <Grid width="w-full min-w-[350px]" height="h-[calc(100%+1rem)]">
             {getCookie("myToken") === undefined ? null : (
               <CommentsFormContainer
-                category={category}
+                category="summoner"
                 champId={Summoner.summonerName}
               />
             )}
@@ -51,11 +47,3 @@ const Summoners = ({ category }: Props) => {
 };
 
 export default Summoners;
-
-export const getServerSideProps = () => {
-  return {
-    props: {
-      category: "summoner",
-    },
-  };
-};

@@ -1,13 +1,10 @@
-const ChampionDetailContainer = dynamic(
-  () => import("../../components/container/ChampionDetailContainer")
-);
 import CommentsFormContainer from "../../components/container/CommentsFormContainer";
 import Grid from "../../components/common/Grid";
 import PageContainer from "../../components/common/PageContainer";
 import Seo from "../../components/common/Seo";
 import { getCookie } from "../../util/servers/cookie";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
+import ChampionDetailContainer from "../../components/container/ChampionDetailContainer";
 
 const Champion = () => {
   const { query } = useRouter();
