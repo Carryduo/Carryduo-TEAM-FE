@@ -6,21 +6,24 @@ import SummonerDetailContainer from "../../components/container/SummonerDetailCo
 import { useGetSummoner } from "../../core/api/summoner";
 import { getCookie } from "../../util/servers/cookie";
 import LoadingContainer from "../../components/layouts/Handler/LoadingContainer";
-
-interface pageProps {
-  query: Props;
-}
+import { useRouter } from "next/router";
 
 interface Props {
-  summonerName: string;
   category: string;
 }
 
-const Summoners = ({ summonerName, category }: Props) => {
-  const { data: Summoner, error, isLoading } = useGetSummoner(summonerName);
+const Summoners = ({ category }: Props) => {
+  const { query } = useRouter();
+  const {
+    data: Summoner,
+    error,
+    isLoading,
+  } = useGetSummoner(String(query.summonerName));
   return (
     <PageContainer space="space-x-4">
-      <Seo title={Summoner === undefined ? "정보없음" : summonerName} />
+      <Seo
+        title={Summoner === undefined ? "정보없음" : String(query.summonerName)}
+      />
       {isLoading ? (
         <LoadingContainer />
       ) : Summoner === undefined ? (
@@ -31,7 +34,7 @@ const Summoners = ({ summonerName, category }: Props) => {
         <>
           <SummonerDetailContainer
             Summoner={Summoner}
-            summonerName={summonerName}
+            summonerName={String(query.summonerName)}
           />
           <Grid width="w-full min-w-[350px]" height="h-[calc(100%+1rem)]">
             {getCookie("myToken") === undefined ? null : (
@@ -49,11 +52,9 @@ const Summoners = ({ summonerName, category }: Props) => {
 
 export default Summoners;
 
-export const getServerSideProps = (context: pageProps) => {
-  const propsData = context.query;
+export const getServerSideProps = () => {
   return {
     props: {
-      summonerName: propsData.summonerName,
       category: "summoner",
     },
   };
