@@ -1,8 +1,5 @@
 const ChampionDetailContainer = dynamic(
-  () => import("../../components/container/ChampionDetailContainer"),
-  {
-    ssr: false,
-  }
+  () => import("../../components/container/ChampionDetailContainer")
 );
 import CommentsFormContainer from "../../components/container/CommentsFormContainer";
 import Grid from "../../components/common/Grid";
@@ -11,14 +8,6 @@ import Seo from "../../components/common/Seo";
 import { getCookie } from "../../util/servers/cookie";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-
-interface PageProps {
-  query: Props;
-}
-
-interface Props {
-  name: string;
-}
 
 const Champion = () => {
   const { query } = useRouter();
@@ -46,15 +35,3 @@ const Champion = () => {
 };
 
 export default Champion;
-
-export const getServerSideProps = (context: PageProps) => {
-  const propsData = context.query;
-  if (propsData.name === undefined) {
-    return {
-      notFound: true,
-    };
-  }
-  return {
-    props: {},
-  };
-};
