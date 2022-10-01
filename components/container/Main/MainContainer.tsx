@@ -11,14 +11,15 @@ interface DarkContainerProps {
 const MainContainer = ({ children }: DarkContainerProps) => {
   const [color] = useShadow(getShadowColor);
   return (
-    <div className="relative flex h-screen w-full items-center justify-center bg-black bg-opacity-60">
+    <div className="relative flex h-screen min-h-[740px] w-full min-w-[1640px] items-center justify-center bg-black bg-opacity-60">
       <Image
         alt="Summonersrift"
+        width={1920}
         layout="fill"
+        quality={10}
         src={mainImage}
-        quality={100}
         className="absolute -z-50"
-        loading="eager"
+        priority
       />
       <div
         className={`z-50 h-[85%] w-[80%] overflow-hidden rounded-xl bg-black bg-opacity-30 px-10 shadow-[0_0_40px_1px]  ${

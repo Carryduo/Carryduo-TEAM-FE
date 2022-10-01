@@ -5,10 +5,9 @@ import {
   useDeleteComments,
   usePatchComments,
   useUpdateComments,
-} from "../../core/api/comments";
-import { useGetUserId } from "../../core/api/myProfile";
-import { useTimeZone } from "../../util/hooks/useTimeZone";
-import Input from "../common/Input";
+} from "../../../core/api/comments";
+import { useTimeZone } from "../../../util/hooks/useTimeZone";
+import Input from "../../common/Input";
 
 interface CommentProps {
   commentId: string;

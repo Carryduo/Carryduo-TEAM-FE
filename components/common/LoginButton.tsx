@@ -16,6 +16,7 @@ const KakaoLogin = () => {
         src="https://raw.githubusercontent.com/sparta-team6/CO-UP-TEAM-FE/master/src/images/Login/KakaoLogin.png"
         width={28}
         height={28}
+        layout="fixed"
         priority= {true}
       />
     </div>

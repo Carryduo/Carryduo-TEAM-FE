@@ -1,8 +1,8 @@
+import ChampionDetailContainer from "../../components/container/ChampionDetailContainer";
+import CommentsFormContainer from "../../components/container/CommentsFormContainer";
 import Grid from "../../components/common/Grid";
 import PageContainer from "../../components/common/PageContainer";
 import Seo from "../../components/common/Seo";
-import ChampionDetailContainer from "../../components/layouts/Champion/ChampionDetailContainer";
-import CommentsFormContainer from "../../components/layouts/CommentsFormContainer";
 import { getCookie } from "../../util/servers/cookie";
 
 interface PageProps {
@@ -28,7 +28,7 @@ const Champion = ({ champId, name, category }: Props) => {
           <span>챔피언 조합 승률 모스트</span>
         </Grid>
       </div>
-      <Grid width="w-full" height="h-[calc(100%+1rem)]">
+      <Grid width="w-full min-w-[550px]" height="h-[calc(100%+1rem)]">
         {getCookie("myToken") === undefined ? null : (
           <CommentsFormContainer category={category} champId={champId} />
         )}

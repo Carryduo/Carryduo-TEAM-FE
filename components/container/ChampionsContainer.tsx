@@ -2,7 +2,7 @@ import _ from "lodash";
 import { useState } from "react";
 
 import Input from "../common/Input";
-import ChampionsList from "./Home/Champions";
+import ChampionsList from "../layouts/Home/Champions";
 
 interface ChampionsContainerProps {
   height: string;

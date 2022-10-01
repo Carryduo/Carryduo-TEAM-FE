@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { instance } from "../core/api/axios";
+import { useSweet } from "../util/hooks/useSweet";
 import { useTime } from "../util/hooks/useTime";
 import { setCookie } from "../util/servers/cookie";
 
@@ -14,9 +15,11 @@ const Kakao = () => {
         setCookie("myToken", res.data.token, {
           expires: useTime(60 * 24 * 14),
         });
-      })
-      .finally(() => {
         router.push("/");
+      })
+      .catch(() => {
+        alert("로그인 실패");
+        router.back();
       });
   }, []);
   return <div></div>;

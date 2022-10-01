@@ -1,4 +1,5 @@
 import Slider from "react-slick";
+
 const IntroContainer = () => {
   const settings = {
     arrows: false,

@@ -1,5 +1,6 @@
-import { AxiosError } from "axios";
+
 import { useQuery } from "react-query";
+import { ErrorHandle } from "../config/ErrorType";
 import { instance } from "./axios";
 
 interface ChampionSpells {
@@ -25,7 +26,7 @@ interface IChampions {
   data: Champion;
 }
 
-interface ChampionMostSummoner {
+export interface ChampionMostSummoner {
   id: string;
   nickname: string;
   profileImg: string;
@@ -36,7 +37,7 @@ interface IChampionMostSummoner {
 }
 
 export const useGetChampDetail = (ChampId: number) => {
-  return useQuery<IChampions, AxiosError, Champion>(
+  return useQuery<IChampions, ErrorHandle, Champion>(
     ["Champ", ChampId],
     () => {
       return instance.get(`/champ/${ChampId}`);
@@ -48,7 +49,7 @@ export const useGetChampDetail = (ChampId: number) => {
 };
 
 export const useGetMostChampSummoner = (ChampId: number) => {
-  return useQuery<IChampionMostSummoner, AxiosError, ChampionMostSummoner[]>(
+  return useQuery<IChampionMostSummoner, ErrorHandle, ChampionMostSummoner[]>(
     ["MostSummoner", ChampId],
     () => {
       return instance.get(`/champ/${ChampId}/users`);

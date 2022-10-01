@@ -1,5 +1,5 @@
-import { AxiosError } from "axios";
 import { useQuery } from "react-query";
+import { ErrorHandle } from "../config/ErrorType";
 import { instance } from "./axios";
 
 export interface Champions {
@@ -14,7 +14,7 @@ export interface IChampions {
 }
 
 export const useGetChamps = () => {
-  return useQuery<IChampions, AxiosError, Champions[]>(
+  return useQuery<IChampions, ErrorHandle, Champions[]>(
     ["Champs"],
     () => {
       return instance.get("/champ");

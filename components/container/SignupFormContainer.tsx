@@ -4,14 +4,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { PickChampion } from "../../core/config/pickChampion";
 import ChampionsContainer from "./ChampionsContainer";
 import Grid from "../common/Grid";
-import NickName from "./Signup/NickName";
-import Introduce from "./Signup/Introduce";
-import Tier from "./Signup/Tier";
-import SignupHeader from "./Signup/SignupHeader";
-import SignupFooter from "./Signup/SignupFooter";
-import MyChamp from "./Signup/MyChamp";
-import Position from "./Signup/Position";
-import IntroContainer from "./Signup/IntroContainer";
+import NickName from "../layouts/Signup/NickName";
+import Introduce from "../layouts/Signup/Introduce";
+import Tier from "../layouts/Signup/Tier";
+import SignupHeader from "../layouts/Signup/SignupHeader";
+import SignupFooter from "../layouts/Signup/SignupFooter";
+import MyChamp from "../layouts/Signup/MyChamp";
+import Position from "../layouts/Signup/Position";
+import IntroContainer from "../layouts/Signup/IntroContainer";
 import { getCookie } from "../../util/servers/cookie";
 import KakaoLogin from "../common/LoginButton";
 import { useGetMyProfile, usePostMyProfile } from "../../core/api/myProfile";
@@ -67,32 +67,26 @@ const SignupFormContainer = () => {
         )}
       </Grid>
       <div className="h-full w-full">
-        {getCookie("myToken") === undefined ? (
-          <div className=" flex h-[70%] w-full items-center justify-center rounded-md border border-gray-700 bg-black bg-opacity-95">
-            <span>로그인 후 이용가능</span>
-            <KakaoLogin />
-          </div>
-        ) : (
-          <Grid width="w-full" height="h-[70%]" scroll="overflow-y-scroll">
-            <form
-              onSubmit={handleSubmit(onValid)}
-              className="grid grid-cols-2 grid-rows-4 gap-2"
-            >
-              <SignupHeader />
-              <NickName register={register("nickName")} />
-              <Introduce register={register("bio")} />
-              <Tier register={register("tier")} watch={watch("tier")} />
-              <Position
-                register={register("preferPosition")}
-                watch={watch("preferPosition")}
-              />
-              <MyChamp
-                setOpen={setOpen}
-                img={profile?.data?.preferChamp1?.champNameEn}
-              />
-            </form>
-          </Grid>
-        )}
+        <Grid width="w-full" height="h-[70%]" scroll="overflow-y-scroll">
+          <form
+            onSubmit={handleSubmit(onValid)}
+            className="grid grid-cols-2 grid-rows-4 gap-2"
+          >
+            <SignupHeader />
+            <NickName register={register("nickName")} />
+            <Introduce register={register("bio")} />
+            <Tier register={register("tier")} watch={watch("tier")} />
+            <Position
+              register={register("preferPosition")}
+              watch={watch("preferPosition")}
+            />
+            <MyChamp
+              setOpen={setOpen}
+              img={profile?.data?.preferChamp1?.champNameEn}
+            />
+          </form>
+        </Grid>
+
         <SignupFooter />
       </div>
     </>
