@@ -5,7 +5,7 @@ import {
   usePostComments,
 } from "../../core/api/comments";
 import { useGetUserId } from "../../core/api/myProfile";
-import CommentBox from "../common/CommentBox";
+import CommentBox from "../layouts/Comment/CommentBox";
 
 import Input from "../common/Input";
 
@@ -45,10 +45,7 @@ const CommentsFormContainer = ({ category, champId }: CommentsProps) => {
         ) : (
           Comments?.map((data) => {
             return (
-              <div
-                key={data.id}
-                className=" rounded-md bg-gray-700 px-4"
-              >
+              <div key={data.id} className=" rounded-md bg-gray-700 px-4">
                 <CommentBox
                   commentId={data.id}
                   content={data.content}

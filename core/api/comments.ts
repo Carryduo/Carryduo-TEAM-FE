@@ -1,7 +1,7 @@
-import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../../pages/_app";
 import { useSweet } from "../../util/hooks/useSweet";
+import { ErrorHandle } from "../config/ErrorType";
 import { instance } from "./axios";
 
 export interface ICommentProps {
@@ -28,7 +28,7 @@ interface IComments {
 }
 
 export const useGetComments = (category: string, target: number | string) => {
-  return useQuery<IComments, AxiosError, Comment[]>(
+  return useQuery<IComments, ErrorHandle, Comment[]>(
     ["Comments", target],
     () => {
       return instance.get(`/comments/${category}/${target}`);

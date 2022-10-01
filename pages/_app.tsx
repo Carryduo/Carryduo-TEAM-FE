@@ -1,13 +1,13 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import HeaderMain from "../components/layouts/Main/HeaderMain";
+import HeaderMain from "../components/container/Main/HeaderContainer";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import React, { useEffect, useState } from "react";
-import MainContainer from "../components/layouts/Main/MainContainer";
+import MainContainer from "../components/container/Main/MainContainer";
 import { RecoilRoot } from "recoil";
 import Router from "next/router";
-import LoadingPage from "../components/layouts/LoadingContainer";
+import LoadingContainer from "../components/layouts/Handler/LoadingContainer";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,7 +16,7 @@ export const queryClient = new QueryClient({
       refetchOnMount: false,
       refetchOnReconnect: false,
       retry: false,
-      cacheTime: 1000 * 60 * 60 * 24
+      cacheTime: 1000 * 60 * 60 * 24,
     },
   },
 });
@@ -56,7 +56,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               <ReactQueryDevtools initialIsOpen={true} />
               <MainContainer>
                 <HeaderMain />
-                {loading ? <LoadingPage /> : <Component {...pageProps} />}
+                {loading ? <LoadingContainer /> : <Component {...pageProps} />}
               </MainContainer>
             </Hydrate>
           </QueryClientProvider>

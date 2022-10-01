@@ -1,4 +1,3 @@
-import { AxiosError } from "axios";
 import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../../pages/_app";
 import { useSweet } from "../../util/hooks/useSweet";

@@ -1,6 +1,6 @@
-import Seo from "../common/Seo";
+import Seo from "../../common/Seo";
 
-const LoadingPage = () => {
+const LoadingContainer = () => {
   return (
     <div className="flex h-full w-full items-center justify-center">
       <Seo title="Loading" />
@@ -9,4 +9,4 @@ const LoadingPage = () => {
   );
 };
 
-export default LoadingPage;
+export default LoadingContainer;
