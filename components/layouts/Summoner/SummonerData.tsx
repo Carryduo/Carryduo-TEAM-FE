@@ -11,8 +11,8 @@ const SummonerData = ({ Summoner, summonerName }: Props) => {
     <>
       <div className="flex flex-col items-center">
         <Image
-          width={192}
-          height={192}
+          width={200}
+          height={200}
           alt=""
           src={String(Summoner.summonerIcon)}
           className="rounded-3xl"

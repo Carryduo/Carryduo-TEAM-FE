@@ -1,6 +1,7 @@
 import { Summoner } from "../../../core/api/summoner";
 import HistoryDonut from "../../common/Summoner/HistoryDonut";
 import HistoryGraph from "../../common/Summoner/HistoryGraph";
+import HistoryPlay from "../../common/Summoner/HistoryPlay";
 
 interface Props {
   Summoner: Summoner;
@@ -12,27 +13,20 @@ const SummonerHistory = ({ Summoner }: Props) => {
       {Summoner.history === undefined ? (
         <span>최근 전적 없음</span>
       ) : (
-        <>
-          <span>최근 전적</span>
-          <HistoryDonut Summoner={Summoner} />
+        <div className="flex justify-around">
           <div>
-            <span>최근 플레이</span>
-            <HistoryGraph Summoner={Summoner} />
+            <span>최근 전적</span>
+            <HistoryDonut Summoner={Summoner} />
+          </div>
+          <div className="space-y-4">
+            <span>플레이한 챔피언 (최근 10게임)</span>
+            <HistoryPlay Summoner={Summoner} />
           </div>
           <div>
             <span>포지션</span>
-            <span>
-              {Summoner.history.positions.map((data) => {
-                return (
-                  <div key={data.id}>
-                    <span> {`${data.id} 라인`}</span>
-                    <span> {`${data.cnt} 판수`}</span>
-                  </div>
-                );
-              })}
-            </span>
+            <HistoryGraph Summoner={Summoner} />
           </div>
-        </>
+        </div>
       )}
     </>
   );
