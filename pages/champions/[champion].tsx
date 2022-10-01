@@ -12,10 +12,10 @@ const Champion = () => {
     <PageContainer space="space-x-4">
       <Seo title={String(query.name)} />
       <div className="h-full w-full space-y-4">
-        <Grid width="w-[700px]" height="h-1/2">
+        <Grid width="w-[900px]" height="h-1/2">
           <ChampionDetailContainer champId={Number(query.champion)} />
         </Grid>
-        <Grid width="w-[700px]" height="h-1/2">
+        <Grid width="w-[900px]" height="h-1/2">
           <span>챔피언 조합 승률 모스트</span>
         </Grid>
       </div>
