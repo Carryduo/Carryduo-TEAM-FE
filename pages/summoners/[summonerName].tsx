@@ -3,6 +3,7 @@ import Grid from "../../components/common/Grid";
 import PageContainer from "../../components/common/PageContainer";
 import Seo from "../../components/common/Seo";
 import CommentsFormContainer from "../../components/layouts/CommentsFormContainer";
+import LoadingPage from "../../components/layouts/LoadingPage";
 import { useGetSummoner } from "../../core/api/summoner";
 import { getCookie } from "../../util/servers/cookie";
 
@@ -16,11 +17,13 @@ interface Props {
 }
 
 const Summoners = ({ summonerName, category }: Props) => {
-  const { data: Summoner, error } = useGetSummoner(summonerName);
+  const { data: Summoner, error, isLoading } = useGetSummoner(summonerName);
   return (
     <PageContainer space="space-x-4">
       <Seo title={Summoner === undefined ? "정보없음" : summonerName} />
-      {Summoner === undefined ? (
+      {isLoading ? (
+        <LoadingPage />
+      ) : Summoner === undefined ? (
         <Grid width="w-full" height="h-full">
           <span>{error?.response.data.message}</span>
         </Grid>
