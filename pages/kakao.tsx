@@ -22,7 +22,7 @@ const Kakao = () => {
         router.back();
       });
   }, []);
-  return <div></div>;
+  return <span>로그인 중...</span>;
 };
 
 export default Kakao;
