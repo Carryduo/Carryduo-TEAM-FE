@@ -14,12 +14,11 @@ const MainContainer = ({ children }: DarkContainerProps) => {
     <div className="relative flex h-screen min-h-[740px] w-full min-w-[1640px] items-center justify-center bg-black bg-opacity-60">
       <Image
         alt="Summonersrift"
-        width={1920}
         layout="fill"
         quality={10}
         src={mainImage}
         className="absolute -z-50"
-        priority
+        loading="eager"
       />
       <div
         className={`z-50 h-[85%] w-[80%] overflow-hidden rounded-xl bg-black bg-opacity-30 px-10 shadow-[0_0_40px_1px]  ${
