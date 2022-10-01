@@ -12,6 +12,9 @@ interface ChampionSpells {
 
 export interface Champion {
   id: string;
+  winRate:string;
+  banRate: string;
+  pickRate: string;
   champNameKo: string;
   champNameEn: string;
   champImg: string;

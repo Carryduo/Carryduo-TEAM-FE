@@ -1,13 +1,36 @@
-import { AxiosError } from "axios";
 import { useQuery } from "react-query";
 import { ErrorHandle } from "../config/ErrorType";
 import { instance } from "./axios";
 
-interface mostChamp {
+interface MostChamp {
   id: string;
   champNameKo: string;
   champNameEn: string;
   champImg: string;
+}
+
+interface Position {
+  id: number;
+  cnt: number;
+}
+
+interface RecentChamp {
+  recentChampId: number;
+  recentChampImg: string;
+  recentChampWin: number;
+  recentChampLose: number;
+  recentChampTotal: number;
+  recentChampRate: number;
+}
+
+interface History {
+  KDA: number;
+  total: number;
+  win: number;
+  lose: number;
+  winRate: number;
+  positions: Position[];
+  recentChampRate: RecentChamp[];
 }
 
 export interface Summoner {
@@ -21,7 +44,8 @@ export interface Summoner {
   win: number;
   lose: number;
   winRate: number;
-  mostChamps: mostChamp[];
+  mostChamps: MostChamp[];
+  history: History;
 }
 
 interface ISummoner {
