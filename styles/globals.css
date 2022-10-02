@@ -21,15 +21,29 @@
   ::-webkit-scrollbar-thumb {
     @apply bg-blue-400 rounded-md
   }
-}
 
-.slick-dots {
-  width: 100%;
-  height: 30px;
-  position: absolute;
-  top:0;
-}
-
-.slick-dots li.slick-active button::before{
-  color: white !important;
+  .tooltip {
+    @apply relative block
+  }
+  /* padding 값 넣기*/
+  .tooltip .tooltiptext {
+    @apply invisible w-[300px] bg-black rounded-md absolute p-2
+  }
+  
+  .tooltip:hover .tooltiptext {
+    @apply visible delay-300
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: " ";
+    @apply absolute border-solid border-8
+  }
+  
+  .tooltip .tooltip-bottom {
+    @apply w-[300px] top-[115%] left-0 -ml-32
+  }
+  
+  .tooltip .tooltip-bottom::after {
+    @apply bottom-full left-1/2 -ml-1 border-b-black border-transparent
+  }
 }
