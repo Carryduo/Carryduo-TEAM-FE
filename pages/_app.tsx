@@ -1,4 +1,3 @@
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import HeaderMain from "../components/container/Main/HeaderContainer";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
@@ -8,6 +7,8 @@ import MainContainer from "../components/container/Main/MainContainer";
 import { RecoilRoot } from "recoil";
 import Router from "next/router";
 import LoadingContainer from "../components/layouts/Handler/LoadingContainer";
+import "../styles/globals.css";
+import "../styles/slick.css"
 
 export const queryClient = new QueryClient({
   defaultOptions: {
