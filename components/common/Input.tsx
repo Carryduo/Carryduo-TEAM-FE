@@ -15,7 +15,7 @@ interface InputProps {
   openSearch?: boolean;
   openSubmit?: boolean;
   maxLength?: number;
-  cursor?: string;
+  cursor?: boolean;
 }
 
 const Input = ({
@@ -35,14 +35,16 @@ const Input = ({
   return (
     <div className="relative">
       <input
-        className={`h-8 ${width} ${rounded} ${cursor} bg-gray-500 bg-opacity-30 px-4 text-white outline-none placeholder:text-gray-400 `}
+        className={`h-8 ${width} ${rounded} ${
+          cursor ? "cursor-not-allowed" : ""
+        } bg-gray-500 bg-opacity-30 px-4 text-white outline-none placeholder:text-gray-400 `}
         placeholder={placeHolder}
         autoFocus={autoFocus}
         onChange={onChange}
         {...register}
         type={type}
         defaultValue={value}
-        disabled={cursor === "" || "평판 입력" ? false : true}
+        disabled={cursor ? true : false}
         autoComplete="off"
         maxLength={maxLength}
       />
