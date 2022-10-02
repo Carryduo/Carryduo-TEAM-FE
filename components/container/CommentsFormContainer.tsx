@@ -34,15 +34,15 @@ const CommentsFormContainer = ({ category, champId }: CommentsProps) => {
           rounded="rounded-2xl"
           width="w-full"
           placeHolder={
-            getCookie("myToken") === undefined ? "로그인 후 평판 작성이 가능합니다" : "평판입력"
+            getCookie("myToken") === undefined
+              ? "로그인 후 평판 작성이 가능합니다"
+              : "평판입력"
           }
           autoFocus={false}
           type="text"
           register={register("content", { required: true })}
           openSubmit={true}
-          cursor={
-            getCookie("myToken") === undefined ? "cursor-not-allowed" : ""
-          }
+          cursor={getCookie("myToken") === undefined ? true : false}
         />
       </form>
       <div className="mt-4 flex h-[calc(100%-3rem)] flex-col space-y-4 overflow-y-scroll">
