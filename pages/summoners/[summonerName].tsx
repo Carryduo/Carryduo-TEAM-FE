@@ -4,7 +4,6 @@ import Seo from "../../components/common/Seo";
 import CommentsFormContainer from "../../components/container/CommentsFormContainer";
 import SummonerDetailContainer from "../../components/container/SummonerDetailContainer";
 import { useGetSummoner } from "../../core/api/summoner";
-import { getCookie } from "../../util/servers/cookie";
 import LoadingContainer from "../../components/layouts/Handler/LoadingContainer";
 import { useRouter } from "next/router";
 
@@ -33,12 +32,10 @@ const Summoners = () => {
             summonerName={String(query.summonerName)}
           />
           <Grid width="w-full min-w-[350px]" height="h-[calc(100%+1rem)]">
-            {getCookie("myToken") === undefined ? null : (
-              <CommentsFormContainer
-                category="summoner"
-                champId={Summoner.summonerName}
-              />
-            )}
+            <CommentsFormContainer
+              category="summoner"
+              champId={Summoner.summonerName}
+            />
           </Grid>
         </>
       )}

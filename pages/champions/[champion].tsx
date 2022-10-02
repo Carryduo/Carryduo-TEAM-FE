@@ -2,7 +2,6 @@ import CommentsFormContainer from "../../components/container/CommentsFormContai
 import Grid from "../../components/common/Grid";
 import PageContainer from "../../components/common/PageContainer";
 import Seo from "../../components/common/Seo";
-import { getCookie } from "../../util/servers/cookie";
 import { useRouter } from "next/router";
 import ChampionDetailContainer from "../../components/container/ChampionDetailContainer";
 
@@ -20,12 +19,10 @@ const Champion = () => {
         </Grid>
       </div>
       <Grid width="w-full min-w-[550px]" height="h-[calc(100%+1rem)]">
-        {getCookie("myToken") === undefined ? null : (
-          <CommentsFormContainer
-            category="champ"
-            champId={Number(query.champion)}
-          />
-        )}
+        <CommentsFormContainer
+          category="champ"
+          champId={Number(query.champion)}
+        />
       </Grid>
     </PageContainer>
   );

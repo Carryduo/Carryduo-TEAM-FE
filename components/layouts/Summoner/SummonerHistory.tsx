@@ -15,7 +15,6 @@ const SummonerHistory = ({ Summoner }: Props) => {
       ) : (
         <div className="flex justify-around">
           <div>
-            <span>최근 전적</span>
             <HistoryDonut Summoner={Summoner} />
           </div>
           <div className="space-y-4">
