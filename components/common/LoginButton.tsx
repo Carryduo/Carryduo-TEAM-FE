@@ -9,7 +9,7 @@ const KakaoLogin = () => {
   return (
     <div
       onClick={onClick}
-      className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F8E326]"
+      className="cursor-pointer flex h-10 w-10 items-center justify-center rounded-full bg-[#F8E326]"
     >
       <Image
         alt=""

@@ -19,7 +19,7 @@ const HistoryGraph = ({ Summoner }: Props) => {
                   height: `${data.cnt * 10}px`,
                   animation: "test 1s ease-in-out",
                 }}
-                className={`absolute bottom-0 w-5 bg-blue-500`}
+                className={`absolute bottom-0 w-5 bg-[#5383E8]`}
               ></div>
             </div>
             <Image
