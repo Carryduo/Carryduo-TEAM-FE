@@ -12,7 +12,7 @@ const HistoryPlay = ({ Summoner }: Props) => {
         return (
           <div key={data.recentChampId} className="flex items-center space-x-2">
             <Image
-              width={32.5}
+              width={64}
               height={64}
               alt=""
               src={data.recentChampImg}

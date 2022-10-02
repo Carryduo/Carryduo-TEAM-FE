@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useSweet } from "../../../util/hooks/useSweet";
+import { getCookie } from "../../../util/servers/cookie";
 import Input from "../../common/Input";
 
 interface FormProps {
@@ -21,7 +22,9 @@ const HeaderMain = () => {
     <header className="flex h-24 w-full items-center justify-between">
       <div className="flex space-x-14">
         <Link href="/">
-          <span className="cursor-pointer text-2xl font-semibold">Carryduo</span>
+          <span className="cursor-pointer text-2xl font-semibold">
+            Carryduo
+          </span>
         </Link>
         <form onSubmit={handleSubmit(onValid)}>
           <Input
@@ -45,8 +48,10 @@ const HeaderMain = () => {
         >
           대전 시뮬레이션
         </span>
-        <Link href={`/setting`}>
-          <span className="cursor-pointer">설정</span>
+        <Link href={getCookie("myToken") === undefined ? "/login" : "/setting"}>
+          <span className="cursor-pointer">
+            {getCookie("myToken") === undefined ? "로그인" : "설정"}
+          </span>
         </Link>
       </div>
     </header>

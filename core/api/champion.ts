@@ -5,10 +5,10 @@ import { instance } from "./axios";
 
 interface ChampionSpells {
   id: string;
-  description: string;
+  desc: string;
   name: string;
   image: string;
-  tootip: string;
+  toolTip: string;
 }
 
 export interface Champion {

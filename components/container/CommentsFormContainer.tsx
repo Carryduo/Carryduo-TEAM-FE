@@ -8,6 +8,7 @@ import { useGetUserId } from "../../core/api/myProfile";
 import CommentBox from "../layouts/Comment/CommentBox";
 
 import Input from "../common/Input";
+import { getCookie } from "../../util/servers/cookie";
 
 interface CommentsProps {
   category: string;
@@ -32,11 +33,16 @@ const CommentsFormContainer = ({ category, champId }: CommentsProps) => {
         <Input
           rounded="rounded-2xl"
           width="w-full"
-          placeHolder="평판 입력"
+          placeHolder={
+            getCookie("myToken") === undefined ? "로그인 후 평판 작성이 가능합니다" : "평판입력"
+          }
           autoFocus={false}
           type="text"
           register={register("content", { required: true })}
           openSubmit={true}
+          cursor={
+            getCookie("myToken") === undefined ? "cursor-not-allowed" : ""
+          }
         />
       </form>
       <div className="mt-4 flex h-[calc(100%-3rem)] flex-col space-y-4 overflow-y-scroll">

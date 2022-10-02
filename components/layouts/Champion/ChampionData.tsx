@@ -1,6 +1,8 @@
+import { upperCase } from "lodash";
 import Image from "next/image";
 import { Champion } from "../../../core/api/champion";
 import { BlurData } from "../../../util/servers/BlurData";
+import SkillDescription from "../../common/Champion/SkillDescription";
 
 interface Props {
   Champion: Champion;
@@ -24,7 +26,7 @@ const ChampionData = ({ Champion }: Props) => {
       <div className="flex flex-col space-y-8">
         <span className="text-2xl">{Champion.champNameKo}</span>
         <div className="flex items-end space-x-2">
-          <div>
+          <div className="tooltip">
             <Image
               width={40}
               height={40}
@@ -35,10 +37,16 @@ const ChampionData = ({ Champion }: Props) => {
               blurDataURL={BlurData}
               className="rounded-md"
             />
+            <div className="tooltiptext tooltip-bottom">
+              <SkillDescription
+                name={Champion.skill[4].name}
+                desc={Champion.skill[4].desc}
+              />
+            </div>
           </div>
           {Champion.skill.slice(0, 4).map((data) => {
             return (
-              <div key={data.id}>
+              <div className="tooltip" key={data.id}>
                 <Image
                   width={48}
                   height={48}
@@ -49,6 +57,16 @@ const ChampionData = ({ Champion }: Props) => {
                   blurDataURL={BlurData}
                   className="rounded-md"
                 />
+                <div className="absolute bottom-0 right-0 mb-1 flex h-4 w-4 items-center justify-center bg-black">
+                  <span>{upperCase(data.id)}</span>
+                </div>
+                <div className="tooltiptext tooltip-bottom">
+                  <SkillDescription
+                    name={data.name}
+                    desc={data.desc}
+                    toolTip={data.toolTip}
+                  />
+                </div>
               </div>
             );
           })}
