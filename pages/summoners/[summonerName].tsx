@@ -5,19 +5,30 @@ import CommentsFormContainer from "../../components/container/CommentsFormContai
 import SummonerDetailContainer from "../../components/container/SummonerDetailContainer";
 import { useGetSummoner } from "../../core/api/summoner";
 import { useRouter } from "next/router";
+import LoadingContainer from "../../components/layouts/Handler/LoadingContainer";
 
 const Summoners = () => {
   const { query } = useRouter();
-  const { data: Summoner, error } = useGetSummoner(String(query.summonerName));
+  const {
+    data: Summoner,
+    error,
+    isFetching,
+  } = useGetSummoner(String(query.summonerName));
+  if (isFetching) {
+    // 검색 중 페이지 만들기
+    return (
+      <PageContainer>
+        <LoadingContainer text="유저를 검색중입니다" />
+      </PageContainer>
+    );
+  }
   return (
     <PageContainer space="space-x-4">
       <Seo
         title={Summoner === undefined ? "정보없음" : String(query.summonerName)}
       />
       {Summoner === undefined ? (
-        <Grid width="w-full" height="h-full">
-          <span>{error?.response.data.message}</span>
-        </Grid>
+        <LoadingContainer text={String(error?.response.data.message)} />
       ) : (
         <>
           <SummonerDetailContainer
