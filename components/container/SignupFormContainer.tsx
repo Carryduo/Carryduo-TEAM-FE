@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { PickChampion } from "../../core/config/pickChampion";
@@ -12,8 +12,6 @@ import SignupFooter from "../layouts/Signup/SignupFooter";
 import MyChamp from "../layouts/Signup/MyChamp";
 import Position from "../layouts/Signup/Position";
 import IntroContainer from "../layouts/Signup/IntroContainer";
-import { getCookie } from "../../util/servers/cookie";
-import KakaoLogin from "../common/LoginButton";
 import { useGetMyProfile, usePostMyProfile } from "../../core/api/myProfile";
 
 interface FormProps {
@@ -37,11 +35,11 @@ const SignupFormContainer = () => {
   const { register, handleSubmit, watch, reset } = useForm<FormProps>({
     defaultValues,
   });
-  React.useEffect(() => {
+  useEffect(() => {
     if (profile) reset({ ...defaultValues });
   }, [profile]);
   const { id } = useRecoilValue(PickChampion);
-  const [open, setOpen] = React.useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
   const { mutate } = usePostMyProfile();
   const onValid: SubmitHandler<FormProps> = (data) => {
     const options = {
