@@ -19,6 +19,7 @@ const MainPage = () => {
             <ChampionsContainer
               toLink={true}
               height="max-h-[calc(100%-3.5rem)]"
+              width="w-full"
             />
           </Grid>
           <Grid width="w-full" height="h-full">

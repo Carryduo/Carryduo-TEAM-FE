@@ -53,7 +53,7 @@ const Input = ({
           type="submit"
           className="absolute top-[2px] right-3 text-gray-400"
         >
-          <SearchIcon />
+          <SearchIcon className="w-6 h-6"/>
         </button>
       ) : null}
       {openSubmit ? (
@@ -61,7 +61,7 @@ const Input = ({
           type="submit"
           className="absolute top-[2px] right-3 text-gray-400"
         >
-          <AddIcon />
+          <AddIcon className="w-6 h-6"/>
         </button>
       ) : null}
     </div>

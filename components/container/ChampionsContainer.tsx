@@ -5,11 +5,16 @@ import Input from "../common/Input";
 import ChampionsList from "../layouts/Home/Champions";
 
 interface ChampionsContainerProps {
+  width: string;
   height: string;
   toLink: boolean;
 }
 
-const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
+const ChampionsContainer = ({
+  width,
+  height,
+  toLink,
+}: ChampionsContainerProps) => {
   const [value, setValue] = useState<string>("");
   const onChange = _.debounce((e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -25,7 +30,7 @@ const ChampionsContainer = ({ height, toLink }: ChampionsContainerProps) => {
         openSearch={true}
       />
       <div
-        className={`relative mt-4 grid ${height} grid-cols-5 grid-rows-[repeat(auto-fill,85px)] gap-2 overflow-hidden overflow-y-scroll`}
+        className={`relative mt-4 grid ${height} ${width} grid-cols-5 grid-rows-[repeat(auto-fill,85px)] gap-2 overflow-hidden overflow-y-scroll`}
       >
         <ChampionsList toLink={toLink} value={value} />
       </div>
