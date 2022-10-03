@@ -1,12 +1,12 @@
-import React from "react";
+import { Fragment, useState } from "react";
 import { useQuery } from "react-query";
 import { getDuo } from "../../core/api/duoChamps";
 
 const DuoRankContainer = () => {
-  const [pick, setPick] = React.useState<string>("combination");
+  const [pick, setPick] = useState<string>("combination");
   const { data } = useQuery(["getDuo", pick], () => getDuo(pick));
   return (
-    <React.Fragment>
+    <Fragment>
       <header className=" mb-2 flex h-7 w-full justify-around">
         <span onClick={() => setPick("combination")}>탑 + 정글</span>
         <span onClick={() => setPick("combination1")}>미드 + 정글</span>
@@ -40,7 +40,7 @@ const DuoRankContainer = () => {
           })}
         </div>
       </div>
-    </React.Fragment>
+    </Fragment>
   );
 };
 

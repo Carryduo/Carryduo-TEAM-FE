@@ -1,4 +1,4 @@
-import React from "react";
+import { memo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import {
   ICommentProps,
@@ -32,7 +32,7 @@ const CommentBox = ({
   const { mutate: Patch } = usePatchComments(commentId);
   const { mutateAsync: Update } = useUpdateComments(commentId, target);
   const { register, handleSubmit } = useForm<ICommentProps>();
-  const [open, setOpen] = React.useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
   const OpenInputComment = () => {
     setOpen((prev) => !prev);
   };
@@ -87,4 +87,4 @@ const CommentBox = ({
   );
 };
 
-export default React.memo(CommentBox);
+export default memo(CommentBox);
