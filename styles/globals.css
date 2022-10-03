@@ -27,7 +27,7 @@
   }
   /* padding 값 넣기*/
   .tooltip .tooltiptext {
-    @apply invisible w-[300px] bg-black rounded-md absolute p-2
+    @apply z-50 invisible w-[300px] bg-black rounded-md absolute p-2
   }
   
   .tooltip:hover .tooltiptext {
