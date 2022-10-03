@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import PageContainer from "../components/common/PageContainer";
+import LoadingContainer from "../components/layouts/Handler/LoadingContainer";
 import { instance } from "../core/api/axios";
-import { useSweet } from "../util/hooks/useSweet";
 import { useTime } from "../util/hooks/useTime";
 import { setCookie } from "../util/servers/cookie";
 
@@ -22,7 +23,11 @@ const Kakao = () => {
         router.back();
       });
   }, []);
-  return <span>로그인 중...</span>;
+  return (
+    <PageContainer>
+      <LoadingContainer text="로그인 중..." />
+    </PageContainer>
+  );
 };
 
 export default Kakao;

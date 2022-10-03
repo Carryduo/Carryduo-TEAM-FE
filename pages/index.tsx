@@ -3,17 +3,29 @@ import PageContainer from "../components/common/PageContainer";
 import Seo from "../components/common/Seo";
 import ChampionsContainer from "../components/container/ChampionsContainer";
 import DuoRankContainer from "../components/container/DuoRankContainer";
+import LoadingContainer from "../components/layouts/Handler/LoadingContainer";
+import { useLoading } from "../util/hooks/useLoading";
 
 const MainPage = () => {
+  const loading = useLoading();
   return (
     <PageContainer space="space-x-4">
       <Seo title="Home" />
-      <Grid width="w-[40rem]" height="h-full">
-        <ChampionsContainer toLink={true} height="max-h-[calc(100%-3.5rem)]" />
-      </Grid>
-      <Grid width="w-full" height="h-full">
-        <DuoRankContainer />
-      </Grid>
+      {loading ? (
+        <LoadingContainer text="loading..." />
+      ) : (
+        <>
+          <Grid width="w-[40rem]" height="h-full">
+            <ChampionsContainer
+              toLink={true}
+              height="max-h-[calc(100%-3.5rem)]"
+            />
+          </Grid>
+          <Grid width="w-full" height="h-full">
+            <DuoRankContainer />
+          </Grid>
+        </>
+      )}
     </PageContainer>
   );
 };
