@@ -32,8 +32,7 @@ const ChampionWinRateContainer = ({ category }: Props) => {
                   width={150}
                   height={150}
                   layout="fixed"
-                  placeholder="blur"
-                  blurDataURL={data.subChampId.champImg}
+                  priority
                 />
                 <span>{`${data.winrate}%`}</span>
               </div>

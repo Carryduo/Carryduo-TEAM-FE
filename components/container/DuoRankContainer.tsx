@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 import { Fragment, useState } from "react";
 import { useGetDuoRank } from "../../core/api/duoChamps";
 
@@ -35,8 +36,6 @@ const DuoRankContainer = () => {
                     width={56}
                     height={56}
                     layout="fixed"
-                    placeholder="blur"
-                    blurDataURL={data.mainChampId.champImg}
                   />
                   <Image
                     alt=""
@@ -44,8 +43,6 @@ const DuoRankContainer = () => {
                     width={56}
                     height={56}
                     layout="fixed"
-                    placeholder="blur"
-                    blurDataURL={data.subChampId.champImg}
                   />
                 </div>
                 <span>{data.tier}</span>
@@ -60,4 +57,4 @@ const DuoRankContainer = () => {
   );
 };
 
-export default DuoRankContainer;
+export default React.memo(DuoRankContainer);
