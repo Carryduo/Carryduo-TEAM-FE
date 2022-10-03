@@ -1,8 +1,15 @@
+import dynamic from "next/dynamic";
 import Grid from "../components/common/Grid";
 import PageContainer from "../components/common/PageContainer";
 import Seo from "../components/common/Seo";
-import ChampionsContainer from "../components/container/ChampionsContainer";
-import DuoRankContainer from "../components/container/DuoRankContainer";
+const ChampionsContainer = dynamic(
+  () => import("../components/container/ChampionsContainer"),
+  { ssr: false }
+);
+const DuoRankContainer = dynamic(
+  () => import("../components/container/DuoRankContainer"),
+  { ssr: false }
+);
 import LoadingContainer from "../components/layouts/Handler/LoadingContainer";
 import { useLoading } from "../util/hooks/useLoading";
 
