@@ -4,7 +4,7 @@ import PageContainer from "../../components/common/PageContainer";
 import Seo from "../../components/common/Seo";
 import { useRouter } from "next/router";
 import ChampionDetailContainer from "../../components/container/ChampionDetailContainer";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticPaths } from "next";
 
 const Champion = () => {
   const { query } = useRouter();
@@ -30,27 +30,6 @@ const Champion = () => {
 };
 
 export default Champion;
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const { data: Champions } = await instance.get("/champ");
-//   return {
-//     paths: Champions.map((data: Champions) => {
-//       return {
-//         params: {
-//           champion: data.id,
-//         },
-//       };
-//     }),
-//     fallback: false,
-//   };
-// };
-
-// export const getStaticProps = async (context: PageProps) => {
-//   const { champion } = context.params;
-//   return {
-//     props: { champion },
-//   };
-// };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   if (context.query.category === undefined) {
