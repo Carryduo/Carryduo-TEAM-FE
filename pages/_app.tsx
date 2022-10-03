@@ -3,13 +3,17 @@ import HeaderMain from "../components/container/Main/HeaderContainer";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import React from "react";
-import MainContainer from "../components/container/Main/MainContainer";
+const MainContainer = dynamic(
+  () => import("../components/container/Main/MainContainer"),
+  { ssr: false }
+);
 import { RecoilRoot } from "recoil";
 import LoadingContainer from "../components/layouts/Handler/LoadingContainer";
 import "../styles/globals.css";
 import "../styles/slick.css";
 import { useWindow } from "../util/hooks/useWindow";
 import PageContainer from "../components/common/PageContainer";
+import dynamic from "next/dynamic";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
