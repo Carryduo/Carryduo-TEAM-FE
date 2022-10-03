@@ -1,7 +1,6 @@
 import { upperCase } from "lodash";
 import Image from "next/image";
 import { Champion } from "../../../core/api/champion";
-import { BlurData } from "../../../util/servers/BlurData";
 import SkillDescription from "../../common/Champion/SkillDescription";
 
 interface Props {
@@ -20,7 +19,7 @@ const ChampionData = ({ Champion }: Props) => {
           layout="fixed"
           className="rounded-xl"
           placeholder="blur"
-          blurDataURL={BlurData}
+          blurDataURL={String(Champion.champImg)}
         />
       </div>
       <div className="flex flex-col space-y-8">
@@ -34,7 +33,7 @@ const ChampionData = ({ Champion }: Props) => {
               src={String(Champion.skill[4].image)}
               layout="fixed"
               placeholder="blur"
-              blurDataURL={BlurData}
+              blurDataURL={String(Champion.skill[4].image)}
               className="rounded-md"
             />
             <div className="tooltiptext tooltip-bottom">
@@ -54,7 +53,7 @@ const ChampionData = ({ Champion }: Props) => {
                   src={String(data.image)}
                   layout="fixed"
                   placeholder="blur"
-                  blurDataURL={BlurData}
+                  blurDataURL={String(data.image)}
                   className="rounded-md"
                 />
                 <div className="absolute bottom-0 right-0 mb-1 flex h-4 w-4 items-center justify-center bg-black">
