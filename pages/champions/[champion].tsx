@@ -7,6 +7,7 @@ import ChampionDetailContainer from "../../components/container/ChampionDetailCo
 import { GetStaticPaths } from "next";
 import { instance } from "../../core/api/axios";
 import { Champions } from "../../core/api/champions";
+import ChampionWinRateContainer from "../../components/container/ChampionWinRateContainer";
 
 interface Prop {
   champion: string;
@@ -26,7 +27,7 @@ const Champion = ({ champion }: Prop) => {
           <ChampionDetailContainer champId={Number(champion)} />
         </Grid>
         <Grid width="w-[900px]" height="h-1/2">
-          <span>챔피언 조합 승률 모스트</span>
+          <ChampionWinRateContainer category={String(champion)}/>
         </Grid>
       </div>
       <Grid width="w-full min-w-[300px]" height="h-[calc(100%+1rem)]">

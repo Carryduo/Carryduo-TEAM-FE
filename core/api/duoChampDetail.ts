@@ -1,15 +1,19 @@
 import { useQuery } from "react-query";
 import { ErrorHandle } from "../config/ErrorType";
 import { instance } from "./axios";
-import { DuoChampion } from "./duoChampDetail";
+
+export interface DuoChampion {
+  champId: string;
+  champNameKo: string;
+  champNameEn: string;
+  champImg: string;
+}
 
 interface IDuoChamp {
   id: string;
-  category: number;
-  tier: number;
-  winrate: string;
+  category: string;
+  winrate: number;
   sampleNum: number;
-  mainChampId: DuoChampion;
   subChampId: DuoChampion;
 }
 
@@ -17,11 +21,11 @@ export interface IDuoChamps {
   data: IDuoChamp[];
 }
 
-export const useGetDuoRank = (category: string) => {
+export const useGetDuoChampRank = (category: string, position: string) => {
   return useQuery<IDuoChamps, ErrorHandle, IDuoChamp[]>(
-    ["DuoRank", category],
+    ["DuoChampRank", category, position],
     () => {
-      return instance.get(`/combination-stat/${category}`);
+      return instance.get(`/combination-stat/champ/${category}/${position}`);
     },
     {
       select: (data) => data.data,
