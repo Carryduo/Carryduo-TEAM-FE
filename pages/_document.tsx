@@ -24,6 +24,10 @@ class MyDocument extends Document {
             property="og:image"
             content="https://avatars.githubusercontent.com/u/79081800?v=4"
           />
+          <meta
+            httpEquiv="Content-Security-Policy"
+            content="upgrade-insecure-requests"
+          />
         </Head>
         <body>
           <Main />
