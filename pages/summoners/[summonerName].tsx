@@ -4,24 +4,17 @@ import Seo from "../../components/common/Seo";
 import CommentsFormContainer from "../../components/container/CommentsFormContainer";
 import SummonerDetailContainer from "../../components/container/SummonerDetailContainer";
 import { useGetSummoner } from "../../core/api/summoner";
-import LoadingContainer from "../../components/layouts/Handler/LoadingContainer";
 import { useRouter } from "next/router";
 
 const Summoners = () => {
   const { query } = useRouter();
-  const {
-    data: Summoner,
-    error,
-    isLoading,
-  } = useGetSummoner(String(query.summonerName));
+  const { data: Summoner, error } = useGetSummoner(String(query.summonerName));
   return (
     <PageContainer space="space-x-4">
       <Seo
         title={Summoner === undefined ? "정보없음" : String(query.summonerName)}
       />
-      {isLoading ? (
-        <LoadingContainer />
-      ) : Summoner === undefined ? (
+      {Summoner === undefined ? (
         <Grid width="w-full" height="h-full">
           <span>{error?.response.data.message}</span>
         </Grid>
