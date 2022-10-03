@@ -3,7 +3,7 @@ import { ErrorHandle } from "../config/ErrorType";
 import { instance } from "./axios";
 
 export interface DuoChampion {
-  champId: string;
+  id: string;
   champNameKo: string;
   champNameEn: string;
   champImg: string;
