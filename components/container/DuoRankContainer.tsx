@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { Fragment, useState } from "react";
 import { useGetDuoRank } from "../../core/api/duoChamps";
@@ -30,20 +31,42 @@ const DuoRankContainer = () => {
               >
                 <span>{i + 1}</span>
                 <div className="flex space-x-2">
-                  <Image
-                    alt=""
-                    src={data.mainChampId.champImg}
-                    width={56}
-                    height={56}
-                    layout="fixed"
-                  />
-                  <Image
-                    alt=""
-                    src={data.subChampId.champImg}
-                    width={56}
-                    height={56}
-                    layout="fixed"
-                  />
+                  <Link
+                    href={{
+                      pathname: `/champions/${data.mainChampId.id}`,
+                      query: {
+                        name: data.mainChampId.champNameKo,
+                        category: "champ",
+                      },
+                    }}
+                  >
+                    <Image
+                      alt=""
+                      src={data.mainChampId.champImg}
+                      width={56}
+                      height={56}
+                      layout="fixed"
+                      className="cursor-pointer"
+                    />
+                  </Link>
+                  <Link
+                    href={{
+                      pathname: `/champions/${data.subChampId.id}`,
+                      query: {
+                        name: data.subChampId.champNameKo,
+                        category: "champ",
+                      },
+                    }}
+                  >
+                    <Image
+                      alt=""
+                      src={data.subChampId.champImg}
+                      width={56}
+                      height={56}
+                      layout="fixed"
+                      className="cursor-pointer"
+                    />
+                  </Link>
                 </div>
                 <span>{data.tier}</span>
                 <span>{`${data.winrate}%`}</span>

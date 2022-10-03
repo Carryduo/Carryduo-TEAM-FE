@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { useGetDuoChampRank } from "../../core/api/duoChampDetail";
 
@@ -26,14 +27,25 @@ const ChampionWinRateContainer = ({ category }: Props) => {
           Duo.map((data) => {
             return (
               <div key={data.id}>
-                <Image
-                  alt=""
-                  src={data.subChampId.champImg}
-                  width={150}
-                  height={150}
-                  layout="fixed"
-                  priority
-                />
+                <Link
+                  href={{
+                    pathname: `/champions/${data.subChampId.id}`,
+                    query: {
+                      name: data.subChampId.champNameKo,
+                      category: "champ",
+                    },
+                  }}
+                >
+                  <Image
+                    alt=""
+                    src={data.subChampId.champImg}
+                    width={150}
+                    height={150}
+                    layout="fixed"
+                    priority
+                    className="cursor-pointer"
+                  />
+                </Link>
                 <span>{`${data.winrate}%`}</span>
               </div>
             );
