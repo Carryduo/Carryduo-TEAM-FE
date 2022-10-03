@@ -15,7 +15,6 @@ const Summoners = () => {
     isFetching,
   } = useGetSummoner(String(query.summonerName));
   if (isFetching) {
-    // 검색 중 페이지 만들기
     return (
       <PageContainer>
         <LoadingContainer text="유저를 검색중입니다" />
