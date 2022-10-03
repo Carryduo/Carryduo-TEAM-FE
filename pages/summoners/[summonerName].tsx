@@ -34,7 +34,7 @@ const Summoners = () => {
             Summoner={Summoner}
             summonerName={String(query.summonerName)}
           />
-          <Grid width="w-full min-w-[350px]" height="h-[calc(100%+1rem)]">
+          <Grid width="w-full min-w-[300px]" height="h-[calc(100%+1rem)]">
             <CommentsFormContainer
               category="summoner"
               champId={Summoner.summonerName}

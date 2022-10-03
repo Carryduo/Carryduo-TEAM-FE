@@ -51,7 +51,7 @@ const CommentBox = ({
   };
   return (
     <div className="flex w-full justify-between">
-      <div className="flex flex-col">
+      <div className="flex flex-col w-[calc(100%-50px)]">
         {open ? (
           <form onSubmit={handleSubmit(UpdateComment)}>
             <Input

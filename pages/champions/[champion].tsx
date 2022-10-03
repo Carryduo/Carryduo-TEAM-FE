@@ -29,7 +29,7 @@ const Champion = ({ champion }: Prop) => {
           <span>챔피언 조합 승률 모스트</span>
         </Grid>
       </div>
-      <Grid width="w-full min-w-[550px]" height="h-[calc(100%+1rem)]">
+      <Grid width="w-full min-w-[300px]" height="h-[calc(100%+1rem)]">
         <CommentsFormContainer category="champ" champId={Number(champion)} />
       </Grid>
     </PageContainer>
