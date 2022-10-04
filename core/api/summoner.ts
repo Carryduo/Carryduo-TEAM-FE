@@ -21,6 +21,7 @@ interface RecentChamp {
   recentChampLose: number;
   recentChampTotal: number;
   recentChampRate: number;
+  recentChampName:string;
 }
 
 interface History {

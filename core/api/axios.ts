@@ -8,10 +8,6 @@ export const instance = axios.create({
   },
 });
 
-export const MockApi = axios.create({
-  baseURL: "https://62a09c0fa9866630f8134879.mockapi.io/",
-});
-
 instance.interceptors.request.use((config: AxiosRequestConfig) => {
   if (config.headers === undefined) return;
   config.headers["authorization"] = `Bearer ${getCookie("myToken")}`;

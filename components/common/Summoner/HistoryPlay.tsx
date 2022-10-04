@@ -16,7 +16,7 @@ const HistoryPlay = ({ Summoner }: Props) => {
               href={{
                 pathname: `/champions/${data.recentChampId}`,
                 query: {
-                  name: data.recentChampId,
+                  name: data.recentChampName,
                   category: "champ",
                 },
               }}
