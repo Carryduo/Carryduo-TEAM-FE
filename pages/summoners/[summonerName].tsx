@@ -6,9 +6,11 @@ import SummonerDetailContainer from "../../components/container/SummonerDetailCo
 import { useGetSummoner } from "../../core/api/summoner";
 import { useRouter } from "next/router";
 import LoadingContainer from "../../components/layouts/Handler/LoadingContainer";
+import { useLoading } from "../../util/hooks/useLoading";
 
 const Summoners = () => {
   const { query } = useRouter();
+  const loading = useLoading();
   const {
     data: Summoner,
     error,
@@ -26,7 +28,9 @@ const Summoners = () => {
       <Seo
         title={Summoner === undefined ? "정보없음" : String(query.summonerName)}
       />
-      {Summoner === undefined ? (
+      {loading ? (
+        <LoadingContainer text="loading..." />
+      ) : Summoner === undefined ? (
         <LoadingContainer text={String(error?.response.data.message)} />
       ) : (
         <>
