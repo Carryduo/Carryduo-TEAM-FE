@@ -1,30 +1,26 @@
-import { useQuery } from "react-query";
-import { ErrorHandle } from "../config/ErrorType";
-import { instance } from "./axios";
-
-interface MostChamp {
+export interface MostChamp {
   id: string;
   champNameKo: string;
   champNameEn: string;
   champImg: string;
 }
 
-interface Position {
+export interface Position {
   id: number;
   cnt: number;
 }
 
-interface RecentChamp {
+export interface RecentChamp {
   recentChampId: number;
   recentChampImg: string;
   recentChampWin: number;
   recentChampLose: number;
   recentChampTotal: number;
   recentChampRate: number;
-  recentChampName:string;
+  recentChampName: string;
 }
 
-interface History {
+export interface History {
   KDA: number;
   total: number;
   win: number;
@@ -49,18 +45,6 @@ export interface Summoner {
   history: History;
 }
 
-interface ISummoner {
+export interface ISummoner {
   data: Summoner;
 }
-
-export const useGetSummoner = (summonerName: string) => {
-  return useQuery<ISummoner, ErrorHandle, Summoner>(
-    ["Summoner", summonerName],
-    () => {
-      return instance.get(`/summoner/${summonerName}`);
-    },
-    {
-      select: (data) => data.data,
-    }
-  );
-};

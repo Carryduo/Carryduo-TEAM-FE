@@ -1,11 +1,11 @@
 import { memo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import {
-  ICommentProps,
   useDeleteComments,
   usePatchComments,
   useUpdateComments,
-} from "../../../core/api/comments";
+} from "../../../core/api/comments/queries";
+import { ICommentProps } from "../../../core/api/comments/types";
 import { useTimeZone } from "../../../util/hooks/useTimeZone";
 import Input from "../../common/Input";
 
@@ -51,7 +51,7 @@ const CommentBox = ({
   };
   return (
     <div className="flex w-full justify-between">
-      <div className="flex flex-col w-[calc(100%-50px)]">
+      <div className="flex w-[calc(100%-50px)] flex-col">
         {open ? (
           <form onSubmit={handleSubmit(UpdateComment)}>
             <Input

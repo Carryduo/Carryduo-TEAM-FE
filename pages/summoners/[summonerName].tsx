@@ -3,10 +3,10 @@ import PageContainer from "../../components/common/PageContainer";
 import Seo from "../../components/common/Seo";
 import CommentsFormContainer from "../../components/container/CommentsFormContainer";
 import SummonerDetailContainer from "../../components/container/SummonerDetailContainer";
-import { useGetSummoner } from "../../core/api/summoner";
 import { useRouter } from "next/router";
 import LoadingContainer from "../../components/layouts/Handler/LoadingContainer";
 import { useLoading } from "../../util/hooks/useLoading";
+import { useGetSummoner } from "../../core/api/summoner/queries";
 
 const Summoners = () => {
   const { query } = useRouter();

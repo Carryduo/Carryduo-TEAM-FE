@@ -1,4 +1,4 @@
-import { ChampionMostSummoner } from "../../../core/api/champion";
+import { ChampionMostSummoner } from "../../../core/api/champion/types";
 import { useTier } from "../../../util/hooks/useTier";
 
 interface Props {

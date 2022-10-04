@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Summoner } from "../../../core/api/summoner";
+import { Summoner } from "../../../core/api/summoner/types";
 
 interface Props {
   summonerName: string;

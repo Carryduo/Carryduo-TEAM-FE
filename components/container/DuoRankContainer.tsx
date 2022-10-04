@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Fragment, useState } from "react";
-import { useGetDuoRank } from "../../core/api/duoChamps";
+import { useGetDuoRank } from "../../core/api/duoChampions/queries";
 
 const DuoRankContainer = () => {
   const [pick, setPick] = useState<string>("top-jungle");
@@ -40,14 +40,16 @@ const DuoRankContainer = () => {
                       },
                     }}
                   >
-                    <Image
-                      alt=""
-                      src={data.mainChampId.champImg}
-                      width={56}
-                      height={56}
-                      layout="fixed"
-                      className="cursor-pointer"
-                    />
+                    <a>
+                      <Image
+                        alt=""
+                        src={data.mainChampId.champImg}
+                        width={56}
+                        height={56}
+                        layout="fixed"
+                        className="cursor-pointer"
+                      />
+                    </a>
                   </Link>
                   <Link
                     href={{
@@ -58,14 +60,16 @@ const DuoRankContainer = () => {
                       },
                     }}
                   >
-                    <Image
-                      alt=""
-                      src={data.subChampId.champImg}
-                      width={56}
-                      height={56}
-                      layout="fixed"
-                      className="cursor-pointer"
-                    />
+                    <a>
+                      <Image
+                        alt=""
+                        src={data.subChampId.champImg}
+                        width={56}
+                        height={56}
+                        layout="fixed"
+                        className="cursor-pointer"
+                      />
+                    </a>
                   </Link>
                 </div>
                 <span>{data.tier}</span>

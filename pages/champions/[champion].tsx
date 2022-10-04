@@ -6,10 +6,10 @@ import { useRouter } from "next/router";
 import ChampionDetailContainer from "../../components/container/ChampionDetailContainer";
 import { GetStaticPaths } from "next";
 import { instance } from "../../core/api/axios";
-import { Champions } from "../../core/api/champions";
 import ChampionWinRateContainer from "../../components/container/ChampionWinRateContainer";
 import { useLoading } from "../../util/hooks/useLoading";
 import LoadingContainer from "../../components/layouts/Handler/LoadingContainer";
+import { Champions } from "../../core/api/champions/types";
 
 interface Prop {
   champion: string;
