@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Summoner } from "../../../core/api/summoner";
+import { Summoner } from "../../../core/api/summoner/types";
 
 interface Props {
   Summoner: Summoner;
@@ -21,15 +21,17 @@ const HistoryPlay = ({ Summoner }: Props) => {
                 },
               }}
             >
-              <Image
-                width={64}
-                height={64}
-                alt=""
-                src={data.recentChampImg}
-                layout="fixed"
-                priority
-                className="rounded-md"
-              />
+              <a>
+                <Image
+                  width={64}
+                  height={64}
+                  alt=""
+                  src={data.recentChampImg}
+                  layout="fixed"
+                  priority
+                  className="rounded-md"
+                />
+              </a>
             </Link>
             <span className="text-sm text-gray-400">{`${data.recentChampRate}% `}</span>
             <span className="text-sm text-gray-400">{`( ${data.recentChampWin}승 ${data.recentChampLose}패 )`}</span>
