@@ -1,4 +1,4 @@
-import { Summoner } from "../../core/api/summoner";
+import { Summoner } from "../../core/api/summoner/types";
 import Grid from "../common/Grid";
 import SummonerData from "../layouts/Summoner/SummonerData";
 import SummonerHistory from "../layouts/Summoner/SummonerHistory";

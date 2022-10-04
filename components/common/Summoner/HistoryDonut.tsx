@@ -1,6 +1,6 @@
 import { Doughnut } from "react-chartjs-2";
-import { Summoner } from "../../../core/api/summoner";
 import { Chart as ChartJS, ArcElement } from "chart.js";
+import { Summoner } from "../../../core/api/summoner/types";
 
 interface Props {
   Summoner: Summoner;

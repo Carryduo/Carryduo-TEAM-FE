@@ -1,7 +1,7 @@
 import {
   useGetChampDetail,
   useGetMostChampSummoner,
-} from "../../core/api/champion";
+} from "../../core/api/champion/queries";
 import ChampionData from "../layouts/Champion/ChampionData";
 import MostSummonerData from "../layouts/Champion/MostSummonerData";
 

@@ -1,4 +1,4 @@
-import { Summoner } from "../../../core/api/summoner";
+import { Summoner } from "../../../core/api/summoner/types";
 import HistoryDonut from "../../common/Summoner/HistoryDonut";
 import HistoryGraph from "../../common/Summoner/HistoryGraph";
 import HistoryPlay from "../../common/Summoner/HistoryPlay";

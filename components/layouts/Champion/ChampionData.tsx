@@ -1,6 +1,6 @@
 import { upperCase } from "lodash";
 import Image from "next/image";
-import { Champion } from "../../../core/api/champion";
+import { Champion } from "../../../core/api/champion/types";
 import SkillDescription from "../../common/Champion/SkillDescription";
 
 interface Props {

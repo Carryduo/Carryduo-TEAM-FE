@@ -1,14 +1,14 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import {
-  ICommentProps,
-  useGetComments,
-  usePostComments,
-} from "../../core/api/comments";
-import { useGetUserId } from "../../core/api/myProfile";
 import CommentBox from "../layouts/Comment/CommentBox";
 
 import Input from "../common/Input";
 import { getCookie } from "../../util/servers/cookie";
+import {
+  useGetComments,
+  usePostComments,
+} from "../../core/api/comments/queries";
+import { useGetUserId } from "../../core/api/profile/queries";
+import { ICommentProps } from "../../core/api/comments/types";
 
 interface CommentsProps {
   category: string;

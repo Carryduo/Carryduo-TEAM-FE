@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useSetRecoilState } from "recoil";
-import { useGetChamps } from "../../../core/api/champions";
+import { useGetChamps } from "../../../core/api/champions/queries";
 import { PickChampion } from "../../../core/config/pickChampion";
 
 interface ChampionsContainerProps {
