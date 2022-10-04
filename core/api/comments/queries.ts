@@ -1,31 +1,9 @@
 import { useMutation, useQuery } from "react-query";
-import { queryClient } from "../../pages/_app";
-import { useSweet } from "../../util/hooks/useSweet";
-import { ErrorHandle } from "../config/ErrorType";
-import { instance } from "./axios";
-
-export interface ICommentProps {
-  content: string;
-}
-
-interface Comment {
-  champId: string;
-  id: string;
-  category: string;
-  content: string;
-  reportNum: string;
-  createdAt: string;
-  userId: {
-    enableChat: boolean;
-    id: string;
-    nickname: string;
-    profileImg: string;
-  };
-}
-
-interface IComments {
-  data: Comment[];
-}
+import { queryClient } from "../../../pages/_app";
+import { useSweet } from "../../../util/hooks/useSweet";
+import { ErrorHandle } from "../../config/ErrorType";
+import { instance } from "../axios";
+import { Comment, ICommentProps, IComments } from "./types";
 
 export const useGetComments = (category: string, target: number | string) => {
   return useQuery<IComments, ErrorHandle, Comment[]>(
