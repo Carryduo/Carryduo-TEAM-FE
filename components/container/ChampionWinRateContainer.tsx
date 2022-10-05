@@ -4,13 +4,13 @@ import { useState } from "react";
 import { useGetDuoChampRank } from "../../core/api/duoChampion/queries";
 import DuoRankPickLine from "../common/DuoRank/DuoRankPickLine";
 import Position from "../../core/config/ChampionPosition.json";
-
 interface Props {
   category: string;
+  line: string;
 }
 
-const ChampionWinRateContainer = ({ category }: Props) => {
-  const [pick, setPick] = useState<string>("top");
+const ChampionWinRateContainer = ({ category, line }: Props) => {
+  const [pick, setPick] = useState<string>(line);
   const { data: Duo } = useGetDuoChampRank(category, pick);
   return (
     <div className=" h-full w-full p-2">
@@ -28,13 +28,16 @@ const ChampionWinRateContainer = ({ category }: Props) => {
           );
         })}
       </header>
-      <div className="flex space-x-12 justify-center items-center h-full w-full pb-12">
+      <div className="flex h-full w-full items-center justify-center space-x-12 pb-12">
         {Duo?.length === undefined ? (
-          <span>데이터 없음</span>
+          <span>데이터가 없거나 부족합니다</span>
         ) : (
           Duo.map((data) => {
             return (
-              <div key={data.id} className="flex flex-col items-center space-y-4">
+              <div
+                key={data.id}
+                className="flex flex-col items-center space-y-4"
+              >
                 <Link
                   href={{
                     pathname: `/champions/${data.subChampId.id}`,

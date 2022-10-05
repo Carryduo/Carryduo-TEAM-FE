@@ -10,16 +10,18 @@ import ChampionWinRateContainer from "../../components/container/ChampionWinRate
 import { useLoading } from "../../util/hooks/useLoading";
 import LoadingContainer from "../../components/layouts/Handler/LoadingContainer";
 import { Champions } from "../../core/api/champions/types";
+import { useGetPosition } from "../../util/hooks/useGetPosition";
 
 interface Prop {
   champion: string;
+  line: string;
 }
 
 interface PageProps {
   params: Prop;
 }
 
-const Champion = ({ champion }: Prop) => {
+const Champion = ({ champion, line }: Prop) => {
   const { query } = useRouter();
   const loading = useLoading();
   return (
@@ -34,7 +36,10 @@ const Champion = ({ champion }: Prop) => {
               <ChampionDetailContainer champId={Number(champion)} />
             </Grid>
             <Grid width="w-[900px]" height="h-1/2">
-              <ChampionWinRateContainer category={String(champion)} />
+              <ChampionWinRateContainer
+                category={String(champion)}
+                line={line}
+              />
             </Grid>
           </div>
           <Grid width="w-full min-w-[300px]" height="h-[calc(100%+1rem)]">
@@ -67,7 +72,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = async (context: PageProps) => {
   const { champion } = context.params;
+  const res = await instance.get(`/champ/${champion}`);
+  let num = String(Math.max(...Object.values(res.data.rate).map(Number)));
+  if (num.length === 2) {
+    num = num + ".00";
+  } else if (num.length === 3) {
+    num = num + ".00";
+  } else if (num.includes(".") && num.length === 4) {
+    num = num + "0";
+  }
+  const line = useGetPosition(res.data.rate, num);
   return {
-    props: { champion },
+    props: { champion, line },
   };
 };
