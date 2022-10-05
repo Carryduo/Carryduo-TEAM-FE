@@ -1,7 +1,11 @@
 import { getShadowColor } from "../../../core/config/shadowColor";
 import { useShadow } from "../../../util/hooks/useShadow";
 
-const DuoRankPickLine = () => {
+interface Props {
+  animate: string;
+}
+
+const DuoRankPickLine = ({ animate }: Props) => {
   const [color] = useShadow(getShadowColor);
   return (
     <div
@@ -15,7 +19,7 @@ const DuoRankPickLine = () => {
           : color === 4
           ? "bg-[#FF7637]"
           : "bg-gray-700"
-      } animate-line`}
+      } ${animate}`}
     ></div>
   );
 };

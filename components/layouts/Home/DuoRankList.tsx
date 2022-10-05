@@ -24,7 +24,7 @@ const DuoRankList = ({ pick }: Props) => {
                 <>
                   <span className="pl-2 text-gray-400">{i + 1}</span>
                   <div className="flex items-center space-x-6">
-                    <div className="flex w-[170px] items-center space-x-2 ">
+                    <div className="flex w-[170px] h-14 items-center space-x-2 ">
                       <Link
                         href={{
                           pathname: `/champions/${data.mainChampId.id}`,
@@ -41,7 +41,6 @@ const DuoRankList = ({ pick }: Props) => {
                             width={56}
                             height={56}
                             layout="fixed"
-                            className="cursor-pointer"
                           />
                         </a>
                       </Link>
@@ -50,7 +49,7 @@ const DuoRankList = ({ pick }: Props) => {
                       </span>
                     </div>
                     <span>+</span>
-                    <div className="flex w-[170px] items-center space-x-2">
+                    <div className="flex w-[170px] h-14 items-center space-x-2">
                       <Link
                         href={{
                           pathname: `/champions/${data.subChampId.id}`,
@@ -67,7 +66,6 @@ const DuoRankList = ({ pick }: Props) => {
                             width={56}
                             height={56}
                             layout="fixed"
-                            className="cursor-pointer"
                           />
                         </a>
                       </Link>
@@ -76,7 +74,9 @@ const DuoRankList = ({ pick }: Props) => {
                       </span>
                     </div>
                   </div>
-                  <DuoRankTier rank={data.tier} />
+                  <div className="flex w-full justify-center">
+                    <DuoRankTier rank={data.tier} />
+                  </div>
                   <span className="ml-2 text-center text-gray-300">{`${data.winrate}%`}</span>
                   <span className="text-center text-gray-300">
                     {data.sampleNum}
