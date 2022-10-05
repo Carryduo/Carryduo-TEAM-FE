@@ -9,7 +9,7 @@ const KakaoLogin = () => {
   return (
     <div
       onClick={onClick}
-      className="cursor-pointer flex h-10 w-10 items-center justify-center rounded-full bg-[#F8E326]"
+      className="cursor-pointer space-x-4 flex h-10 w-64 items-center justify-center rounded-md bg-[#F8E326]"
     >
       <Image
         alt=""
@@ -19,6 +19,7 @@ const KakaoLogin = () => {
         layout="fixed"
         priority= {true}
       />
+      <span className="text-black">카카오 로그인</span>
     </div>
   );
 };

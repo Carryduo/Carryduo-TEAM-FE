@@ -24,7 +24,7 @@ const SummonerData = ({ Summoner, summonerName }: Props) => {
       <div className="space-y-10">
         <span className="text-2xl">{summonerName}</span>
         <div className="flex items-center space-x-8">
-          <Image
+          {Summoner.tierImg === "" ? <span>랭크 전적이 없습니다</span>: <><Image
             width={64}
             height={73}
             alt=""
@@ -44,7 +44,7 @@ const SummonerData = ({ Summoner, summonerName }: Props) => {
               </div>
               <span className=" text-gray-400">{`승률 ${Summoner.winRate}%`}</span>
             </div>
-          </div>
+          </div></>}
         </div>
       </div>
     </>
