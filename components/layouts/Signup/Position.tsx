@@ -28,7 +28,7 @@ const Position = ({ register, watch }: PositionFormProp) => {
               watch !== "Top" ? "opacity-30" : ""
             }`}
             layout="fixed"
-            priority
+            placeholder="blur"
           />
         </label>
         <label>
@@ -42,7 +42,7 @@ const Position = ({ register, watch }: PositionFormProp) => {
               watch !== "Jungle" ? "opacity-30" : ""
             }`}
             layout="fixed"
-            priority
+            placeholder="blur"
           />
         </label>
         <label>
@@ -56,7 +56,7 @@ const Position = ({ register, watch }: PositionFormProp) => {
               watch !== "Mid" ? "opacity-30" : ""
             }`}
             layout="fixed"
-            priority
+            placeholder="blur"
           />
         </label>
         <label>
@@ -70,7 +70,7 @@ const Position = ({ register, watch }: PositionFormProp) => {
               watch !== "Bot" ? "opacity-30" : ""
             }`}
             layout="fixed"
-            priority
+            placeholder="blur"
           />
         </label>
         <label>
@@ -84,7 +84,7 @@ const Position = ({ register, watch }: PositionFormProp) => {
               watch !== "Sup" ? "opacity-30" : ""
             }`}
             layout="fixed"
-            priority
+            placeholder="blur"
           />
         </label>
       </div>
