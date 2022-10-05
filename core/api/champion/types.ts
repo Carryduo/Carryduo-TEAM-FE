@@ -6,6 +6,14 @@ export interface ChampionSpells {
   toolTip: string;
 }
 
+export interface ChampionPosition {
+  top: string;
+  jungle: string;
+  mid: string;
+  ad: string;
+  support: string;
+}
+
 export interface Champion {
   id: string;
   winRate: string;
@@ -14,6 +22,7 @@ export interface Champion {
   champNameKo: string;
   champNameEn: string;
   champImg: string;
+  rate: ChampionPosition[];
   skill: ChampionSpells[];
 }
 
