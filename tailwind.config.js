@@ -19,15 +19,20 @@ module.exports = {
           "0%": { bottom: 0 },
           "100%": { bottom: 100 },
         },
-        line: {
+        lgLine: {
           "0%": { width: 0 },
           "100%": { width: "140px" },
+        },
+        smLine: {
+          "0%": { width: 0 },
+          "100%": { width: "50px" },
         },
       },
       animation: {
         wiggle: "wiggle 0.4s ease-in-out both",
         graph: "graph 1s both",
-        line: "line 0.4s both",
+        lgLine: "lgLine 0.4s both",
+        smLine: "smLine 0.4s both",
       },
     },
   },

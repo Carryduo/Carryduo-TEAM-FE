@@ -16,7 +16,7 @@ const ChampionDetailContainer = ({ champId }: Props) => {
     <>
       <div className="flex h-full items-center space-x-10 p-2">
         {Champion === undefined ? null : <ChampionData Champion={Champion} />}
-        <div className="flex flex-col">
+        <div className="flex flex-col justify-start h-[200px] p-2">
           {MostSummoner === undefined ? null : (
             <MostSummonerData MostSummoner={MostSummoner} />
           )}

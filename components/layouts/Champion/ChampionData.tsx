@@ -10,14 +10,14 @@ interface Props {
 const ChampionData = ({ Champion }: Props) => {
   return (
     <>
-      <div>
+      <div className="w-[200px] h-[200px] rounded-xl overflow-hidden">
         <Image
           width={200}
           height={200}
           alt=""
           src={String(Champion.champImg)}
           layout="fixed"
-          className="rounded-xl"
+          className="scale-110"
           placeholder="blur"
           blurDataURL={String(Champion.champImg)}
         />

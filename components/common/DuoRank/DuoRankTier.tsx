@@ -22,7 +22,7 @@ const DuoRankTier = ({ rank }: Props) => {
       : rank === 5
       ? rank5
       : rank5;
-  return <Image alt={String(rank)} src={DuoRank} width={24} height={24} priority/>;
+  return <Image alt={String(rank)} src={DuoRank} width={24} height={24} priority layout="fixed"/>;
 };
 
 export default DuoRankTier;
