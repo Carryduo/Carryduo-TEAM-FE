@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 </>
               ) : (
                 <PageContainer>
-                  <LoadingContainer text="Mobile 환경에서는 해당 사이트를 이용하실 수 없습니다" />
+                  <LoadingContainer text="pc를 제외한 다른 환경에서는 해당 사이트를 이용하실 수 없습니다" />
                 </PageContainer>
               )}
             </MainContainer>
