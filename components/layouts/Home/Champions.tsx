@@ -63,7 +63,7 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                   }
                 />
               )}
-              <span className="whitespace-nowrap text-xs">
+              <span className="whitespace-nowrap text-xs font-medium">
                 {data.champNameKo.length <= 5
                   ? data.champNameKo
                   : `${data.champNameKo.substring(0, 3)}...`}

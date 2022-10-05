@@ -22,7 +22,7 @@ const MainPage = () => {
               width="w-[420px]"
             />
           </Grid>
-          <Grid width="w-full" height="h-full">
+          <Grid width="min-w-[780px] w-full" height="h-full">
             <DuoRankContainer />
           </Grid>
         </>
