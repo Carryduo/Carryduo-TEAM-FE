@@ -51,7 +51,7 @@ const CommentBox = ({
   };
   return (
     <div className="flex w-full justify-between">
-      <div className="flex w-[calc(100%-50px)] flex-col">
+      <div className="flex w-[calc(100%-80px)] flex-col">
         {open ? (
           <form onSubmit={handleSubmit(UpdateComment)}>
             <Input
@@ -67,7 +67,7 @@ const CommentBox = ({
         <span>{userNickName}</span>
         <span>{useTimeZone(createdAt)}</span>
       </div>
-      <div>
+      <div className="w-[80px] flex space-x-2 justify-end">
         {userId === tokenId ? (
           <>
             <span className="text-blue-300" onClick={OpenInputComment}>

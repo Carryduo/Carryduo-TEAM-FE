@@ -8,7 +8,7 @@ interface Props {
 
 const HistoryGraph = ({ Summoner }: Props) => {
   return (
-    <div className="flex space-x-2">
+    <div className="flex space-x-8">
       {Summoner.history.positions.map((data) => {
         return (
           <div key={data.id} className="flex flex-col space-y-2">

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Summoner } from "../../../core/api/summoner/types";
 
 interface Props {
@@ -7,21 +8,33 @@ interface Props {
 
 const SummonerMostChamps = ({ Summoner }: Props) => {
   return (
-    <div className="flex flex-col space-y-6">
-      <span className="text-lg">mostChamp</span>
+    <div className="flex flex-col space-y-2">
+      <span className="text-lg">모스트 챔피언</span>
       <div className="flex space-x-4">
         {Summoner.mostChamps.map((data) => {
           return (
             <div key={data.id}>
-              <Image
-                width={75}
-                height={128}
-                alt=""
-                src={String(data.champImg)}
-                priority
-                layout="fixed"
-                className="rounded-xl"
-              />
+              <Link
+                href={{
+                  pathname: `/champions/${data.id}`,
+                  query: {
+                    name: data.champNameKo,
+                    category: "champ",
+                  },
+                }}
+              >
+                <a>
+                  <Image
+                    width={75}
+                    height={128}
+                    alt=""
+                    src={String(data.champImg)}
+                    priority
+                    layout="fixed"
+                    className="rounded-xl"
+                  />
+                </a>
+              </Link>
             </div>
           );
         })}

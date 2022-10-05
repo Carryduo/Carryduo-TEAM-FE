@@ -28,11 +28,11 @@ const CommentsFormContainer = ({ category, champId }: CommentsProps) => {
     <div className="relative h-full overflow-hidden">
       <form
         onSubmit={handleSubmit(onValid)}
-        className="sticky top-0 z-50 w-full bg-box"
+        className="sticky top-0 z-50 w-full bg-gray-800 rounded-2xl "
       >
         <Input
           rounded="rounded-2xl"
-          width="w-full"
+          width="w-[92%]"
           placeHolder={
             getCookie("myToken") === undefined
               ? "로그인 후 평판 작성이 가능합니다"
@@ -47,7 +47,7 @@ const CommentsFormContainer = ({ category, champId }: CommentsProps) => {
       </form>
       <div className="mt-4 flex h-[calc(100%-3rem)] flex-col space-y-4 overflow-y-scroll">
         {Comments?.length === 0 ? (
-          <span>등록된 평판이 없습니다.</span>
+          <span className="text-center">등록된 평판이 없습니다.</span>
         ) : (
           Comments?.map((data) => {
             return (

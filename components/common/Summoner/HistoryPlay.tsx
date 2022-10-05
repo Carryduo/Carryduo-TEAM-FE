@@ -23,13 +23,13 @@ const HistoryPlay = ({ Summoner }: Props) => {
             >
               <a>
                 <Image
-                  width={64}
-                  height={64}
+                  width={48}
+                  height={48}
                   alt=""
                   src={data.recentChampImg}
                   layout="fixed"
                   priority
-                  className="rounded-md"
+                  className="rounded-full"
                 />
               </a>
             </Link>
