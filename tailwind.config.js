@@ -19,10 +19,15 @@ module.exports = {
           "0%": { bottom: 0 },
           "100%": { bottom: 100 },
         },
+        line: {
+          "0%": { width: 0 },
+          "100%": { width: "140px" },
+        },
       },
       animation: {
         wiggle: "wiggle 0.4s ease-in-out both",
         graph: "graph 1s both",
+        line: "line 0.4s both",
       },
     },
   },
