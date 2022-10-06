@@ -2,8 +2,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useSetRecoilState } from "recoil";
-import { getLanguage } from "../../../core/config/i18n";
 import { useSweet } from "../../../util/hooks/useSweet";
 import { getCookie } from "../../../util/servers/cookie";
 import Input from "../../common/Input";
