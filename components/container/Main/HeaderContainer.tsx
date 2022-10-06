@@ -13,16 +13,9 @@ interface FormProps {
 const HeaderMain = () => {
   const { register, handleSubmit } = useForm<FormProps>();
   const router = useRouter();
-  const { locale } = router;
   const onValid: SubmitHandler<FormProps> = ({ nickName }) => {
     router.push({
       pathname: `/summoners/${nickName}`,
-    });
-  };
-  const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const locale = e.target.value;
-    router.push("/", {
-      query: locale,
     });
   };
   return (
@@ -46,10 +39,6 @@ const HeaderMain = () => {
         </form>
       </div>
       <div className="space-x-12">
-        <select onChange={changeLanguage} defaultValue={locale}>
-          <option value="ko">한국어</option>
-          <option value="en">English</option>
-        </select>
         <Link href="/">
           <span className="cursor-pointer">챔피언 리스트</span>
         </Link>
