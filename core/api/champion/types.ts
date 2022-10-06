@@ -1,4 +1,12 @@
-export interface ChampionSpells {
+export interface ChampionPosition {
+  top: string;
+  jungle: string;
+  mid: string;
+  ad: string;
+  support: string;
+}
+
+export interface ChampionSkills {
   id: string;
   desc: string;
   name: string;
@@ -6,12 +14,11 @@ export interface ChampionSpells {
   toolTip: string;
 }
 
-export interface ChampionPosition {
-  top: string;
-  jungle: string;
-  mid: string;
-  ad: string;
-  support: string;
+export interface ChampionSpells {
+  total: number;
+  pickRate: number;
+  spell1Img: string;
+  spell2Img: string;
 }
 
 export interface Champion {
@@ -23,7 +30,8 @@ export interface Champion {
   champNameEn: string;
   champImg: string;
   rate: ChampionPosition[];
-  skill: ChampionSpells[];
+  skill: ChampionSkills[];
+  spellInfo: ChampionSpells[];
 }
 
 export interface IChampions {

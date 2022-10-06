@@ -51,7 +51,7 @@ const CommentBox = ({
   };
   return (
     <div className="flex w-full justify-between">
-      <div className="flex w-[calc(100%-80px)] flex-col space-y-2">
+      <div className="flex w-[calc(100%-80px)] flex-col ">
         {open ? (
           <form onSubmit={handleSubmit(UpdateComment)}>
             <Input
@@ -63,13 +63,13 @@ const CommentBox = ({
             />
           </form>
         ) : (
-          <span>{content}</span>
+          <span className="mb-2">{content}</span>
         )}
-        <span className="text-gray-300">{userNickName}</span>
-        <span className="text-gray-300">{useTimeZone(createdAt)}</span>
+        <span className="text-gray-300 text-sm">{userNickName}</span>
+        <span className="text-gray-300 text-sm">{useTimeZone(createdAt)}</span>
       </div>
       <div className="flex w-[80px] justify-end space-x-2">
-        {userId === tokenId ? (
+        {userId !== tokenId ? (
           <>
             <span className="text-blue-300" onClick={OpenInputComment}>
               수정

@@ -13,11 +13,9 @@ const MostSummonerData = ({ MostSummoner }: Props) => {
       ) : (
         MostSummoner.map((data) => {
           return (
-            <>
-              <span key={data.id}>
-                {data.nickname} / {useTier(data.tier)}
-              </span>
-            </>
+            <span key={data.id}>
+              {data.nickname} / {useTier(data.tier)}
+            </span>
           );
         })
       )}
