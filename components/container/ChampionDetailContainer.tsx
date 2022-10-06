@@ -14,9 +14,9 @@ const ChampionDetailContainer = ({ champId }: Props) => {
   const { data: MostSummoner } = useGetMostChampSummoner(champId);
   return (
     <>
-      <div className="flex h-full items-center space-x-10 p-2">
+      <div className="flex h-full items-center space-x-12 p-2">
         {Champion === undefined ? null : <ChampionData Champion={Champion} />}
-        <div className="flex flex-col justify-start h-[200px] p-2">
+        <div className="flex h-[200px] flex-col ">
           {MostSummoner === undefined ? null : (
             <MostSummonerData MostSummoner={MostSummoner} />
           )}

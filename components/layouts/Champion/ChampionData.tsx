@@ -10,7 +10,7 @@ interface Props {
 const ChampionData = ({ Champion }: Props) => {
   return (
     <>
-      <div className="w-[200px] h-[200px] rounded-xl overflow-hidden">
+      <div className="h-[200px] w-[200px] overflow-hidden rounded-xl">
         <Image
           width={200}
           height={200}
@@ -22,8 +22,32 @@ const ChampionData = ({ Champion }: Props) => {
           blurDataURL={String(Champion.champImg)}
         />
       </div>
-      <div className="flex flex-col space-y-8">
-        <span className="text-2xl">{Champion.champNameKo}</span>
+      <div className="flex h-[200px] flex-col justify-between">
+        <div className="flex h-12 w-full justify-between">
+          <span className="text-2xl">{Champion.champNameKo}</span>
+          <div className="space-x-1">
+            <Image
+              width={40}
+              height={40}
+              alt=""
+              src={String(Champion.spellInfo[0].spell1Img)}
+              layout="fixed"
+              placeholder="blur"
+              blurDataURL={String(Champion.spellInfo[0].spell1Img)}
+              className="rounded-md"
+            />
+            <Image
+              width={40}
+              height={40}
+              alt=""
+              src={String(Champion.spellInfo[0].spell2Img)}
+              layout="fixed"
+              placeholder="blur"
+              blurDataURL={String(Champion.spellInfo[0].spell2Img)}
+              className="rounded-md"
+            />
+          </div>
+        </div>
         <div className="flex items-end space-x-2">
           <div className="tooltip">
             <Image
@@ -70,10 +94,16 @@ const ChampionData = ({ Champion }: Props) => {
             );
           })}
         </div>
-        <div className="flex space-x-2 text-sm">
-          <span>승률 {Champion.winRate}%</span>
-          <span>픽률 {Champion.pickRate}%</span>
-          <span>벤률 {Champion.banRate}%</span>
+        <div className="flex space-x-8 text-sm">
+          <span className="text-gray-400">
+            승률 <p className="text-white">{Champion.winRate}%</p>
+          </span>
+          <span className="text-gray-400">
+            픽률 <p className="text-white">{Champion.pickRate}%</p>
+          </span>
+          <span className="text-gray-400">
+            벤률 <p className="text-white">{Champion.banRate}%</p>
+          </span>
         </div>
       </div>
     </>
