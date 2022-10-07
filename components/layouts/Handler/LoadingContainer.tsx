@@ -1,3 +1,4 @@
+import { Box, CircularProgress } from "@mui/material";
 import Seo from "../../common/Seo";
 
 interface Props {
@@ -6,8 +7,9 @@ interface Props {
 
 const LoadingContainer = ({ text }: Props) => {
   return (
-    <div className="flex h-full w-full items-center justify-center">
+    <div className="flex h-full w-full flex-col items-center justify-center space-y-2">
       <Seo title="Loading" />
+      <CircularProgress />
       <span className="text-2xl">{text}</span>
     </div>
   );

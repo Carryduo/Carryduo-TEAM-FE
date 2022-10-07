@@ -42,12 +42,9 @@ const HeaderMain = () => {
         <Link href="/">
           <span className="cursor-pointer">챔피언 리스트</span>
         </Link>
-        <span
-          onClick={() => useSweet(2000, "info", "준비 중 입니다")}
-          className="cursor-default text-gray-600"
-        >
-          대전 시뮬레이션
-        </span>
+        <Link href="/simulation">
+          <span className="cursor-pointer"> 대전 시뮬레이션</span>
+        </Link>
         <Link href={getCookie("myToken") === undefined ? "/login" : "/setting"}>
           <span className="cursor-pointer">
             {getCookie("myToken") === undefined ? "로그인" : "설정"}
