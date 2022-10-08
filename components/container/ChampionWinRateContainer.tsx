@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useGetDuoChampRank } from "../../core/api/duoChampion/queries";
-import DuoRankPickLine from "../common/DuoRank/DuoRankPickLine";
 import Position from "../../core/config/ChampionPosition.json";
+import PickLine from "../common/PickLine";
 interface Props {
   category: string;
   line: string;
@@ -23,7 +23,7 @@ const ChampionWinRateContainer = ({ category, line }: Props) => {
               className="flex w-[50px] cursor-pointer flex-col text-center"
             >
               <span onClick={() => setPick(data.id)}>{data.position}</span>
-              {pick === data.id && <DuoRankPickLine animate="animate-smLine" />}
+              {pick === data.id && <PickLine animate="animate-smLine" />}
             </div>
           );
         })}
