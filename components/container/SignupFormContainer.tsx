@@ -63,6 +63,7 @@ const SignupFormContainer = () => {
       <Grid width="w-[40rem]" height="h-[calc(100%+1rem)]">
         {open ? (
           <ChampionsContainer
+            gridCol="grid-cols-5"
             width="w-[420px]"
             height="h-[calc(100%-3.5rem)]"
             toLink={false}
@@ -91,7 +92,6 @@ const SignupFormContainer = () => {
             />
           </form>
         </Grid>
-
         <SignupFooter />
       </div>
     </>
