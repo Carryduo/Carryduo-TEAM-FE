@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useSweet } from "../../../util/hooks/useSweet";
 import { getCookie } from "../../../util/servers/cookie";
 import Input from "../../common/Input";
+import PickLine from "../../common/PickLine";
 
 interface FormProps {
   nickName: string;
@@ -38,17 +39,42 @@ const HeaderMain = () => {
           />
         </form>
       </div>
-      <div className="space-x-12">
+      <div className="flex h-7 space-x-12">
         <Link href="/">
-          <span className="cursor-pointer">챔피언 리스트</span>
+          <div className="flex w-[140px] cursor-pointer flex-col items-center text-center">
+            {router.pathname === "/" ? (
+              <>
+                <span>챔피언 리스트</span>
+                <PickLine animate="animate-lgLine" />
+              </>
+            ) : (
+              <span className="text-gray-300 hover:text-white">
+                챔피언 리스트
+              </span>
+            )}
+          </div>
         </Link>
         <Link href="/simulation">
-          <span className="cursor-pointer"> 대전 시뮬레이션</span>
+          <div className="flex w-[140px] cursor-pointer flex-col items-center text-center">
+            {router.pathname === "/simulation" ? (
+              <>
+                <span>가상 대전</span>
+                <PickLine animate="animate-lgLine" />
+              </>
+            ) : (
+              <span className="text-gray-300 hover:text-white">가상 대전</span>
+            )}
+          </div>
         </Link>
         <Link href={getCookie("myToken") === undefined ? "/login" : "/setting"}>
-          <span className="cursor-pointer">
-            {getCookie("myToken") === undefined ? "로그인" : "설정"}
-          </span>
+          {getCookie("myToken") === undefined ? (
+            <div className="relative">
+              <div className="absolute -top-1 -right-2 h-2 w-2 rounded-full bg-blue-500"></div>
+              <span className="cursor-pointer">로그인</span>
+            </div>
+          ) : (
+            <span className="cursor-pointer">설정</span>
+          )}
         </Link>
       </div>
     </header>

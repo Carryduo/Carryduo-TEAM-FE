@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
-import DuoRankPickLine from "../../common/DuoRank/DuoRankPickLine";
 import Position from "../../../core/config/DuoRankPosition.json";
+import PickLine from "../../common/PickLine";
 
 interface Props {
   pick: string;
@@ -18,7 +18,7 @@ const DuoRankHeader = ({ pick, setPick }: Props) => {
             <span className="w-[140px]" onClick={() => setPick(data.id)}>
               {data.position}
             </span>
-            {pick === data.id && <DuoRankPickLine animate="animate-lgLine" />}
+            {pick === data.id && <PickLine animate="animate-lgLine" />}
           </div>
         );
       })}

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useRecoilValue } from "recoil";
 import { PickChampion } from "../../../core/config/pickChampion";
+import Cross from "../../../public/cross.png";
 
 interface MyChampProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,13 +13,13 @@ const MyChamp = ({ setOpen, img }: MyChampProps) => {
   return (
     <div className="space-y-2">
       <span>선호챔피언</span>
-      <div className="h-[54px]">
+      <div className="h-[54px] cursor-pointer">
         {name === "" ? (
           <Image
             alt=""
             src={
               img === undefined
-                ? "https://avatars.githubusercontent.com/u/79081800?v=4"
+                ? Cross
                 : `https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${img}.png`
             }
             width={45}
