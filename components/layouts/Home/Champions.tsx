@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { useGetChamps } from "../../../core/api/champions/queries";
 import { PickChampion } from "../../../core/config/pickChampion";
+import { PickCnt } from "../../../core/config/PickCnt";
 
 interface ChampionsContainerProps {
   value: string;
@@ -13,6 +14,7 @@ interface ChampionsContainerProps {
 const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
   const { data: Champions } = useGetChamps();
   const setChampion = useSetRecoilState(PickChampion);
+  const [cnt, setCnt] = useRecoilState(PickCnt);
   const ChampionList = Champions?.filter((val) => {
     if (value === "") {
       return val;
@@ -55,12 +57,13 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                   width={56}
                   height={56}
                   layout="fixed"
-                  onClick={() =>
+                  onClick={() => {
                     setChampion({
                       id: Number(data.id),
                       name: data.champNameEn,
-                    })
-                  }
+                    });
+                    setCnt(cnt + 1);
+                  }}
                 />
               )}
               <span className="whitespace-nowrap text-xs font-medium">

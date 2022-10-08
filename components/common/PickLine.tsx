@@ -1,11 +1,11 @@
-import { getShadowColor } from "../../../core/config/shadowColor";
-import { useShadow } from "../../../util/hooks/useShadow";
+import { getShadowColor } from "../../core/config/shadowColor";
+import { useShadow } from "../../util/hooks/useShadow";
 
 interface Props {
-  animate: string;
+  animate: "animate-smLine" | "animate-lgLine";
 }
 
-const DuoRankPickLine = ({ animate }: Props) => {
+const PickLine = ({ animate }: Props) => {
   const [color] = useShadow(getShadowColor);
   return (
     <div
@@ -24,4 +24,4 @@ const DuoRankPickLine = ({ animate }: Props) => {
   );
 };
 
-export default DuoRankPickLine;
+export default PickLine;

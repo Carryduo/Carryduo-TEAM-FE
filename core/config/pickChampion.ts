@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 import { v1 } from "uuid";
 
-interface ChampionProps {
+export interface ChampionProps {
   id: number;
   name: string;
 }
