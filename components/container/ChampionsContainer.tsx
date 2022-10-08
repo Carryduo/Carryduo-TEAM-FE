@@ -8,12 +8,14 @@ interface ChampionsContainerProps {
   width: string;
   height: string;
   toLink: boolean;
+  gridCol: string;
 }
 
 const ChampionsContainer = ({
   width,
   height,
   toLink,
+  gridCol,
 }: ChampionsContainerProps) => {
   const [value, setValue] = useState<string>("");
   const onChange = _.debounce((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,9 +30,10 @@ const ChampionsContainer = ({
         placeHolder="챔피언 검색"
         type="text"
         openSearch={true}
+        autoFocus={true}
       />
       <div
-        className={`relative mt-4 grid ${height} ${width} grid-cols-5 grid-rows-[repeat(auto-fill,85px)] gap-2 overflow-hidden overflow-y-scroll`}
+        className={`relative mt-4 grid ${height} ${width} ${gridCol} grid-rows-[repeat(auto-fill,85px)] gap-2 overflow-hidden overflow-y-scroll`}
       >
         <ChampionsList toLink={toLink} value={value} />
       </div>
