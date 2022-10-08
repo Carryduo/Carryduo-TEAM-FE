@@ -10,7 +10,8 @@ const Simulation = () => {
         <Image
           alt=""
           src={MiniMap}
-          priority
+          loading="eager"
+          quality={50}
           layout="fill"
           className="absolute -z-50 rounded-lg"
         />
