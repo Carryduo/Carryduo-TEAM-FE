@@ -64,6 +64,7 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                     });
                     setCnt(cnt + 1);
                   }}
+                  priority
                 />
               )}
               <span className="whitespace-nowrap text-xs font-medium">
