@@ -31,7 +31,8 @@ const Tier = ({ register, watch }: TierFormProp) => {
               watch !== "0" ? "opacity-30" : ""
             }`}
             layout="fixed"
-               priority
+            priority
+            placeholder="blur"
           />
         </label>
         <label>
@@ -45,7 +46,8 @@ const Tier = ({ register, watch }: TierFormProp) => {
               watch !== "1" ? "opacity-30" : ""
             }`}
             layout="fixed"
-               priority
+            priority
+            placeholder="blur"
           />
         </label>
         <label>
@@ -59,7 +61,8 @@ const Tier = ({ register, watch }: TierFormProp) => {
               watch !== "2" ? "opacity-30" : ""
             }`}
             layout="fixed"
-               priority
+            priority
+            placeholder="blur"
           />
         </label>
         <label>
@@ -73,7 +76,8 @@ const Tier = ({ register, watch }: TierFormProp) => {
               watch !== "3" ? "opacity-30" : ""
             }`}
             layout="fixed"
-               priority
+            priority
+            placeholder="blur"
           />
         </label>
         <label>
@@ -87,7 +91,8 @@ const Tier = ({ register, watch }: TierFormProp) => {
               watch !== "4" ? "opacity-30" : ""
             }`}
             layout="fixed"
-               priority
+            priority
+            placeholder="blur"
           />
         </label>
         <label>
@@ -101,7 +106,8 @@ const Tier = ({ register, watch }: TierFormProp) => {
               watch !== "5" ? "opacity-30" : ""
             }`}
             layout="fixed"
-               priority
+            priority
+            placeholder="blur"
           />
         </label>
         <label>
@@ -115,7 +121,8 @@ const Tier = ({ register, watch }: TierFormProp) => {
               watch !== "6" ? "opacity-30" : ""
             }`}
             layout="fixed"
-               priority
+            priority
+            placeholder="blur"
           />
         </label>
         <label>
@@ -129,7 +136,8 @@ const Tier = ({ register, watch }: TierFormProp) => {
               watch !== "7" ? "opacity-30" : ""
             }`}
             layout="fixed"
-               priority
+            priority
+            placeholder="blur"
           />
         </label>
       </div>

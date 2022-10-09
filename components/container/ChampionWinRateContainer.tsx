@@ -50,12 +50,14 @@ const ChampionWinRateContainer = ({ category, line }: Props) => {
                 >
                   <a>
                     <Image
-                      alt=""
+                      alt={data.subChampId.champImg}
                       src={data.subChampId.champImg}
                       width={100}
                       height={100}
                       layout="fixed"
                       priority
+                      placeholder="blur"
+                      blurDataURL={data.subChampId.champImg}
                     />
                   </a>
                 </Link>

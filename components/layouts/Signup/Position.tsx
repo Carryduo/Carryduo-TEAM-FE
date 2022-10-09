@@ -29,6 +29,7 @@ const Position = ({ register, watch }: PositionFormProp) => {
             }`}
             layout="fixed"
             priority
+            placeholder="blur"
           />
         </label>
         <label>
@@ -43,6 +44,7 @@ const Position = ({ register, watch }: PositionFormProp) => {
             }`}
             layout="fixed"
             priority
+            placeholder="blur"
           />
         </label>
         <label>
@@ -57,6 +59,7 @@ const Position = ({ register, watch }: PositionFormProp) => {
             }`}
             layout="fixed"
             priority
+            placeholder="blur"
           />
         </label>
         <label>
@@ -71,6 +74,7 @@ const Position = ({ register, watch }: PositionFormProp) => {
             }`}
             layout="fixed"
             priority
+            placeholder="blur"
           />
         </label>
         <label>
@@ -85,6 +89,7 @@ const Position = ({ register, watch }: PositionFormProp) => {
             }`}
             layout="fixed"
             priority
+            placeholder="blur"
           />
         </label>
       </div>
