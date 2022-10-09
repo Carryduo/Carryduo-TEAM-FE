@@ -21,10 +21,6 @@ class MyDocument extends Document {
           <meta property="og:title" content="Carryduo" />
           <meta property="og:description" content="롤 듀오 서칭 플랫폼" />
           <meta
-            property="og:image"
-            content="https://avatars.githubusercontent.com/u/79081800?v=4"
-          />
-          <meta
             httpEquiv="Content-Security-Policy"
             content="upgrade-insecure-requests"
           />
