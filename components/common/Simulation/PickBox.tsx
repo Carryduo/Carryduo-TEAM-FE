@@ -21,7 +21,7 @@ const PickBox = ({ pick, PickNum, cnt }: Props) => {
           {cnt !== PickNum ? (
             <img
               alt=""
-              src="../../../public/cross.png"
+              src={`/cross.png`}
               width={128}
               height={232}
             />

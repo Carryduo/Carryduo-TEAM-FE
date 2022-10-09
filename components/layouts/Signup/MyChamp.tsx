@@ -19,7 +19,7 @@ const MyChamp = ({ setOpen, img }: MyChampProps) => {
             alt=""
             src={
               img === undefined
-                ? "../../../public/cross.png"
+                ? `/cross.png`
                 : `https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${img}.png`
             }
             width={45}

@@ -54,11 +54,14 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                   </a>
                 </Link>
               ) : (
-                <img
+                <Image
                   alt={`${data.champNameEn}`}
                   src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
                   width={56}
                   height={56}
+                  priority
+                  placeholder="blur"
+                  blurDataURL={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
                   onClick={() => {
                     setChampion({
                       id: Number(data.id),
