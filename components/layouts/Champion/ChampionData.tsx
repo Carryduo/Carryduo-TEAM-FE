@@ -16,7 +16,6 @@ const ChampionData = ({ Champion }: Props) => {
           height={200}
           alt=""
           src={String(Champion.champImg)}
-          layout="fixed"
           className="scale-110"
           placeholder="blur"
           blurDataURL={String(Champion.champImg)}
@@ -27,21 +26,19 @@ const ChampionData = ({ Champion }: Props) => {
           <span className="text-2xl">{Champion.champNameKo}</span>
           <div className="space-x-1">
             <Image
-              width={40}
-              height={40}
+              width={42}
+              height={42}
               alt=""
               src={String(Champion.spellInfo[0].spell1Img)}
-              layout="fixed"
               placeholder="blur"
               blurDataURL={String(Champion.spellInfo[0].spell1Img)}
               className="rounded-md"
             />
             <Image
-              width={40}
-              height={40}
+              width={42}
+              height={42}
               alt=""
               src={String(Champion.spellInfo[0].spell2Img)}
-              layout="fixed"
               placeholder="blur"
               blurDataURL={String(Champion.spellInfo[0].spell2Img)}
               className="rounded-md"
@@ -55,7 +52,6 @@ const ChampionData = ({ Champion }: Props) => {
               height={40}
               alt=""
               src={String(Champion.skill[4].image)}
-              layout="fixed"
               placeholder="blur"
               blurDataURL={String(Champion.skill[4].image)}
               className="rounded-md"
@@ -75,7 +71,6 @@ const ChampionData = ({ Champion }: Props) => {
                   height={48}
                   alt=""
                   src={String(data.image)}
-                  layout="fixed"
                   placeholder="blur"
                   blurDataURL={String(data.image)}
                   className="rounded-md"

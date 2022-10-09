@@ -39,6 +39,7 @@ const ChampionWinRateContainer = ({ category, line }: Props) => {
                 className="flex flex-col items-center space-y-4"
               >
                 <Link
+                  as={`/champions/${data.subChampId.id}`}
                   href={{
                     pathname: `/champions/${data.subChampId.id}`,
                     query: {
@@ -54,7 +55,7 @@ const ChampionWinRateContainer = ({ category, line }: Props) => {
                       width={100}
                       height={100}
                       layout="fixed"
-                      loading="eager"
+                      priority
                     />
                   </a>
                 </Link>

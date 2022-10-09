@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   images: {
-    minimumCacheTTL: 1000 * 60 * 60 * 24,
+    minimumCacheTTL: 31536000,
     domains: [
       "avatars.githubusercontent.com",
       "ddragon.leagueoflegends.com",

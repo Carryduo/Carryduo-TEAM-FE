@@ -29,6 +29,7 @@
     "react-slick": "^0.29.0",
     "recoil": "^0.7.5",
     "recoil-persist": "^4.2.0",
+    "sharp": "^0.31.1",
     "sweetalert2": "^11.4.29",
     "uuid": "^9.0.0"
   },
