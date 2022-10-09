@@ -56,6 +56,8 @@ const ChampionData = ({ Champion }: Props) => {
               src={String(Champion.skill[4].image)}
               layout="fixed"
               priority
+              placeholder="blur"
+              blurDataURL={String(Champion.skill[4].image)}
               className="rounded-md"
             />
             <div className="tooltiptext tooltip-bottom">
@@ -75,6 +77,8 @@ const ChampionData = ({ Champion }: Props) => {
                   src={String(data.image)}
                   layout="fixed"
                   priority
+                  placeholder="blur"
+                  blurDataURL={String(data.image)}
                   className="rounded-md"
                 />
                 <div className="absolute bottom-0 right-0 mb-1 flex h-4 w-4 items-center justify-center bg-black">

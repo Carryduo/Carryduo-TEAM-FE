@@ -48,6 +48,8 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                       width={56}
                       height={56}
                       priority
+                      placeholder="blur"
+                      blurDataURL={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
                     />
                   </a>
                 </Link>
@@ -65,7 +67,8 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                     setCnt(cnt + 1);
                   }}
                   priority
-                  unoptimized={true}
+                  placeholder="blur"
+                  blurDataURL={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
                 />
               )}
               <span className="whitespace-nowrap text-xs font-medium">
