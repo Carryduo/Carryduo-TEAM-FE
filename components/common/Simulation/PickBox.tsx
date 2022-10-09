@@ -47,7 +47,7 @@ const PickBox = ({ pick, PickNum, cnt }: Props) => {
               height={232}
               layout="fixed"
               priority
-              loading="eager"
+        
             />
           )}
         </>
@@ -59,7 +59,7 @@ const PickBox = ({ pick, PickNum, cnt }: Props) => {
           height={232}
           layout="fixed"
           priority
-          loading="eager"
+       
         />
       )}
     </div>
