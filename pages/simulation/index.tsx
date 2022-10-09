@@ -1,19 +1,14 @@
-import dynamic from "next/dynamic";
-const Image = dynamic(() => import("next/image"));
 import Link from "next/link";
 import PageContainer from "../../components/common/PageContainer";
-import MiniMap from "../../public/minimap.jpg";
 
 const Simulation = () => {
   return (
     <PageContainer>
       <div className="relative flex h-full w-full justify-center">
-        <Image
+        <img
           alt=""
-          src={MiniMap}
-          priority
-          layout="fill"
-          className="absolute -z-50 rounded-lg"
+          src="/minimap.jpg"
+          className="absolute -z-50 h-full w-full rounded-lg"
         />
         <div className=" absolute h-full w-full translate-x-[15%] translate-y-[10%] ">
           <Link href="/simulation/top-jungle">
