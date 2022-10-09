@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useEffect, useState } from "react";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { ChampionProps, PickChampion } from "../../core/config/pickChampion";
 import { PickCnt } from "../../core/config/PickCnt";
 import PickBox from "../common/Simulation/PickBox";
@@ -8,8 +8,12 @@ import PickLayout from "../layouts/Simulation/PickLayout";
 const SimulationPickContainer = () => {
   const [Champion, setChampion] = useRecoilState(PickChampion);
   const setCount = useSetRecoilState(PickCnt);
+  const { name } = useRecoilValue(PickChampion);
   const [pick, setPick] = useState<ChampionProps[]>([]);
   const [cnt, setCnt] = useState<Number>(0);
+  useEffect(() => {
+    if (name !== "") setCount(0);
+  }, []);
   const SelectChampion = () => {
     if (Champion.id === 0) return;
     setPick((data: ChampionProps[]) => {
