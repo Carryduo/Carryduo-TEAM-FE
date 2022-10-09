@@ -25,7 +25,7 @@ const PickBox = ({ pick, PickNum, cnt }: Props) => {
               width={128}
               height={232}
               layout="fixed"
-              loading="eager"
+              priority
             />
           ) : PickCount === 0 ? (
             <Box
@@ -47,7 +47,6 @@ const PickBox = ({ pick, PickNum, cnt }: Props) => {
               height={232}
               layout="fixed"
               priority
-        
             />
           )}
         </>
@@ -59,7 +58,6 @@ const PickBox = ({ pick, PickNum, cnt }: Props) => {
           height={232}
           layout="fixed"
           priority
-       
         />
       )}
     </div>

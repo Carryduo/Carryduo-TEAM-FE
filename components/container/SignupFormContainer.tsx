@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { PickChampion } from "../../core/config/pickChampion";
 import ChampionsContainer from "./ChampionsContainer";
@@ -27,6 +27,7 @@ interface FormProps {
 
 const SignupFormContainer = () => {
   const { data: profile } = useGetMyProfile();
+  const setImage = useSetRecoilState(PickChampion);
   const defaultValues = {
     nickName: profile?.nickname,
     bio: profile?.bio,
@@ -38,10 +39,14 @@ const SignupFormContainer = () => {
   const { register, handleSubmit, watch, reset } = useForm<FormProps>({
     defaultValues,
   });
+
+  const { id, name } = useRecoilValue(PickChampion);
   useEffect(() => {
+    if (profile?.preferChamp1?.champNameEn !== name) {
+      setImage({ id: 0, name: "" });
+    }
     if (profile) reset({ ...defaultValues });
   }, [profile]);
-  const { id } = useRecoilValue(PickChampion);
   const [open, setOpen] = useState<boolean>(false);
   const { mutate } = usePostMyProfile();
   const onValid: SubmitHandler<FormProps> = (data) => {
