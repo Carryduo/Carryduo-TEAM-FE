@@ -19,13 +19,11 @@ const PickBox = ({ pick, PickNum, cnt }: Props) => {
       {pick[PickNum]?.name === undefined ? (
         <>
           {cnt !== PickNum ? (
-            <Image
+            <img
               alt=""
-              src={Cross}
+              src="../../../public/cross.png"
               width={128}
               height={232}
-              layout="fixed"
-              priority
             />
           ) : PickCount === 0 ? (
             <Box
@@ -40,24 +38,20 @@ const PickBox = ({ pick, PickNum, cnt }: Props) => {
               <CircularProgress />
             </Box>
           ) : (
-            <Image
+            <img
               alt=""
               src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${name}_0.jpg`}
               width={128}
               height={232}
-              layout="fixed"
-              priority
             />
           )}
         </>
       ) : (
-        <Image
+        <img
           alt=""
           src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${pick[PickNum]?.name}_0.jpg`}
           width={128}
           height={232}
-          layout="fixed"
-          priority
         />
       )}
     </div>

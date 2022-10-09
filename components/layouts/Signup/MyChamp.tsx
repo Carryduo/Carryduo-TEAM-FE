@@ -15,28 +15,23 @@ const MyChamp = ({ setOpen, img }: MyChampProps) => {
       <span>선호챔피언</span>
       <div className="h-[54px] cursor-pointer">
         {name === "" ? (
-          <Image
+          <img
             alt=""
             src={
               img === undefined
-                ? Cross
+                ? "../../../public/cross.png"
                 : `https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${img}.png`
             }
             width={45}
             height={45}
-            layout="fixed"
-            loading="eager"
             onClick={() => setOpen(true)}
           />
         ) : (
-          <Image
+          <img
             alt=""
             src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${name}.png`}
             width={45}
             height={45}
-            layout="fixed"
-            loading="eager"
-            blurDataURL={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${name}.png`}
             onClick={() => setOpen(true)}
           />
         )}
