@@ -65,6 +65,7 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                     setCnt(cnt + 1);
                   }}
                   priority
+                  unoptimized={true}
                 />
               )}
               <span className="whitespace-nowrap text-xs font-medium">

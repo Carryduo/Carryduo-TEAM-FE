@@ -17,8 +17,8 @@ const ChampionData = ({ Champion }: Props) => {
           alt=""
           src={String(Champion.champImg)}
           className="scale-110"
-          placeholder="blur"
-          blurDataURL={String(Champion.champImg)}
+          layout="fixed"
+          priority
         />
       </div>
       <div className="flex h-[200px] flex-col justify-between">
@@ -30,18 +30,20 @@ const ChampionData = ({ Champion }: Props) => {
               height={42}
               alt=""
               src={String(Champion.spellInfo[0].spell1Img)}
-              placeholder="blur"
-              blurDataURL={String(Champion.spellInfo[0].spell1Img)}
+              layout="fixed"
+              priority
               className="rounded-md"
+              unoptimized={true}
             />
             <Image
               width={42}
               height={42}
               alt=""
               src={String(Champion.spellInfo[0].spell2Img)}
-              placeholder="blur"
-              blurDataURL={String(Champion.spellInfo[0].spell2Img)}
+              layout="fixed"
+              priority
               className="rounded-md"
+              unoptimized={true}
             />
           </div>
         </div>
@@ -52,8 +54,8 @@ const ChampionData = ({ Champion }: Props) => {
               height={40}
               alt=""
               src={String(Champion.skill[4].image)}
-              placeholder="blur"
-              blurDataURL={String(Champion.skill[4].image)}
+              layout="fixed"
+              priority
               className="rounded-md"
             />
             <div className="tooltiptext tooltip-bottom">
@@ -71,8 +73,8 @@ const ChampionData = ({ Champion }: Props) => {
                   height={48}
                   alt=""
                   src={String(data.image)}
-                  placeholder="blur"
-                  blurDataURL={String(data.image)}
+                  layout="fixed"
+                  priority
                   className="rounded-md"
                 />
                 <div className="absolute bottom-0 right-0 mb-1 flex h-4 w-4 items-center justify-center bg-black">

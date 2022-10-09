@@ -14,7 +14,6 @@ const Simulation = () => {
           priority
           layout="fill"
           className="absolute -z-50 rounded-lg"
-          placeholder="blur"
         />
         <div className=" absolute h-full w-full translate-x-[15%] translate-y-[10%] ">
           <Link href="/simulation/top-jungle">
