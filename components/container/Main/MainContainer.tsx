@@ -18,7 +18,7 @@ const MainContainer = ({ children }: DarkContainerProps) => {
         quality={10}
         src={mainImage}
         className="absolute -z-50"
-        priority
+        loading="eager"
       />
       <div
         className={`z-50 h-[85%] w-[80%] overflow-hidden rounded-xl bg-black bg-opacity-30 px-10 shadow-[0_0_40px_1px]  ${
