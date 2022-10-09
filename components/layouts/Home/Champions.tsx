@@ -34,6 +34,7 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
             <div key={i} className="h-[85px] w-14 cursor-pointer text-center">
               {toLink ? (
                 <Link
+                  as={`/champions/${data.id}`}
                   href={{
                     pathname: `/champions/${data.id}`,
                     query: { name: data.champNameKo, category: "champ" },
@@ -42,21 +43,20 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                 >
                   <a>
                     <Image
-                      alt=""
+                      alt={`${data.champNameEn}`}
                       src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
                       width={56}
                       height={56}
-                      layout="fixed"
+                      priority
                     />
                   </a>
                 </Link>
               ) : (
                 <Image
-                  alt=""
+                  alt={`${data.champNameEn}`}
                   src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
                   width={56}
                   height={56}
-                  layout="fixed"
                   onClick={() => {
                     setChampion({
                       id: Number(data.id),
@@ -80,4 +80,4 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
   );
 };
 
-export default React.memo(ChampionsList);
+export default ChampionsList;

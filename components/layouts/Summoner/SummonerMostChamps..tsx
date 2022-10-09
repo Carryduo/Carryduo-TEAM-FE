@@ -15,6 +15,7 @@ const SummonerMostChamps = ({ Summoner }: Props) => {
           return (
             <div key={data.id}>
               <Link
+                as={`/champions/${data.id}`}
                 href={{
                   pathname: `/champions/${data.id}`,
                   query: {
