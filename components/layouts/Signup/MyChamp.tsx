@@ -35,8 +35,7 @@ const MyChamp = ({ setOpen, img }: MyChampProps) => {
             width={45}
             height={45}
             layout="fixed"
-            priority
-            placeholder="blur"
+            loading="eager"
             blurDataURL={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${name}.png`}
             onClick={() => setOpen(true)}
           />
