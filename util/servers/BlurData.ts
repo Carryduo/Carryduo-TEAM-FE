@@ -1,1 +1,0 @@
-export const BlurData = "https://user-images.githubusercontent.com/79081800/193261138-32551be4-c88b-4eef-b233-f2064256349b.png"
