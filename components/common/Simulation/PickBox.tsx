@@ -25,7 +25,7 @@ const PickBox = ({ pick, PickNum, cnt }: Props) => {
               width={128}
               height={232}
               layout="fixed"
-              priority
+              loading="eager"
             />
           ) : PickCount === 0 ? (
             <Box
