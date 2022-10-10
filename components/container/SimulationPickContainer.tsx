@@ -3,7 +3,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { Champions } from "../../core/api/champions/types";
 import { ChampionSearch } from "../../core/config/ChampionSearch";
 import { PickChampArray } from "../../core/config/PickChampArray";
-import {  PickChampion } from "../../core/config/pickChampion";
+import { PickChampion } from "../../core/config/pickChampion";
 import { PickCnt } from "../../core/config/PickCnt";
 import PickBox from "../common/Simulation/PickBox";
 import PickLayout from "../layouts/Simulation/PickLayout";

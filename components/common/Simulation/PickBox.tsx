@@ -1,10 +1,7 @@
-import Image from "next/image";
 import { useRecoilValue } from "recoil";
-import { ChampionProps, PickChampion } from "../../../core/config/pickChampion";
+import { PickChampion } from "../../../core/config/pickChampion";
 import { PickCnt } from "../../../core/config/PickCnt";
-import Cross from "../../../public/cross.png";
 import { Box, CircularProgress } from "@mui/material";
-import { Champion } from "../../../core/api/champion/types";
 import { Champions } from "../../../core/api/champions/types";
 
 interface Props {

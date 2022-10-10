@@ -1,5 +1,4 @@
 import _ from "lodash";
-import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { ChampionSearch } from "../../core/config/ChampionSearch";
 
