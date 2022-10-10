@@ -4,27 +4,24 @@ import { ChampionProps, PickChampion } from "../../../core/config/pickChampion";
 import { PickCnt } from "../../../core/config/PickCnt";
 import Cross from "../../../public/cross.png";
 import { Box, CircularProgress } from "@mui/material";
+import { Champion } from "../../../core/api/champion/types";
+import { Champions } from "../../../core/api/champions/types";
 
 interface Props {
-  pick: ChampionProps[];
+  pick: Champions[];
   cnt: number;
   PickNum: number;
 }
 
 const PickBox = ({ pick, PickNum, cnt }: Props) => {
-  const { name } = useRecoilValue(PickChampion);
+  const { champNameEn } = useRecoilValue(PickChampion);
   const PickCount = useRecoilValue(PickCnt);
   return (
     <div className="h-[232px] w-32 items-center justify-center rounded-md ">
-      {pick[PickNum]?.name === undefined ? (
+      {pick[PickNum]?.champNameEn === undefined ? (
         <>
           {cnt !== PickNum ? (
-            <img
-              alt=""
-              src={`/cross.png`}
-              width={128}
-              height={232}
-            />
+            <img alt="" src={`/cross.png`} width={128} height={232} />
           ) : PickCount === 0 ? (
             <Box
               sx={{
@@ -40,7 +37,7 @@ const PickBox = ({ pick, PickNum, cnt }: Props) => {
           ) : (
             <img
               alt=""
-              src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${name}_0.jpg`}
+              src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champNameEn}_0.jpg`}
               width={128}
               height={232}
             />
@@ -49,7 +46,7 @@ const PickBox = ({ pick, PickNum, cnt }: Props) => {
       ) : (
         <img
           alt=""
-          src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${pick[PickNum]?.name}_0.jpg`}
+          src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${pick[PickNum]?.champNameEn}_0.jpg`}
           width={128}
           height={232}
         />

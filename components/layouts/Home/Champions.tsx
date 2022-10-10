@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useGetChamps } from "../../../core/api/champions/queries";
+import { PickChampArray } from "../../../core/config/PickChampArray";
 import { PickChampion } from "../../../core/config/pickChampion";
 import { PickCnt } from "../../../core/config/PickCnt";
 
@@ -15,12 +16,15 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
   const { data: Champions } = useGetChamps();
   const setChampion = useSetRecoilState(PickChampion);
   const [cnt, setCnt] = useRecoilState(PickCnt);
+  const pickChamp = useRecoilValue(PickChampArray).map((data) => data.id);
   const ChampionList = Champions?.filter((val) => {
     if (value === "") {
       return val;
     } else if (val.champNameKo.includes(value)) {
       return val;
     }
+  }).filter((val) => {
+    return !pickChamp.includes(val.id);
   });
   return (
     <>
@@ -64,8 +68,10 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                   blurDataURL={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
                   onClick={() => {
                     setChampion({
-                      id: Number(data.id),
-                      name: data.champNameEn,
+                      id: data.id,
+                      champNameEn: data.champNameEn,
+                      champNameKo: data.champNameKo,
+                      champImg: data.champImg,
                     });
                     setCnt(cnt + 1);
                   }}
