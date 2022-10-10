@@ -1,7 +1,5 @@
-import Image from "next/image";
 import { useRecoilValue } from "recoil";
 import { PickChampion } from "../../../core/config/pickChampion";
-import Cross from "../../../public/cross.png";
 
 interface MyChampProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -9,12 +7,12 @@ interface MyChampProps {
 }
 
 const MyChamp = ({ setOpen, img }: MyChampProps) => {
-  const { name } = useRecoilValue(PickChampion);
+  const { champNameEn } = useRecoilValue(PickChampion);
   return (
     <div className="space-y-2">
       <span>선호챔피언</span>
       <div className="h-[54px] cursor-pointer">
-        {name === "" ? (
+        {champNameEn === "" ? (
           <img
             alt=""
             src={

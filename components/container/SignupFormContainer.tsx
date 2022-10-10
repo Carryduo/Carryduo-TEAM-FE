@@ -27,6 +27,7 @@ interface FormProps {
 
 const SignupFormContainer = () => {
   const { data: profile } = useGetMyProfile();
+  const { id } = useRecoilValue(PickChampion);
   const setImage = useSetRecoilState(PickChampion);
   const defaultValues = {
     nickName: profile?.nickname,
@@ -35,15 +36,12 @@ const SignupFormContainer = () => {
     preferPosition: profile?.preferPosition,
     enableChat: profile?.enableChat,
   };
-
   const { register, handleSubmit, watch, reset } = useForm<FormProps>({
     defaultValues,
   });
-
-  const { id, name } = useRecoilValue(PickChampion);
   useEffect(() => {
     if (profile?.preferChamp1?.champNameEn !== name) {
-      setImage({ id: 0, name: "" });
+      setImage({ id: "", champNameEn: "", champImg: "", champNameKo: "" });
     }
     if (profile) reset({ ...defaultValues });
   }, [profile]);
@@ -57,7 +55,7 @@ const SignupFormContainer = () => {
       preferPosition: data.preferPosition,
       tier: Number(data.tier),
       enableChat: true,
-      preferChamp1: id === 0 ? Number(profile?.preferChamp1?.id) : id,
+      preferChamp1: id === "" ? profile?.preferChamp1?.id : id,
       preferChamp2: 85,
       preferChamp3: 23,
     };

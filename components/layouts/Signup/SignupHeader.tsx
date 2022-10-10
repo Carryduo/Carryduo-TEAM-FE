@@ -1,4 +1,3 @@
-import { Switch } from "@mui/material";
 import { removeCookie } from "../../../util/servers/cookie";
 import ColorButton from "../../common/ColorButton";
 

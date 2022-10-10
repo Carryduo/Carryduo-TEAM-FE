@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
-import { ChampionProps } from "../../../core/config/pickChampion";
+import { Champions } from "../../../core/api/champions/types";
 import ChampionsContainer from "../../container/ChampionsContainer";
 
 interface Props {
-  pick: ChampionProps[];
+  pick: Champions[];
   SelectChampion: () => void;
 }
 
@@ -20,7 +20,7 @@ const PickLayout = ({ pick, SelectChampion }: Props) => {
         toLink={false}
       />
       <div className="flex h-24 w-full items-center justify-center">
-        {pick[3]?.name === undefined ? (
+        {pick[3]?.champNameEn === undefined ? (
           <div
             onClick={SelectChampion}
             className="flex h-10 w-28 cursor-pointer items-center justify-center bg-blue-400"
