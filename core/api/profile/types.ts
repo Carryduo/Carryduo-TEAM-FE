@@ -20,7 +20,7 @@ export interface Profile {
     champNameEn: string;
     champNameKo: string;
     champImg: string;
-    id: string;
+    id: any;
   };
 }
 
