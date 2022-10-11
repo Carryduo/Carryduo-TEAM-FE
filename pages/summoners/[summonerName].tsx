@@ -9,7 +9,7 @@ import { useLoading } from "../../util/hooks/useLoading";
 import { useGetSummoner } from "../../core/api/summoner/queries";
 
 const Summoners = () => {
-  const { query } = useRouter();
+  const { query, reload } = useRouter();
   const loading = useLoading();
   const {
     data: Summoner,

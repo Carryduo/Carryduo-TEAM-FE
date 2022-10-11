@@ -10,11 +10,16 @@ export default async function handler(
   try {
     const { data } = await instance.get("/champ");
     if (req.query.locale == "en") {
-      data.filter((val: Champions) => (val.champ = val.champNameEn));
+      const Data = data.map((val: Champions) => {
+        return val.champNameEn;
+      });
+      res.status(200).json(Data);
     } else {
-      data.filter((val: Champions) => (val.champ = val.champNameKo));
+      const Data = data.map((val: Champions) => {
+        return val.champNameKo;
+      });
+      res.status(200).json(Data);
     }
-    res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ error: "failed" });
   }

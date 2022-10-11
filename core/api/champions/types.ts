@@ -9,3 +9,7 @@ export interface Champions {
 export interface IChampions {
   data: Champions[];
 }
+
+export interface IChampionName {
+  data: string[];
+}
