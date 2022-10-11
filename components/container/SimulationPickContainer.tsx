@@ -24,13 +24,13 @@ const SimulationPickContainer = () => {
     });
   }, []);
   const SelectChampion = () => {
-    if (Champion.id === "") return;
+    if (Champion.id === 0) return;
     setPick((data: Champions[]) => {
       return [...data, Champion];
     });
     setCnt(Number(cnt) + 1);
     setCount(0);
-    setChampion({ id: "", champNameEn: "", champNameKo: "", champImg: "" });
+    setChampion({ id: 0, champNameEn: "", champNameKo: "", champImg: "" });
     setValue("");
   };
   return (
