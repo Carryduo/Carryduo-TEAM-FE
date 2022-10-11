@@ -48,7 +48,6 @@ const SignupFormContainer = () => {
   const [open, setOpen] = useState<boolean>(false);
   const { mutate } = usePostMyProfile();
   const onValid: SubmitHandler<FormProps> = (data) => {
-    console.log(typeof data.bio, data.tier);
     const options = {
       nickname: data.nickName,
       profileImg: String(profile?.profileImg),
