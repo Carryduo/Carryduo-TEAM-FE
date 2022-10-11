@@ -15,7 +15,7 @@ const DuoRankList = ({ pick }: Props) => {
         {DuoRank?.map((data, i) => {
           return (
             <div
-              className="grid grid-cols-[100px_340px_1.5fr_1.5fr_1.5fr] grid-rows-[repeat(auto-fill,60px)] items-center font-semibold"
+              className="grid grid-cols-[100px_380px_1.5fr_1.5fr_1.5fr] grid-rows-[repeat(auto-fill,60px)] items-center font-semibold"
               key={data.id}
             >
               {isLoading ? (
@@ -24,7 +24,7 @@ const DuoRankList = ({ pick }: Props) => {
                 <>
                   <span className="pl-2 text-gray-400">{i + 1}</span>
                   <div className="flex items-center space-x-6">
-                    <div className="flex w-[170px] h-14 items-center space-x-2 ">
+                    <div className="flex w-[190px] h-14 items-center space-x-2 ">
                       <Link
                         href={{
                           pathname: `/champions/${data.mainChampId.id}`,
@@ -49,7 +49,7 @@ const DuoRankList = ({ pick }: Props) => {
                       </span>
                     </div>
                     <span>+</span>
-                    <div className="flex w-[170px] h-14 items-center space-x-2">
+                    <div className="flex w-[190px] h-14 items-center space-x-2">
                       <Link
                         href={{
                           pathname: `/champions/${data.subChampId.id}`,
