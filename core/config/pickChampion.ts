@@ -10,7 +10,7 @@ export interface ChampionProps {
 export const PickChampion = atom<Champions>({
   key: `pickChampion/${v1()}`,
   default: {
-    id: "",
+    id: 0,
     champNameKo: "",
     champNameEn: "",
     champImg: "",

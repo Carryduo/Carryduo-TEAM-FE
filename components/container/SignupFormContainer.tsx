@@ -41,7 +41,7 @@ const SignupFormContainer = () => {
   });
   useEffect(() => {
     if (profile?.preferChamp1?.champNameEn !== champNameEn) {
-      setImage({ id: "", champNameEn: "", champImg: "", champNameKo: "" });
+      setImage({ id: 0, champNameEn: "", champImg: "", champNameKo: "" });
     }
     if (profile) reset({ ...defaultValues });
   }, [profile]);
@@ -55,7 +55,7 @@ const SignupFormContainer = () => {
       preferPosition: data.preferPosition,
       tier: Number(data.tier),
       enableChat: true,
-      preferChamp1: id === "" ? profile?.preferChamp1?.id : id,
+      preferChamp1: id === 0 ? profile?.preferChamp1?.id : id,
       preferChamp2: 85,
       preferChamp3: 23,
     };

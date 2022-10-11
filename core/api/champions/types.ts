@@ -1,5 +1,5 @@
 export interface Champions {
-  id: string;
+  id: number;
   champNameKo: string;
   champNameEn: string;
   champImg: string;
