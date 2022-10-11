@@ -14,3 +14,15 @@ export const useGetSummoner = (summonerName: string) => {
     }
   );
 };
+
+export const useRefreshSummoner = (summonerName: string) => {
+  return useQuery<ISummoner, ErrorHandle, Summoner>(
+    ["Summoner", summonerName],
+    () => {
+      return instance.get(`/summoner/refresh/${summonerName}`);
+    },
+    {
+      select: (data) => data.data,
+    }
+  );
+};
