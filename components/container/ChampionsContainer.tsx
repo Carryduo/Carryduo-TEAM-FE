@@ -1,4 +1,5 @@
 import _ from "lodash";
+import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { ChampionSearch } from "../../core/config/ChampionSearch";
 
@@ -19,6 +20,9 @@ const ChampionsContainer = ({
   gridCol,
 }: ChampionsContainerProps) => {
   const [value, setValue] = useRecoilState(ChampionSearch);
+  useEffect(() => {
+    setValue("");
+  }, []);
   const onChange = _.debounce((e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   }, 300);

@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { instance } from "../../core/api/axios";
+import { Champions } from "../../core/api/champions/types";
 
 export default async function handler(
   req: NextApiRequest,
@@ -7,10 +8,14 @@ export default async function handler(
 ) {
   console.log(req.query);
   try {
-    const result = await instance.get("/champ");
-    res.status(200).send(result.data);
+    const { data } = await instance.get("/champ");
+    if (req.query.locale == "en") {
+      data.filter((val: Champions) => (val.champ = val.champNameEn));
+    } else {
+      data.filter((val: Champions) => (val.champ = val.champNameKo));
+    }
+    res.status(200).json(data);
   } catch (error) {
-    console.log(error);
-    res.status(500).send({ error: "failed" });
+    res.status(500).json({ error: "failed" });
   }
 }

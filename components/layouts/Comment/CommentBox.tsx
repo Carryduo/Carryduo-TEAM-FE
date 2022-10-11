@@ -65,11 +65,11 @@ const CommentBox = ({
         ) : (
           <span className="mb-2">{content}</span>
         )}
-        <span className="text-gray-300 text-sm">{userNickName}</span>
-        <span className="text-gray-300 text-sm">{useTimeZone(createdAt)}</span>
+        <span className="text-sm text-gray-300">{userNickName}</span>
+        <span className="text-sm text-gray-300">{useTimeZone(createdAt)}</span>
       </div>
       <div className="flex w-[80px] justify-end space-x-2">
-        {userId !== tokenId ? (
+        {userId === tokenId ? (
           <>
             <span className="text-blue-300" onClick={OpenInputComment}>
               수정

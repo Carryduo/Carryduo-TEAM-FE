@@ -8,7 +8,7 @@ const DuoRankContainer = () => {
   return (
     <Fragment>
       <DuoRankHeader pick={pick} setPick={setPick} />
-      <div className="mb-1 grid w-full grid-cols-[100px_340px_1.5fr_1.5fr_1.5fr] text-sm ">
+      <div className="mb-1 grid w-full grid-cols-[100px_380px_1.5fr_1.5fr_1.5fr] text-sm ">
         <span>순위</span>
         <span>듀오 챔피언</span>
         <span className="text-center">티어</span>
