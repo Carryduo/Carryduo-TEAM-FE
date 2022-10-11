@@ -27,7 +27,7 @@ interface FormProps {
 
 const SignupFormContainer = () => {
   const { data: profile } = useGetMyProfile();
-  const { id } = useRecoilValue(PickChampion);
+  const { id, champNameEn } = useRecoilValue(PickChampion);
   const setImage = useSetRecoilState(PickChampion);
   const defaultValues = {
     nickName: profile?.nickname,
@@ -40,7 +40,7 @@ const SignupFormContainer = () => {
     defaultValues,
   });
   useEffect(() => {
-    if (profile?.preferChamp1?.champNameEn !== name) {
+    if (profile?.preferChamp1?.champNameEn !== champNameEn) {
       setImage({ id: "", champNameEn: "", champImg: "", champNameKo: "" });
     }
     if (profile) reset({ ...defaultValues });

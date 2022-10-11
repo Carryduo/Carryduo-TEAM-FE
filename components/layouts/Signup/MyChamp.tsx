@@ -27,7 +27,7 @@ const MyChamp = ({ setOpen, img }: MyChampProps) => {
         ) : (
           <img
             alt=""
-            src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${name}.png`}
+            src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${champNameEn}.png`}
             width={45}
             height={45}
             onClick={() => setOpen(true)}

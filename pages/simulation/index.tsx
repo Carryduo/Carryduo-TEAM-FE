@@ -4,31 +4,40 @@ import PageContainer from "../../components/common/PageContainer";
 const Simulation = () => {
   return (
     <PageContainer>
-      <div className="relative flex h-full w-full justify-center">
+      <div className="relative flex h-full w-full">
         <img
           alt=""
           src="/minimap.jpg"
           className="absolute -z-50 h-full w-full rounded-lg"
         />
-        <div className=" absolute h-full w-full translate-x-[15%] translate-y-[10%] ">
+        <div className="absolute translate-x-[40%] translate-y-[5%]  ">
           <Link href="/simulation/top-jungle">
-            <div className="mg-0 flex h-40 w-40 cursor-pointer items-center justify-center rounded-full bg-green-500 hover:bg-green-600">
-              <span>top</span>
-            </div>
+            <a>
+              <span className="absolute top-[100px] left-[100px] text-4xl hover:text-blue-400">
+                탑 - 정글
+              </span>
+              <div className="cursor-pointer border-t-[500px] border-r-[500px] border-r-transparent border-t-black border-opacity-40"></div>
+            </a>
           </Link>
         </div>
-        <div className="absolute h-full w-full translate-x-[47%] translate-y-[35%] ">
+        <div className="absolute  z-40 translate-x-[200%] translate-y-[10%]">
           <Link href="/simulation/mid-jungle">
-            <div className="mg-0 flex h-40 w-40 cursor-pointer items-center justify-center rounded-full bg-green-500 hover:bg-green-600">
-              <span>mid</span>
-            </div>
+            <a>
+              <span className="absolute bottom-[200px] right-[100px] z-50 text-4xl hover:text-blue-400">
+                미드 - 정글
+              </span>
+              <div className="h-[500px] w-[300px] -skew-x-[45deg]   cursor-pointer bg-black bg-opacity-40" />
+            </a>
           </Link>
         </div>
-        <div className="absolute h-full w-full translate-x-[77%] translate-y-[70%]">
+        <div className="absolute  translate-x-[150%] translate-y-[20%] ">
           <Link href="/simulation/ad-support">
-            <div className="mg-0 flex h-40 w-40 cursor-pointer items-center justify-center rounded-full bg-green-500 hover:bg-green-600">
-              <span>ad</span>
-            </div>
+            <a>
+              <span className="absolute bottom-[100px] right-[100px] text-4xl hover:text-blue-400">
+                원딜 - 서폿
+              </span>
+              <div className="cursor-pointer border-t-[500px] border-r-[500px] border-t-transparent border-r-black border-opacity-40 " />
+            </a>
           </Link>
         </div>
       </div>
