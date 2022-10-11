@@ -6,7 +6,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log(req.query);
   try {
     const { data } = await instance.get("/champ");
     if (req.query.locale == "en") {

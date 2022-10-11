@@ -29,6 +29,13 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
   const [cnt, setCnt] = useRecoilState(PickCnt);
   const pickChamp = useRecoilValue(PickChampArray).map((data) => data.id);
   const [color] = useShadow(getShadowColor);
+  const ChampionNameList = ChampName?.filter((val) => {
+    if (value === "") {
+      return val;
+    } else if (val.includes(value)) {
+      return val;
+    }
+  });
   const ChampionList = Champions?.filter((val) => {
     if (locale === "ko") {
       if (value === "") {
@@ -122,7 +129,9 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                 />
               )}
               <span className="whitespace-nowrap text-xs font-medium">
-                {ChampName === undefined ? null : useName(ChampName[i], locale)}
+                {ChampionNameList === undefined
+                  ? null
+                  : useName(ChampionNameList[i], locale)}
               </span>
             </div>
           );
