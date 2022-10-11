@@ -14,9 +14,8 @@ export default async function handler(
     } else {
       data.filter((val: Champions) => (val.champ = val.champNameKo));
     }
-    res.status(200).send(data);
+    res.status(200).json(data);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: "failed" });
   }
 }
