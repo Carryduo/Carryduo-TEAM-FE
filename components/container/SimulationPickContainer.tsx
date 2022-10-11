@@ -16,7 +16,12 @@ const SimulationPickContainer = () => {
   const [pick, setPick] = useRecoilState(PickChampArray);
   const [cnt, setCnt] = useState<Number>(0);
   useEffect(() => {
-    if (champNameEn !== "") setCount(0);
+    if (champNameEn !== "") {
+      setCount(0);
+    }
+    setPick(() => {
+      return [];
+    });
   }, []);
   const SelectChampion = () => {
     if (Champion.id === "") return;
