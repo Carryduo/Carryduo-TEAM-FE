@@ -48,12 +48,13 @@ const SignupFormContainer = () => {
   const [open, setOpen] = useState<boolean>(false);
   const { mutate } = usePostMyProfile();
   const onValid: SubmitHandler<FormProps> = (data) => {
+    console.log(typeof data.bio, data.tier);
     const options = {
       nickname: data.nickName,
       profileImg: String(profile?.profileImg),
-      bio: data.bio,
+      bio: data.bio === undefined ? "" : String(data.bio),
       preferPosition: data.preferPosition,
-      tier: Number(data.tier),
+      tier: data.tier === undefined ? 0 : Number(data.tier),
       enableChat: true,
       preferChamp1: id === 0 ? profile?.preferChamp1?.id : id,
       preferChamp2: 85,
