@@ -66,7 +66,6 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
               {toLink ? (
                 <div>
                   <Link
-                    as={`/champions/${data.id}`}
                     href={{
                       pathname: `/champions/${data.id}`,
                       query: { name: data.champNameKo, category: "champ" },
@@ -129,9 +128,12 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                 />
               )}
               <span className="whitespace-nowrap text-xs font-medium">
-                {ChampionNameList === undefined
+                {/* {ChampionNameList === undefined
                   ? null
-                  : useName(ChampionNameList[i], locale)}
+                  : useName(ChampionNameList[i], locale)} */}
+                {data.champNameKo.length <= 5
+                  ? data.champNameKo
+                  : `${data.champNameKo.substring(0, 4)}...`}
               </span>
             </div>
           );
