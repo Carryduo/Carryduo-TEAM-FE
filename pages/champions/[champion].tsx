@@ -33,10 +33,11 @@ const Champion = ({ champion, line }: Prop) => {
         <>
           <div className="h-full w-full space-y-4">
             <Grid width="w-[900px]" height="h-1/2">
-              <ChampionDetailContainer champId={Number(champion)} />
+              <ChampionDetailContainer line={line} champId={Number(champion)} />
             </Grid>
             <Grid width="w-[900px]" height="h-1/2">
               <ChampionWinRateContainer
+                ChampionName={String(query.name)}
                 category={String(champion)}
                 line={line}
               />
@@ -72,6 +73,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = async (context: PageProps) => {
   const { champion } = context.params;
+  console.log(context.params);
   const res = await instance.get(`/champ/${champion}`);
   let num = String(Math.max(...Object.values(res.data.rate).map(Number)));
   if (num.length === 2) {
