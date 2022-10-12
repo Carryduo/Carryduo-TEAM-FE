@@ -24,6 +24,7 @@ const ChampionData = ({ Champion }: Props) => {
       <div className="flex h-[200px] flex-col justify-between">
         <div className="flex h-12 w-full justify-between">
           <span className="text-2xl">{Champion.champNameKo}</span>
+
           <div className="space-x-1">
             <Image
               width={42}
