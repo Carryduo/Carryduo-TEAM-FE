@@ -15,6 +15,7 @@
 # production
 /build
 
+/public/riot.txt
 # misc
 .DS_Store
 *.pem
