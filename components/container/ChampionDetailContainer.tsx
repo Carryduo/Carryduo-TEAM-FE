@@ -17,11 +17,12 @@ const ChampionDetailContainer = ({ champId, line }: Props) => {
   return (
     <>
       <div className="flex w-full justify-end">
-        <img
+        <Image
           width={48}
           height={48}
           alt=""
           src={`/positionIcon/Position_Challenger-${line}.png`}
+          priority
         />
       </div>
       <div className="-mt-12 flex h-full w-full items-center justify-center space-x-16">

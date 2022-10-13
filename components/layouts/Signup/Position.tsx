@@ -1,12 +1,16 @@
 import Image from "next/image";
 import { UseFormRegisterReturn } from "react-hook-form";
 import Input from "../../common/Input";
+import Sup from "../../../public/positionIcon/Position_Challenger-support.png";
+import Bot from "../../../public/positionIcon/Position_Challenger-ad.png";
+import Mid from "../../../public/positionIcon/Position_Challenger-mid.png";
+import Jungle from "../../../public/positionIcon/Position_Challenger-jungle.png";
+import Top from "../../../public/positionIcon/Position_Challenger-top.png";
 
 interface PositionFormProp {
   register: UseFormRegisterReturn;
   watch: string;
 }
-
 const Position = ({ register, watch }: PositionFormProp) => {
   return (
     <div className="space-y-2">
@@ -14,67 +18,76 @@ const Position = ({ register, watch }: PositionFormProp) => {
       <div className="flex space-x-2">
         <label>
           <Input type="radio" value="Top" register={register} />
-          <img
+          <Image
             alt=""
-            src={`/positionIcon/Position_Challenger-top.png`}
+            src={Top}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
               watch !== "Top" ? "opacity-30" : ""
             }`}
+            layout="fixed"
+            priority
           />
         </label>
         <label>
           <Input type="radio" value="Jungle" register={register} />
-          <img
+          <Image
             alt=""
-            src={`/positionIcon/Position_Challenger-jungle.png`}
+            src={Jungle}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
               watch !== "Jungle" ? "opacity-30" : ""
             }`}
+            layout="fixed"
+            priority
           />
         </label>
         <label>
           <Input type="radio" value="Mid" register={register} />
-          <img
+          <Image
             alt=""
-            src={`/positionIcon/Position_Challenger-mid.png`}
+            src={Mid}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
               watch !== "Mid" ? "opacity-30" : ""
             }`}
+            layout="fixed"
+            priority
           />
         </label>
         <label>
           <Input type="radio" value="Bot" register={register} />
-          <img
+          <Image
             alt=""
-            src={`/positionIcon/Position_Challenger-ad.png`}
+            src={Bot}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
               watch !== "Bot" ? "opacity-30" : ""
             }`}
+            layout="fixed"
+            priority
           />
         </label>
         <label>
           <Input type="radio" value="Sup" register={register} />
-          <img
+          <Image
             alt=""
-            src={`/positionIcon/Position_Challenger-support.png`}
+            src={Sup}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
               watch !== "Sup" ? "opacity-30" : ""
             }`}
+            layout="fixed"
+            priority
           />
         </label>
       </div>
     </div>
   );
 };
-
 export default Position;

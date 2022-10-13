@@ -22,13 +22,14 @@ const HistoryGraph = ({ Summoner }: Props) => {
                 className={`absolute bottom-0 w-5 bg-[#5383E8]`}
               ></div>
             </div>
-            <img
+            <Image
               width={20}
               height={20}
               alt=""
               src={`/positionIcon/Position_Challenger-${usePosition(
                 data.id
               )}.png`}
+              priority
             />
           </div>
         );
