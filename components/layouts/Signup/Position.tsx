@@ -1,11 +1,6 @@
 import Image from "next/image";
 import { UseFormRegisterReturn } from "react-hook-form";
 import Input from "../../common/Input";
-import Sup from "../../../public/positionIcon/Position_Challenger-support.png";
-import Bot from "../../../public/positionIcon/Position_Challenger-ad.png";
-import Mid from "../../../public/positionIcon/Position_Challenger-mid.png";
-import Jungle from "../../../public/positionIcon/Position_Challenger-jungle.png";
-import Top from "../../../public/positionIcon/Position_Challenger-top.png";
 
 interface PositionFormProp {
   register: UseFormRegisterReturn;
@@ -21,7 +16,7 @@ const Position = ({ register, watch }: PositionFormProp) => {
           <Input type="radio" value="Top" register={register} />
           <Image
             alt=""
-            src={Top}
+            src={`/positionIcon/Position_Challenger-top.png`}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
@@ -29,14 +24,13 @@ const Position = ({ register, watch }: PositionFormProp) => {
             }`}
             layout="fixed"
             priority
-            placeholder="blur"
           />
         </label>
         <label>
           <Input type="radio" value="Jungle" register={register} />
           <Image
             alt=""
-            src={Jungle}
+            src={`/positionIcon/Position_Challenger-jungle.png`}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
@@ -44,14 +38,13 @@ const Position = ({ register, watch }: PositionFormProp) => {
             }`}
             layout="fixed"
             priority
-            placeholder="blur"
           />
         </label>
         <label>
           <Input type="radio" value="Mid" register={register} />
           <Image
             alt=""
-            src={Mid}
+            src={`/positionIcon/Position_Challenger-mid.png`}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
@@ -59,14 +52,13 @@ const Position = ({ register, watch }: PositionFormProp) => {
             }`}
             layout="fixed"
             priority
-            placeholder="blur"
           />
         </label>
         <label>
           <Input type="radio" value="Bot" register={register} />
           <Image
             alt=""
-            src={Bot}
+            src={`/positionIcon/Position_Challenger-ad.png`}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
@@ -74,14 +66,13 @@ const Position = ({ register, watch }: PositionFormProp) => {
             }`}
             layout="fixed"
             priority
-            placeholder="blur"
           />
         </label>
         <label>
           <Input type="radio" value="Sup" register={register} />
           <Image
             alt=""
-            src={Sup}
+            src={`/positionIcon/Position_Challenger-support.png`}
             width={45}
             height={45}
             className={`cursor-pointer rounded-full ${
@@ -89,7 +80,6 @@ const Position = ({ register, watch }: PositionFormProp) => {
             }`}
             layout="fixed"
             priority
-            placeholder="blur"
           />
         </label>
       </div>
