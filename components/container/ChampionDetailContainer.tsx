@@ -21,9 +21,7 @@ const ChampionDetailContainer = ({ champId, line }: Props) => {
           width={48}
           height={48}
           alt=""
-          src={`/positionIcon/Position_Challenger-${
-            line === "ad" ? "Bot" : line
-          }.png`}
+          src={`/positionIcon/Position_Challenger-${line}.png`}
         />
       </div>
       <div className="-mt-12 flex h-full w-full items-center justify-center space-x-16">

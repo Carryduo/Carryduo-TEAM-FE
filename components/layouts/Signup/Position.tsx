@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { UseFormRegisterReturn } from "react-hook-form";
 import Input from "../../common/Input";
-import Sup from "../../../public/positionIcon/Position_Challenger-Support.png";
-import Bot from "../../../public/positionIcon/Position_Challenger-Bot.png";
-import Mid from "../../../public/positionIcon/Position_Challenger-Mid.png";
-import Jungle from "../../../public/positionIcon/Position_Challenger-Jungle.png";
-import Top from "../../../public/positionIcon/Position_Challenger-Top.png";
+import Sup from "../../../public/positionIcon/Position_Challenger-support.png";
+import Bot from "../../../public/positionIcon/Position_Challenger-ad.png";
+import Mid from "../../../public/positionIcon/Position_Challenger-mid.png";
+import Jungle from "../../../public/positionIcon/Position_Challenger-jungle.png";
+import Top from "../../../public/positionIcon/Position_Challenger-top.png";
 
 interface PositionFormProp {
   register: UseFormRegisterReturn;
