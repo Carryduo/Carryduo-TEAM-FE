@@ -17,7 +17,7 @@ const ChampionDetailContainer = ({ champId, line }: Props) => {
   return (
     <>
       <div className="flex w-full justify-end">
-        <img
+        <Image
           width={48}
           height={48}
           alt=""
