@@ -73,7 +73,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = async (context: PageProps) => {
   const { champion } = context.params;
-  console.log(context.params);
   const res = await instance.get(`/champ/${champion}`);
   let num = String(Math.max(...Object.values(res.data.rate).map(Number)));
   if (num.length === 2) {
