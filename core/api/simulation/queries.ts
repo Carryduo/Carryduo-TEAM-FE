@@ -11,7 +11,7 @@ export const useGetSimulationResult = (
   champ4Id: number
 ) => {
   return useQuery<ISimulation, ErrorHandle, SimulationResult>(
-    [`getMyProfile`, category, champ1Id, champ2Id, champ3Id, champ4Id],
+    [`getResult`, category, champ1Id, champ2Id, champ3Id, champ4Id],
     () => {
       return instance.get(`/simulation/${category}`, {
         params: {
