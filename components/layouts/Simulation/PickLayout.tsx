@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import { Champions } from "../../../core/api/champions/types";
@@ -26,9 +27,7 @@ const PickLayout = ({ pick, SelectChampion }: Props) => {
         {pick[3]?.champNameEn === undefined ? (
           <>
             {pickNum === 0 ? (
-              <div
-                className="flex h-10 w-28 items-center justify-center bg-gray-500"
-              >
+              <div className="flex h-10 w-28 items-center justify-center bg-gray-500">
                 <span>선택중...</span>
               </div>
             ) : (
@@ -41,14 +40,21 @@ const PickLayout = ({ pick, SelectChampion }: Props) => {
             )}
           </>
         ) : (
-          <div
-            onClick={() => {
-              console.log(position, pick);
+          <Link
+            href={{
+              pathname: "/simulation/result",
+              query: { category: position },
             }}
-            className="flex h-10 w-28 cursor-pointer items-center justify-center bg-blue-400"
           >
-            <span>시작하기</span>
-          </div>
+            <div
+              onClick={() => {
+                console.log(position, pick);
+              }}
+              className="flex h-10 w-28 cursor-pointer items-center justify-center bg-blue-400"
+            >
+              <span>시작하기</span>
+            </div>
+          </Link>
         )}
       </div>
     </div>
