@@ -24,18 +24,18 @@ interface ChampionsContainerProps {
 const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
   const locale = useRecoilValue(getLocale);
   const { data: Champions } = useGetChamps();
-  const { data: ChampName } = useGetChampionName(locale);
+  // const { data: ChampName } = useGetChampionName(locale);
   const setChampion = useSetRecoilState(PickChampion);
   const [cnt, setCnt] = useRecoilState(PickCnt);
   const pickChamp = useRecoilValue(PickChampArray).map((data) => data.id);
   const [color] = useShadow(getShadowColor);
-  const ChampionNameList = ChampName?.filter((val) => {
-    if (value === "") {
-      return val;
-    } else if (val.includes(value)) {
-      return val;
-    }
-  });
+  // const ChampionNameList = ChampName?.filter((val) => {
+  //   if (value === "") {
+  //     return val;
+  //   } else if (val.includes(value)) {
+  //     return val;
+  //   }
+  // });
   const ChampionList = Champions?.filter((val) => {
     if (locale === "ko") {
       if (value === "") {
