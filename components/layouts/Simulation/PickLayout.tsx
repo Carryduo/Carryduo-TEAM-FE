@@ -46,12 +46,7 @@ const PickLayout = ({ pick, SelectChampion }: Props) => {
               query: { category: position },
             }}
           >
-            <div
-              onClick={() => {
-                console.log(position, pick);
-              }}
-              className="flex h-10 w-28 cursor-pointer items-center justify-center bg-blue-400"
-            >
+            <div className="flex h-10 w-28 cursor-pointer items-center justify-center bg-blue-400">
               <span>시작하기</span>
             </div>
           </Link>

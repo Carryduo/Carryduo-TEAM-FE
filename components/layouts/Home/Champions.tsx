@@ -1,13 +1,8 @@
-import { CircularProgress } from "@mui/material";
-import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import {
-  useGetChampionName,
-  useGetChamps,
-} from "../../../core/api/champions/queries";
+import { useGetChamps } from "../../../core/api/champions/queries";
 import { getLocale } from "../../../core/config/locale";
 import { PickChampArray } from "../../../core/config/PickChampArray";
 import { PickChampion } from "../../../core/config/pickChampion";

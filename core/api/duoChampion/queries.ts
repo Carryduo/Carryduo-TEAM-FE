@@ -1,7 +1,6 @@
 import { useQuery } from "react-query";
 import { ErrorHandle } from "../../config/ErrorType";
 import { instance } from "../axios";
-
 import { IDuoChamp, IDuoChamps } from "./types";
 
 
