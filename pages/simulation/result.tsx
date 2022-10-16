@@ -16,7 +16,7 @@ const Result = () => {
   useEffect(() => {
     if (pick.length < 4) {
       useSweet("1000", "error", "올바른 결과 값이 아닙니다");
-      Router.back();
+      Router.push("/simulation");
     }
   }, []);
   const { query } = useRouter();
@@ -27,7 +27,6 @@ const Result = () => {
     Number(pick[2]?.id),
     Number(pick[3]?.id)
   );
-  console.log(Result);
   return (
     <PageContainer>
       <Seo title="Result" />
@@ -35,38 +34,48 @@ const Result = () => {
         <LoadingContainer text={String(error?.response.data.message)} />
       ) : (
         <Grid width="w-full" height="h-full">
-          <span>결과</span>
-          <span>{query.category}</span>
-          <Image
-            alt=""
-            width={48}
-            height={48}
-            src={pick[0].champImg}
-            priority
-          />
-          <Image
-            alt=""
-            width={48}
-            height={48}
-            src={pick[1].champImg}
-            priority
-          />
-          <span>vs</span>
-          <Image
-            alt=""
-            width={48}
-            height={48}
-            src={pick[2].champImg}
-            priority
-          />
-          <Image
-            alt=""
-            width={48}
-            height={48}
-            src={pick[3].champImg}
-            priority
-          />
-          <span>{useResult(Result.winrate)}</span>
+          <div className="flex h-full w-full flex-col items-center justify-center space-y-8">
+            <div className="flex space-x-4">
+              <Image
+                alt=""
+                width={96}
+                height={96}
+                src={pick[0].champImg}
+                priority
+              />
+              <Image
+                alt=""
+                width={96}
+                height={96}
+                src={pick[1].champImg}
+                priority
+              />
+            </div>
+            <span>vs</span>
+            <div className="flex space-x-4">
+              <Image
+                alt=""
+                width={96}
+                height={96}
+                src={pick[2].champImg}
+                priority
+              />
+              <Image
+                alt=""
+                width={96}
+                height={96}
+                src={pick[3].champImg}
+                priority
+              />
+            </div>
+            <span>{useResult(Result.winrate)}</span>
+            <span
+              onClick={Router.back}
+              className="cursor-pointer rounded-md bg-blue-500 p-2 px-4"
+            >
+              다시하기
+            </span>
+          </div>
         </Grid>
       )}
     </PageContainer>
