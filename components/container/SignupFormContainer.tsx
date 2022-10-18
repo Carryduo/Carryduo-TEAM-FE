@@ -59,6 +59,7 @@ const SignupFormContainer = () => {
       preferChamp2: 85,
       preferChamp3: 23,
     };
+    console.log(options);
     mutate(options);
   };
   return (
