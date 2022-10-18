@@ -1,4 +1,6 @@
+import Router from "next/router";
 import { instance } from "../../../core/api/axios";
+import { useSweet } from "../../../util/hooks/useSweet";
 import { removeCookie } from "../../../util/servers/cookie";
 
 const SignupFooter = () => {
@@ -14,9 +16,17 @@ const SignupFooter = () => {
           <div>
             <span
               onClick={() => {
-                instance.delete("/admin").then(() => removeCookie("myToken"));
+                instance
+                  .delete("/admin")
+                  .then(() => {
+                    removeCookie("myToken");
+                    Router.push("/");
+                  })
+                  .catch((err) => {
+                    useSweet(1000, "error", err.response.data.message);
+                  });
               }}
-              className="font-light text-gray-700 underline"
+              className="cursor-pointer font-light text-gray-700 underline"
             >
               회원탈퇴
             </span>
