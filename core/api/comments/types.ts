@@ -11,7 +11,7 @@ export interface Comment {
   createdAt: string;
   userId: {
     enableChat: boolean;
-    id: string;
+    userId: string;
     nickname: string;
     profileImg: string;
   };

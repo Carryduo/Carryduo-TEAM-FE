@@ -56,7 +56,7 @@ const CommentsFormContainer = ({ category, champId }: CommentsProps) => {
                   content={data.content}
                   target={champId}
                   createdAt={data.createdAt}
-                  userId={data.userId.id}
+                  userId={data.userId.userId}
                   tokenId={String(id?.userId)}
                   userNickName={data.userId.nickname}
                 />

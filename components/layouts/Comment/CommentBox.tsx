@@ -49,7 +49,6 @@ const CommentBox = ({
   const PatchComment = () => {
     Patch();
   };
-  console.log(userId, tokenId);
   return (
     <div className="flex w-full justify-between">
       <div className="flex w-[calc(100%-80px)] flex-col ">
