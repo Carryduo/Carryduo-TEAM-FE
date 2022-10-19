@@ -16,28 +16,27 @@ import { useWindow } from "../util/hooks/useWindow";
 import PageContainer from "../components/common/PageContainer";
 import MainContainer from "../components/container/Main/MainContainer";
 
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      retry: false,
+      cacheTime: 1000 * 60 * 60 * 24 * 7,
+    },
+  },
+});
+
 function MyApp({
   Component,
   pageProps,
 }: AppProps<{ dehydratedState: DehydratedState }>) {
   const window = useWindow();
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            refetchOnWindowFocus: false,
-            refetchOnReconnect: false,
-            retry: false,
-            cacheTime: 1000 * 60 * 60 * 24 * 7,
-          },
-        },
-      })
-  );
+  const [query] = useState(() => queryClient);
   return (
     <>
       <RecoilRoot>
-        <QueryClientProvider client={queryClient}>
+        <QueryClientProvider client={query}>
           <Hydrate state={pageProps.dehydratedState}>
             <ReactQueryDevtools initialIsOpen={true} />
             <MainContainer>
