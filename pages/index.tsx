@@ -1,9 +1,11 @@
+import { dehydrate, QueryClient } from "react-query";
 import Grid from "../components/common/Grid";
 import PageContainer from "../components/common/PageContainer";
 import Seo from "../components/common/Seo";
 import ChampionsContainer from "../components/container/ChampionsContainer";
 import DuoRankContainer from "../components/container/DuoRankContainer";
 import LoadingContainer from "../components/layouts/Handler/LoadingContainer";
+import { getChamps } from "../core/api/champions/queries";
 import { useLoading } from "../util/hooks/useLoading";
 
 const MainPage = () => {
@@ -33,3 +35,21 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
+export const getStaticProps = async () => {
+  const queryClient = new QueryClient();
+  try {
+    await queryClient.fetchQuery(["Champs"], getChamps);
+    return {
+      props: {
+        dehydratedState: dehydrate(queryClient),
+      },
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  } finally {
+    queryClient.clear();
+  }
+};
