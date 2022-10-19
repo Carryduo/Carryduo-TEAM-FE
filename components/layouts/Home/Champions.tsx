@@ -1,14 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useQuery } from "react-query";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { useGetChamps } from "../../../core/api/champions/queries";
+import { getChamps } from "../../../core/api/champions/queries";
+import { Champions } from "../../../core/api/champions/types";
 import { getLocale } from "../../../core/config/locale";
 import { PickChampArray } from "../../../core/config/PickChampArray";
 import { PickChampion } from "../../../core/config/pickChampion";
 import { PickCnt } from "../../../core/config/PickCnt";
 import { getShadowColor } from "../../../core/config/shadowColor";
-import { useName } from "../../../util/hooks/useName";
 import { useShadow } from "../../../util/hooks/useShadow";
 
 interface ChampionsContainerProps {
@@ -18,7 +19,7 @@ interface ChampionsContainerProps {
 
 const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
   const locale = useRecoilValue(getLocale);
-  const { data: Champions } = useGetChamps();
+  const { data: Champions } = useQuery<Champions[]>(["Champs"], getChamps);
   // const { data: ChampName } = useGetChampionName(locale);
   const setChampion = useSetRecoilState(PickChampion);
   const [cnt, setCnt] = useRecoilState(PickCnt);
@@ -73,7 +74,6 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                         src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
                         width={56}
                         height={56}
-                        priority
                         placeholder="blur"
                         blurDataURL={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
                         className={`hover:border-[1px] hover:border-solid ${
@@ -97,7 +97,6 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                   src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
                   width={56}
                   height={56}
-                  priority
                   placeholder="blur"
                   blurDataURL={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
                   onClick={() => {

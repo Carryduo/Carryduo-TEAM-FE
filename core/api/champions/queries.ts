@@ -2,18 +2,11 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { ErrorHandle } from "../../config/ErrorType";
 import { instance } from "../axios";
-import { Champions, IChampionName, IChampions } from "./types";
+import { IChampionName } from "./types";
 
-export const useGetChamps = () => {
-  return useQuery<IChampions, ErrorHandle, Champions[]>(
-    ["Champs"],
-    () => {
-      return instance.get("/champ");
-    },
-    {
-      select: (data) => data.data,
-    }
-  );
+export const getChamps = async () => {
+  const res = await instance.get("/champ");
+  return res.data;
 };
 
 export const useGetChampionName = (locale?: string) => {

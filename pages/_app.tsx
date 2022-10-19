@@ -1,19 +1,20 @@
 import type { AppProps } from "next/app";
 import HeaderMain from "../components/container/Main/HeaderContainer";
-import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
+import {
+  DehydratedState,
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import React from "react";
+import React, { useState } from "react";
 import { RecoilRoot } from "recoil";
 import LoadingContainer from "../components/layouts/Handler/LoadingContainer";
 import "../styles/globals.css";
 import "../styles/slick.css";
 import { useWindow } from "../util/hooks/useWindow";
 import PageContainer from "../components/common/PageContainer";
-import dynamic from "next/dynamic";
-const MainContainer = dynamic(
-  () => import("../components/container/Main/MainContainer"),
-  { ssr: false }
-);
+import MainContainer from "../components/container/Main/MainContainer";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,12 +27,16 @@ export const queryClient = new QueryClient({
   },
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({
+  Component,
+  pageProps,
+}: AppProps<{ dehydratedState: DehydratedState }>) {
   const window = useWindow();
+  const [query] = useState(() => queryClient);
   return (
     <>
       <RecoilRoot>
-        <QueryClientProvider client={queryClient}>
+        <QueryClientProvider client={query}>
           <Hydrate state={pageProps.dehydratedState}>
             <ReactQueryDevtools initialIsOpen={true} />
             <MainContainer>
