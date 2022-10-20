@@ -14,7 +14,10 @@ import "../styles/globals.css";
 import "../styles/slick.css";
 import { useWindow } from "../util/hooks/useWindow";
 import PageContainer from "../components/common/PageContainer";
-import MainContainer from "../components/container/Main/MainContainer";
+import dynamic from "next/dynamic";
+const MainContainer = dynamic(
+  () => import("../components/container/Main/MainContainer")
+);
 
 export const queryClient = new QueryClient({
   defaultOptions: {
