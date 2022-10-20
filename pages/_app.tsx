@@ -15,9 +15,7 @@ import "../styles/slick.css";
 import { useWindow } from "../util/hooks/useWindow";
 import PageContainer from "../components/common/PageContainer";
 import dynamic from "next/dynamic";
-const MainContainer = dynamic(
-  () => import("../components/container/Main/MainContainer")
-);
+import MainContainer from "../components/container/Main/MainContainer";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,9 +31,7 @@ function MyApp({
   Component,
   pageProps,
 }: AppProps<{ dehydratedState: DehydratedState }>) {
-  const pc = useWindow();
   const [query] = useState(() => queryClient);
-  if (typeof window == undefined) return;
   return (
     <>
       <RecoilRoot>
@@ -43,16 +39,8 @@ function MyApp({
           <Hydrate state={pageProps.dehydratedState}>
             <ReactQueryDevtools initialIsOpen={true} />
             <MainContainer>
-              {pc ? (
-                <>
-                  <HeaderMain />
-                  <Component {...pageProps} />
-                </>
-              ) : (
-                <PageContainer>
-                  <LoadingContainer text="pc를 제외한 다른 환경에서는 해당 사이트를 이용하실 수 없습니다" />
-                </PageContainer>
-              )}
+              <HeaderMain />
+              <Component {...pageProps} />
             </MainContainer>
           </Hydrate>
         </QueryClientProvider>
