@@ -11,6 +11,10 @@ import { useLoading } from "../../util/hooks/useLoading";
 import LoadingContainer from "../../components/layouts/Handler/LoadingContainer";
 import { Champions } from "../../core/api/champions/types";
 import { useGetPosition } from "../../util/hooks/useGetPosition";
+import { queryClient } from "../_app";
+import { useChampDetail } from "../../core/api/champion/queries";
+import { dehydrate } from "react-query";
+import { getDuoChampRank } from "../../core/api/duoChampion/queries";
 
 interface Prop {
   champion: string;
@@ -26,28 +30,25 @@ const Champion = ({ champion, line }: Prop) => {
   const loading = useLoading();
   return (
     <PageContainer space="space-x-4">
-      <Seo title={String(query.name)} />
+      <Seo title={query.name === undefined ? "loading" : String(query.name)} />
       {loading ? (
         <LoadingContainer text="loading..." />
       ) : (
         <>
           <div className="h-full w-full space-y-4">
             <Grid width="w-[900px]" height="h-1/2">
-              <ChampionDetailContainer line={line} champId={Number(champion)} />
+              <ChampionDetailContainer line={line} champId={champion} />
             </Grid>
             <Grid width="w-[900px]" height="h-1/2">
               <ChampionWinRateContainer
                 ChampionName={String(query.name)}
-                category={String(champion)}
+                category={champion}
                 line={line}
               />
             </Grid>
           </div>
           <Grid width="w-full min-w-[300px]" height="h-[calc(100%+1rem)]">
-            <CommentsFormContainer
-              category="champ"
-              champId={Number(champion)}
-            />
+            <CommentsFormContainer category="champ" champId={champion} />
           </Grid>
         </>
       )}
@@ -83,7 +84,25 @@ export const getStaticProps = async (context: PageProps) => {
     num = num + "0";
   }
   const line = useGetPosition(res.data.rate, num);
-  return {
-    props: { champion, line },
-  };
+  try {
+    await queryClient.prefetchQuery(["Champ", champion], () =>
+      useChampDetail(champion)
+    );
+    await queryClient.prefetchQuery(["DuoChampRank", champion, line], () =>
+      getDuoChampRank(champion, String(line))
+    );
+    return {
+      props: {
+        champion,
+        line,
+        dehydratedState: dehydrate(queryClient),
+      },
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  } finally {
+    queryClient.clear();
+  }
 };
