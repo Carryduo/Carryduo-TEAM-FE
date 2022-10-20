@@ -29,7 +29,7 @@ const SummonerMostChamps = ({ Summoner }: Props) => {
                     width={75}
                     height={128}
                     alt=""
-                    src={String(data.champImg)}
+                    src={String(data.champMainImg)}
                     priority
                     layout="fixed"
                     className="rounded-xl"
