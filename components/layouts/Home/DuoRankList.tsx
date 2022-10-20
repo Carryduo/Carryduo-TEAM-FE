@@ -24,7 +24,7 @@ const DuoRankList = ({ pick }: Props) => {
                 <>
                   <span className="pl-2 text-gray-400">{i + 1}</span>
                   <div className="flex items-center space-x-6">
-                    <div className="flex w-[190px] h-14 items-center space-x-2 ">
+                    <div className="flex h-14 w-[190px] items-center space-x-2 ">
                       <Link
                         href={{
                           pathname: `/champions/${data.mainChampId.id}`,
@@ -36,11 +36,13 @@ const DuoRankList = ({ pick }: Props) => {
                       >
                         <a>
                           <Image
-                            alt=""
+                            alt={data.mainChampId.champImg}
                             src={data.mainChampId.champImg}
                             width={56}
                             height={56}
                             layout="fixed"
+                            placeholder="blur"
+                            blurDataURL={data.mainChampId.champImg}
                           />
                         </a>
                       </Link>
@@ -49,7 +51,7 @@ const DuoRankList = ({ pick }: Props) => {
                       </span>
                     </div>
                     <span>+</span>
-                    <div className="flex w-[190px] h-14 items-center space-x-2">
+                    <div className="flex h-14 w-[190px] items-center space-x-2">
                       <Link
                         href={{
                           pathname: `/champions/${data.subChampId.id}`,
@@ -61,11 +63,13 @@ const DuoRankList = ({ pick }: Props) => {
                       >
                         <a>
                           <Image
-                            alt=""
+                            alt={data.subChampId.champImg}
                             src={data.subChampId.champImg}
                             width={56}
                             height={56}
                             layout="fixed"
+                            placeholder="blur"
+                            blurDataURL={data.subChampId.champImg}
                           />
                         </a>
                       </Link>
