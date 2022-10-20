@@ -97,6 +97,7 @@ export const getStaticProps = async (context: PageProps) => {
         line,
         dehydratedState: dehydrate(queryClient),
       },
+      revalidate: 10
     };
   } catch (error) {
     return {
