@@ -7,7 +7,7 @@ import ChampionData from "../layouts/Champion/ChampionData";
 import MostSummonerData from "../layouts/Champion/MostSummonerData";
 
 interface Props {
-  champId: number;
+  champId: string;
   line: string;
 }
 
