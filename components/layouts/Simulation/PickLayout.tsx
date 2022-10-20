@@ -46,9 +46,11 @@ const PickLayout = ({ pick, SelectChampion }: Props) => {
               query: { category: position },
             }}
           >
-            <div className="flex h-10 w-28 cursor-pointer items-center justify-center bg-blue-400">
-              <span>시작하기</span>
-            </div>
+            <a>
+              <div className="flex h-10 w-28 cursor-pointer items-center justify-center bg-blue-400">
+                <span>시작하기</span>
+              </div>
+            </a>
           </Link>
         )}
       </div>

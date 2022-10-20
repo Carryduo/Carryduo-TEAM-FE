@@ -23,9 +23,11 @@ const HeaderMain = () => {
     <header className="flex h-24 w-full items-center justify-between">
       <div className="flex space-x-14">
         <Link href="/">
-          <span className="cursor-pointer text-2xl font-semibold">
-            Carryduo
-          </span>
+          <a>
+            <span className="cursor-pointer text-2xl font-semibold">
+              Carryduo
+            </span>
+          </a>
         </Link>
         <form onSubmit={handleSubmit(onValid)}>
           <Input
@@ -41,40 +43,48 @@ const HeaderMain = () => {
       </div>
       <div className="flex h-7 space-x-12">
         <Link href="/">
-          <div className="flex w-[140px] cursor-pointer flex-col items-center text-center">
-            {router.pathname === "/" ? (
-              <>
-                <span>챔피언 리스트</span>
-                <PickLine animate="animate-lgLine" />
-              </>
-            ) : (
-              <span className="text-gray-300 hover:text-white">
-                챔피언 리스트
-              </span>
-            )}
-          </div>
+          <a>
+            <div className="flex w-[140px] cursor-pointer flex-col items-center text-center">
+              {router.pathname === "/" ? (
+                <>
+                  <span>챔피언 리스트</span>
+                  <PickLine animate="animate-lgLine" />
+                </>
+              ) : (
+                <span className="text-gray-300 hover:text-white">
+                  챔피언 리스트
+                </span>
+              )}
+            </div>
+          </a>
         </Link>
         <Link href="/simulation">
-          <div className="flex w-[140px] cursor-pointer flex-col items-center text-center">
-            {router.pathname === "/simulation" ? (
-              <>
-                <span>가상 대전</span>
-                <PickLine animate="animate-lgLine" />
-              </>
-            ) : (
-              <span className="text-gray-300 hover:text-white">가상 대전</span>
-            )}
-          </div>
+          <a>
+            <div className="flex w-[140px] cursor-pointer flex-col items-center text-center">
+              {router.pathname === "/simulation" ? (
+                <>
+                  <span>가상 대전</span>
+                  <PickLine animate="animate-lgLine" />
+                </>
+              ) : (
+                <span className="text-gray-300 hover:text-white">
+                  가상 대전
+                </span>
+              )}
+            </div>
+          </a>
         </Link>
         <Link href={getCookie("myToken") === undefined ? "/login" : "/setting"}>
-          {getCookie("myToken") === undefined ? (
-            <div className="relative">
-              <div className="absolute -top-1 -right-2 h-2 w-2 rounded-full bg-blue-500"></div>
-              <span className="cursor-pointer">로그인</span>
-            </div>
-          ) : (
-            <span className="cursor-pointer">설정</span>
-          )}
+          <a>
+            {getCookie("myToken") === undefined ? (
+              <div className="relative">
+                <div className="absolute -top-1 -right-2 h-2 w-2 rounded-full bg-blue-500"></div>
+                <span className="cursor-pointer">로그인</span>
+              </div>
+            ) : (
+              <span className="cursor-pointer">설정</span>
+            )}
+          </a>
         </Link>
       </div>
     </header>

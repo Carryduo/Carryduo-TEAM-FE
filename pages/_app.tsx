@@ -38,18 +38,18 @@ function MyApp({
         <QueryClientProvider client={query}>
           <Hydrate state={pageProps.dehydratedState}>
             <ReactQueryDevtools initialIsOpen={true} />
-            {window ? (
-              <MainContainer>
-                <HeaderMain />
-                <Component {...pageProps} />
-              </MainContainer>
-            ) : (
-              <MainContainer>
+            <MainContainer>
+              {window ? (
+                <>
+                  <HeaderMain />
+                  <Component {...pageProps} />
+                </>
+              ) : (
                 <PageContainer>
                   <LoadingContainer text="pc를 제외한 다른 환경에서는 해당 사이트를 이용하실 수 없습니다" />
-                </PageContainer>{" "}
-              </MainContainer>
-            )}
+                </PageContainer>
+              )}
+            </MainContainer>
           </Hydrate>
         </QueryClientProvider>
       </RecoilRoot>
