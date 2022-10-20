@@ -8,19 +8,13 @@ import {
   IChampions,
 } from "./types";
 
-export const useGetChampDetail = (ChampId: number) => {
-  return useQuery<IChampions, ErrorHandle, Champion>(
-    ["Champ", ChampId],
-    () => {
-      return instance.get(`/champ/${ChampId}`);
-    },
-    {
-      select: (data) => data.data,
-    }
+export const useGetChampDetail = (ChampId: string) => {
+  return useQuery<IChampions, ErrorHandle, Champion>(["Champ", ChampId], () =>
+    useChampDetail(ChampId)
   );
 };
 
-export const useGetMostChampSummoner = (ChampId: number) => {
+export const useGetMostChampSummoner = (ChampId: string) => {
   return useQuery<IChampionMostSummoner, ErrorHandle, ChampionMostSummoner[]>(
     ["MostSummoner", ChampId],
     () => {
@@ -30,4 +24,9 @@ export const useGetMostChampSummoner = (ChampId: number) => {
       select: (data) => data.data,
     }
   );
+};
+
+export const useChampDetail = async (ChampId: string) => {
+  const res = await instance.get(`/champ/${ChampId}`);
+  return res.data;
 };
