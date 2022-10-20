@@ -20,7 +20,7 @@ const SummonerDetailContainer = ({ Summoner, summonerName }: Props) => {
   return (
     <div className="h-full w-full space-y-4">
       <Grid width="w-[900px]" height="h-1/2">
-        <div className="w-full text-end mt-1">
+        <div className="mt-1 w-full text-end">
           <span
             className="cursor-pointer rounded-md bg-slate-500 px-2 py-1 text-center hover:bg-slate-700 "
             onClick={RefreshData}
@@ -28,7 +28,7 @@ const SummonerDetailContainer = ({ Summoner, summonerName }: Props) => {
             전적 갱신
           </span>
         </div>
-        <div className="flex h-full w-full items-center justify-around -mt-4">
+        <div className="-mt-4 flex h-full w-full items-center justify-around">
           <SummonerData Summoner={Summoner} summonerName={summonerName} />
           <SummonerMostChamps Summoner={Summoner} />
         </div>

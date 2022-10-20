@@ -6,13 +6,13 @@ import { ISummoner, Summoner } from "./types";
 export const useGetSummoner = (summonerName: string) => {
   return useQuery<ISummoner, ErrorHandle, Summoner>(
     ["Summoner", summonerName],
-    () => {
-      return instance.get(`/summoner/${summonerName}`);
-    },
-    {
-      select: (data) => data.data,
-    }
+    () => getSummoner(summonerName)
   );
+};
+
+export const getSummoner = async (summonerName: string) => {
+  const res = await instance.get(`/summoner/${encodeURI(summonerName)}`);
+  return res.data;
 };
 
 export const useRefreshSummoner = (summonerName: string) => {
