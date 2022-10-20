@@ -15,7 +15,6 @@ const SummonerDetailContainer = ({ Summoner, summonerName }: Props) => {
   const { reload } = useRouter();
   const RefreshData = () => {
     instance.get(`/summoner/refresh/${String(summonerName)}`);
-    reload();
   };
   return (
     <div className="h-full w-full space-y-4">
