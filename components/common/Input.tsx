@@ -52,16 +52,18 @@ const Input = ({
         <button
           type="submit"
           className="absolute top-[2px] right-3 text-gray-400"
+          aria-label={type}
         >
-          <SearchIcon className="w-6 h-6"/>
+          <SearchIcon className="h-6 w-6" />
         </button>
       ) : null}
       {openSubmit ? (
         <button
           type="submit"
           className="absolute top-[2px] right-3 text-gray-400"
+          aria-label={type}
         >
-          <AddIcon className="w-6 h-6"/>
+          <AddIcon className="h-6 w-6" />
         </button>
       ) : null}
     </div>
