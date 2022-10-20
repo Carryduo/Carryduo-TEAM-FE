@@ -30,8 +30,9 @@ function MyApp({
   Component,
   pageProps,
 }: AppProps<{ dehydratedState: DehydratedState }>) {
-  const window = useWindow();
+  const pc = useWindow();
   const [query] = useState(() => queryClient);
+  if (typeof window == undefined) return;
   return (
     <>
       <RecoilRoot>
@@ -39,7 +40,7 @@ function MyApp({
           <Hydrate state={pageProps.dehydratedState}>
             <ReactQueryDevtools initialIsOpen={true} />
             <MainContainer>
-              {window ? (
+              {pc ? (
                 <>
                   <HeaderMain />
                   <Component {...pageProps} />
