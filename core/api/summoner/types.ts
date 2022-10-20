@@ -2,7 +2,7 @@ export interface MostChamp {
   id: string;
   champNameKo: string;
   champNameEn: string;
-  champImg: string;
+  champMainImg: string;
 }
 
 export interface Position {
