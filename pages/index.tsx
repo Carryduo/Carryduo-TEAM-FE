@@ -7,6 +7,7 @@ import DuoRankContainer from "../components/container/DuoRankContainer";
 import LoadingContainer from "../components/layouts/Handler/LoadingContainer";
 import { getChamps } from "../core/api/champions/queries";
 import { useLoading } from "../util/hooks/useLoading";
+import { queryClient } from "./_app";
 
 const MainPage = () => {
   const loading = useLoading();
@@ -37,7 +38,6 @@ const MainPage = () => {
 export default MainPage;
 
 export const getStaticProps = async () => {
-  const queryClient = new QueryClient();
   try {
     await queryClient.fetchQuery(["Champs"], getChamps);
     return {
