@@ -20,10 +20,7 @@ class MyDocument extends Document {
           <meta name="description" content="Carryduo" />
           <meta property="og:title" content="Carryduo" />
           <meta property="og:description" content="롤 듀오 서칭 플랫폼" />
-          <meta
-            httpEquiv="Content-Security-Policy"
-            content="script-src 'none'"
-          />
+          <meta httpEquiv="Content-Security-Policy" />
         </Head>
         <body>
           <Main />
