@@ -16,7 +16,10 @@ const IntroContainer = () => {
           <span>듀오 승률을 확인해보세요</span>
         </div>
         <div className="flex h-[550px] w-full items-center justify-center">
-          <span>듀오를 찾기 위해 정보를 입력해보세요</span>
+          <span>듀오를 찾기 위해 유저를 검색해보세요</span>
+        </div>
+        <div className="flex h-[550px] w-full items-center justify-center">
+          <span>가상 대전을 통해 듀오 승률을 직접 확인해보세요</span>
         </div>
       </Slider>
       <link
