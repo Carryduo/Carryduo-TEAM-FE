@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    allowFutureImage: true,
     minimumCacheTTL: 31536000,
     domains: [
       "ddragon.leagueoflegends.com",
