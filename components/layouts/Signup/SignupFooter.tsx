@@ -7,7 +7,9 @@ const SignupFooter = () => {
   return (
     <div className="mt-4 h-[30%] w-full">
       <header className="h-10 w-full space-x-12 border-b-[1px] pl-4">
-        <span>제작소개</span>
+        <a href="https://velog.io/@jiho3894/series/Carryduo" target="_blank" rel="noreferrer">
+          <span>제작소개</span>
+        </a>
         <span>이용약관</span>
         <span>개인정보처리방침</span>
       </header>
