@@ -7,7 +7,7 @@ import {
   QueryClientProvider,
 } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
 import LoadingContainer from "../components/layouts/Handler/LoadingContainer";
 import "../styles/globals.css";
@@ -15,6 +15,8 @@ import "../styles/slick.css";
 import { useWindow } from "../util/hooks/useWindow";
 import PageContainer from "../components/common/PageContainer";
 import MainContainer from "../components/container/Main/MainContainer";
+import ChannelService from "../util/servers/ChannelService";
+import { useGetMyProfile } from "../core/api/profile/queries";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,6 +35,15 @@ function MyApp({
   const pc = useWindow();
   const [query] = useState(() => queryClient);
   if (typeof window === undefined) return;
+  useEffect(() => {
+    const channelTalk = new ChannelService();
+    channelTalk.boot({
+      pluginKey: process.env.NEXT_PUBLIC_CHANNEL_IO_KEY,
+    });
+    return () => {
+      channelTalk.shutdown();
+    };
+  }, []);
   return (
     <>
       <RecoilRoot>
