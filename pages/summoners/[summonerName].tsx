@@ -32,7 +32,7 @@ const Summoners = ({ summonerName }: Prop) => {
     <PageContainer space="space-x-4">
       <Seo title={Summoner === undefined ? "정보없음" : summonerName} />
       {loading ? (
-        <LoadingContainer text="loading..." />
+        <LoadingContainer text="유저 검색 중..." />
       ) : Summoner === undefined ? (
         <LoadingContainer text={String(error?.response.data.message)} />
       ) : (
