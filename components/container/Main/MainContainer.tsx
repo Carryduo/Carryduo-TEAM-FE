@@ -12,10 +12,11 @@ const MainContainer = ({ children }: DarkContainerProps) => {
   const [color] = useShadow(getShadowColor);
   return (
     <div className="relative flex h-screen min-h-[800px] w-full min-w-[1640px] items-center justify-center bg-black bg-opacity-50">
-      <img
+      <Image
         alt="Summonersrift"
         src="/summonersrift.jpg"
-        className="absolute -z-50 h-screen w-full"
+        className="absolute -z-50"
+        layout="fill"
       />
       <div
         className={`z-50 h-[85%] w-[80%] overflow-hidden rounded-xl bg-black bg-opacity-30 px-10 shadow-[0_0_40px_1px] ${
