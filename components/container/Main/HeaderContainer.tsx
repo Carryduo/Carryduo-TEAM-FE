@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useSweet } from "../../../util/hooks/useSweet";
 import { getCookie } from "../../../util/servers/cookie";
 import Input from "../../common/Input";
 import PickLine from "../../common/PickLine";
