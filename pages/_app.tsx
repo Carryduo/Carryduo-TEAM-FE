@@ -16,7 +16,6 @@ import { useWindow } from "../util/hooks/useWindow";
 import PageContainer from "../components/common/PageContainer";
 import MainContainer from "../components/container/Main/MainContainer";
 import ChannelService from "../util/servers/ChannelService";
-import { useGetMyProfile } from "../core/api/profile/queries";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -51,16 +50,8 @@ function MyApp({
           <Hydrate state={pageProps.dehydratedState}>
             <ReactQueryDevtools initialIsOpen={true} />
             <MainContainer>
-              {pc ? (
-                <>
-                  <HeaderMain />
-                  <Component {...pageProps} />
-                </>
-              ) : (
-                <PageContainer>
-                  <LoadingContainer text="pc를 제외한 다른 환경에서는 해당 사이트를 이용하실 수 없습니다" />
-                </PageContainer>
-              )}
+              <HeaderMain />
+              <Component {...pageProps} />
             </MainContainer>
           </Hydrate>
         </QueryClientProvider>

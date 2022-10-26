@@ -1,5 +1,4 @@
 import Image from "next/image";
-import mainImage from "../../../public/summonersrift.jpg";
 import React from "react";
 import { getShadowColor } from "../../../core/config/shadowColor";
 import { useShadow } from "../../../util/hooks/useShadow";
