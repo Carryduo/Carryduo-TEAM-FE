@@ -9,11 +9,9 @@ import {
 import { ReactQueryDevtools } from "react-query/devtools";
 import React, { useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
-import LoadingContainer from "../components/layouts/Handler/LoadingContainer";
 import "../styles/globals.css";
 import "../styles/slick.css";
 import { useWindow } from "../util/hooks/useWindow";
-import PageContainer from "../components/common/PageContainer";
 import MainContainer from "../components/container/Main/MainContainer";
 import ChannelService from "../util/servers/ChannelService";
 
@@ -21,8 +19,9 @@ export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnReconnect: false,
-      retry: false,
-      cacheTime: 1000 * 60 * 60 * 24 * 7,
+      refetchOnWindowFocus: false,
+      staleTime: 60 * 1000,
+      cacheTime: Infinity,
     },
   },
 });
@@ -44,19 +43,17 @@ function MyApp({
     };
   }, []);
   return (
-    <>
-      <RecoilRoot>
-        <QueryClientProvider client={query}>
-          <Hydrate state={pageProps.dehydratedState}>
-            <ReactQueryDevtools initialIsOpen={true} />
-            <MainContainer>
-              <HeaderMain />
-              <Component {...pageProps} />
-            </MainContainer>
-          </Hydrate>
-        </QueryClientProvider>
-      </RecoilRoot>
-    </>
+    <RecoilRoot>
+      <QueryClientProvider client={query}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <ReactQueryDevtools initialIsOpen={true} />
+          <MainContainer>
+            <HeaderMain />
+            <Component {...pageProps} />
+          </MainContainer>
+        </Hydrate>
+      </QueryClientProvider>
+    </RecoilRoot>
   );
 }
 
