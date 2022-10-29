@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+body {
+  background-color: black;
+}
+
   span {
     @apply text-white font-semibold
   }
