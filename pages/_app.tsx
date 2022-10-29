@@ -11,7 +11,6 @@ import React, { useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
 import "../styles/globals.css";
 import "../styles/slick.css";
-import { useWindow } from "../util/hooks/useWindow";
 import MainContainer from "../components/container/Main/MainContainer";
 import ChannelService from "../util/servers/ChannelService";
 
@@ -30,7 +29,6 @@ function MyApp({
   Component,
   pageProps,
 }: AppProps<{ dehydratedState: DehydratedState }>) {
-  const pc = useWindow();
   const [query] = useState(() => queryClient);
   if (typeof window === undefined) return;
   useEffect(() => {
