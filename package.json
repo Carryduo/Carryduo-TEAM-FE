@@ -6,13 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze-bundle" : "ANALYZE=true yarn build"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.3",
+    "@next/bundle-analyzer": "^13.0.2",
     "@types/lodash": "^4.14.184",
     "@types/react-slick": "^0.23.10",
     "@types/uuid": "^8.3.4",
