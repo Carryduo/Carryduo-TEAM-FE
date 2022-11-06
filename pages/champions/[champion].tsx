@@ -78,13 +78,6 @@ export const getStaticProps = async (context: PageProps) => {
   let num = String(
     Math.max(...Object.values(res.data.rateInfo.rate).map(Number))
   );
-  if (num.length === 2) {
-    num = num + ".00";
-  } else if (num.length === 3) {
-    num = num + ".00";
-  } else if (num.includes(".") && num.length === 4) {
-    num = num + "0";
-  }
   const line = useGetPosition(res.data.rateInfo.rate, num);
   try {
     await queryClient.prefetchQuery(["Champ", champion], () =>
