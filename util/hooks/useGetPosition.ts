@@ -4,6 +4,6 @@ type objType = {
 
 export const useGetPosition = (obj: objType, value: string) => {
   return Object.keys(obj).find((key: string) => {
-    return obj[key] === value;
+    return String(obj[key]) === value;
   });
 };
