@@ -31,7 +31,13 @@ const Result = () => {
     <PageContainer>
       <Seo title="Result" />
       {Result === undefined ? (
-        <LoadingContainer text={String(error?.response.data.message)} />
+        <LoadingContainer
+          text={String(
+            error?.response.data.message === undefined
+              ? "가상 대전 중..."
+              : error.response.data.message
+          )}
+        />
       ) : (
         <Grid width="w-full" height="h-full">
           <div className="flex h-full w-full flex-col items-center justify-center space-y-8">
