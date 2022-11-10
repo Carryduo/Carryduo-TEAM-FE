@@ -71,11 +71,11 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                     <a>
                       <Image
                         alt={`${data.champNameEn}`}
-                        src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
+                        src={`${data.champImg}`}
                         width={56}
                         height={56}
                         placeholder="blur"
-                        blurDataURL={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
+                        blurDataURL={`${data.champImg}`}
                         className={`hover:border-[1px] hover:border-solid ${
                           color === 1
                             ? "hover:border-blue-100"
@@ -94,11 +94,11 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
               ) : (
                 <Image
                   alt={`${data.champNameEn}`}
-                  src={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
+                  src={`${data.champImg}`}
                   width={56}
                   height={56}
                   placeholder="blur"
-                  blurDataURL={`https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${data.champNameEn}.png`}
+                  blurDataURL={`${data.champImg}`}
                   onClick={() => {
                     setChampion({
                       id: data.id,
