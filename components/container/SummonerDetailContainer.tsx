@@ -1,6 +1,6 @@
-import { useRouter } from "next/router";
 import { instance } from "../../core/api/axios";
 import { Summoner } from "../../core/api/summoner/types";
+import { useSweet } from "../../util/hooks/useSweet";
 import Grid from "../common/Grid";
 import SummonerData from "../layouts/Summoner/SummonerData";
 import SummonerHistory from "../layouts/Summoner/SummonerHistory";
@@ -12,8 +12,8 @@ interface Props {
 }
 
 const SummonerDetailContainer = ({ Summoner, summonerName }: Props) => {
-  const { reload } = useRouter();
   const RefreshData = () => {
+    useSweet(1000, "success", "전적 갱신");
     instance.get(`/summoner/refresh/${String(summonerName)}`);
   };
   return (
