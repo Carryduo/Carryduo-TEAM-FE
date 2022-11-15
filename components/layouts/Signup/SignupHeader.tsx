@@ -27,9 +27,6 @@ const SignupHeader = () => {
       </div>
       <div>
         <div className="flex space-x-8">
-          <div className="mt-1 flex items-center">
-            <span onClick={chooseLocale}>국적 선택 : {locale}</span>
-          </div>
           <div className="mt-1 flex items-center space-x-2">
             <span>테두리 색상</span>
             <div className="flex items-center space-x-4">
