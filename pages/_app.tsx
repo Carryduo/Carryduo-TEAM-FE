@@ -25,10 +25,10 @@ export const queryClient = new QueryClient({
   },
 });
 
-function MyApp({
+const MyApp = ({
   Component,
   pageProps,
-}: AppProps<{ dehydratedState: DehydratedState }>) {
+}: AppProps<{ dehydratedState: DehydratedState }>) => {
   const [query] = useState(() => queryClient);
   if (typeof window === undefined) return;
   useEffect(() => {
@@ -53,6 +53,6 @@ function MyApp({
       </QueryClientProvider>
     </RecoilRoot>
   );
-}
+};
 
 export default MyApp;
