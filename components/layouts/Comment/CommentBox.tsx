@@ -71,15 +71,15 @@ const CommentBox = ({
       <div className="flex w-[80px] justify-end space-x-2">
         {userId === tokenId ? (
           <>
-            <span className="text-blue-300" onClick={OpenInputComment}>
+            <span className="text-blue-300 cursor-pointer" onClick={OpenInputComment}>
               수정
             </span>
-            <span className="text-green-300" onClick={DeleteComment}>
+            <span className="text-green-300 cursor-pointer" onClick={DeleteComment}>
               삭제
             </span>
           </>
         ) : (
-          <span className="text-red-400" onClick={PatchComment}>
+          <span className="text-red-400 cursor-pointer" onClick={PatchComment}>
             신고
           </span>
         )}
