@@ -11,6 +11,7 @@ const nextConfig = {
       "ddragon.leagueoflegends.com",
       "raw.githubusercontent.com",
       "erunjrun.com",
+      "carryduo-image.s3.ap-northeast-2.amazonaws.com"
     ],
     formats: ["image/avif", "image/webp"],
   },
