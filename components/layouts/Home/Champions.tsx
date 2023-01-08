@@ -69,22 +69,27 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                     passHref
                   >
                     <a>
-                      <Image
+                      <img
                         alt={`${data.champNameEn}`}
                         src={`${data.champImg}`}
-                        width={56}
-                        height={56}
-                        placeholder="blur"
-                        blurDataURL={`${data.champImg}`}
-                        className={`hover:border-[1px] hover:border-solid ${
+                        onClick={() => {
+                          setChampion({
+                            id: data.id,
+                            champNameEn: data.champNameEn,
+                            champNameKo: data.champNameKo,
+                            champImg: data.champImg,
+                          });
+                          setCnt(cnt + 1);
+                        }}
+                        className={`h-14 w-14 hover:border-[1px] hover:border-solid ${
                           color === 1
-                            ? "hover:border-blue-100"
+                            ? "hover:border-blue-100 active:border-[2px]"
                             : color === 2
-                            ? "hover:border-[#5F99FF]"
+                            ? "hover:border-[#5F99FF] active:border-[2px]"
                             : color === 3
-                            ? "hover:border-[#00D39E]"
+                            ? "hover:border-[#00D39E] active:border-[2px]"
                             : color === 4
-                            ? "hover:border-[#FF7637]"
+                            ? "hover:border-[#FF7637] active:border-[2px]"
                             : "hover:border-gray-700"
                         }`}
                       />
@@ -92,13 +97,9 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                   </Link>
                 </div>
               ) : (
-                <Image
+                <img
                   alt={`${data.champNameEn}`}
                   src={`${data.champImg}`}
-                  width={56}
-                  height={56}
-                  placeholder="blur"
-                  blurDataURL={`${data.champImg}`}
                   onClick={() => {
                     setChampion({
                       id: data.id,
@@ -108,7 +109,7 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                     });
                     setCnt(cnt + 1);
                   }}
-                  className={`hover:border-[1px] hover:border-solid ${
+                  className={`h-14 w-14 hover:border-[1px] hover:border-solid ${
                     color === 1
                       ? "hover:border-blue-100 active:border-[2px]"
                       : color === 2
@@ -120,6 +121,15 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                       : "hover:border-gray-700"
                   }`}
                 />
+                // <Image
+                //   alt={`${data.champNameEn}`}
+                //   src={`${data.champImg}`}
+                //   width={56}
+                //   height={56}
+                //   placeholder="blur"
+                //   blurDataURL={`${data.champImg}`}
+
+                // />
               )}
               <span className="whitespace-nowrap text-xs font-medium">
                 {/* {ChampionNameList === undefined
