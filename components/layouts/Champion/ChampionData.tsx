@@ -10,8 +10,8 @@ interface Props {
 const ChampionData = ({ Champion }: Props) => {
   return (
     <>
-      <div className="h-[200px] w-[200px] overflow-hidden rounded-xl">
-        <Image
+      <div className="h-[280px] w-[154px] overflow-hidden rounded-xl">
+        {/* <Image
           width={200}
           height={200}
           alt=""
@@ -19,14 +19,18 @@ const ChampionData = ({ Champion }: Props) => {
           className="scale-110"
           layout="fixed"
           priority
+        /> */}
+        <img
+          alt={String(Champion.champImg)}
+          src={String(Champion.champImg)}
+          className="scale-110"
         />
       </div>
       <div className="flex h-[200px] flex-col justify-between">
         <div className="flex h-12 w-full justify-between">
           <span className="text-2xl">{Champion.champNameKo}</span>
-
-          <div className="space-x-1">
-            <Image
+          <div className="flex space-x-1">
+            {/* <Image
               width={42}
               height={42}
               alt=""
@@ -35,8 +39,13 @@ const ChampionData = ({ Champion }: Props) => {
               priority
               className="rounded-md"
               unoptimized={true}
+            /> */}
+            <img
+              src={String(Champion.spellInfo[0].spell1Img)}
+              alt={String(Champion.spellInfo[0].spell1Img)}
+              className="h-[42px] w-[42px] rounded-md"
             />
-            <Image
+            {/* <Image
               width={42}
               height={42}
               alt=""
@@ -45,12 +54,17 @@ const ChampionData = ({ Champion }: Props) => {
               priority
               className="rounded-md"
               unoptimized={true}
+            /> */}
+            <img
+              src={String(Champion.spellInfo[0].spell2Img)}
+              alt={String(Champion.spellInfo[0].spell2Img)}
+              className="h-[42px] w-[42px] rounded-md"
             />
           </div>
         </div>
         <div className="flex items-end space-x-2">
           <div className="tooltip">
-            <Image
+            {/* <Image
               width={40}
               height={40}
               alt=""
@@ -60,6 +74,11 @@ const ChampionData = ({ Champion }: Props) => {
               placeholder="blur"
               blurDataURL={String(Champion.skill[4].image)}
               className="rounded-md"
+            /> */}
+            <img
+              src={String(Champion.skill[4].image)}
+              alt={String(Champion.skill[4].image)}
+              className="h-10 w-10 rounded-md"
             />
             <div className="tooltiptext tooltip-bottom">
               <SkillDescription
@@ -71,7 +90,7 @@ const ChampionData = ({ Champion }: Props) => {
           {Champion.skill.slice(0, 4).map((data) => {
             return (
               <div className="tooltip" key={data.id}>
-                <Image
+                {/* <Image
                   width={48}
                   height={48}
                   alt=""
@@ -81,8 +100,13 @@ const ChampionData = ({ Champion }: Props) => {
                   placeholder="blur"
                   blurDataURL={String(data.image)}
                   className="rounded-md"
+                /> */}
+                <img
+                  src={String(data.image)}
+                  alt={String(data.image)}
+                  className="h-12 w-12 rounded-md"
                 />
-                <div className="absolute bottom-0 right-0 mb-1 flex h-4 w-4 items-center justify-center bg-black">
+                <div className="absolute bottom-0 right-0 flex h-4 w-4 items-center justify-center rounded-sm bg-black">
                   <span>{upperCase(data.id)}</span>
                 </div>
                 <div className="tooltiptext tooltip-bottom">
