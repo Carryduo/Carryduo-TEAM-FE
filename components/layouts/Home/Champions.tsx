@@ -121,15 +121,6 @@ const ChampionsList = ({ value, toLink }: ChampionsContainerProps) => {
                       : "hover:border-gray-700"
                   }`}
                 />
-                // <Image
-                //   alt={`${data.champNameEn}`}
-                //   src={`${data.champImg}`}
-                //   width={56}
-                //   height={56}
-                //   placeholder="blur"
-                //   blurDataURL={`${data.champImg}`}
-
-                // />
               )}
               <span className="whitespace-nowrap text-xs font-medium">
                 {/* {ChampionNameList === undefined

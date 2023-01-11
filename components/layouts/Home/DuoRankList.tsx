@@ -35,14 +35,10 @@ const DuoRankList = ({ pick }: Props) => {
                         }}
                       >
                         <a>
-                          <Image
+                          <img
                             alt={data.mainChampId.champImg}
                             src={data.mainChampId.champImg}
-                            width={56}
-                            height={56}
-                            layout="fixed"
-                            placeholder="blur"
-                            blurDataURL={data.mainChampId.champImg}
+                            className="h-14 w-14"
                           />
                         </a>
                       </Link>
@@ -62,14 +58,10 @@ const DuoRankList = ({ pick }: Props) => {
                         }}
                       >
                         <a>
-                          <Image
+                          <img
                             alt={data.subChampId.champImg}
                             src={data.subChampId.champImg}
-                            width={56}
-                            height={56}
-                            layout="fixed"
-                            placeholder="blur"
-                            blurDataURL={data.subChampId.champImg}
+                            className="h-14 w-14"
                           />
                         </a>
                       </Link>
