@@ -44,7 +44,7 @@ const MyApp = ({
     <RecoilRoot>
       <QueryClientProvider client={query}>
         <Hydrate state={pageProps.dehydratedState}>
-          {/* <ReactQueryDevtools initialIsOpen={true} /> */}
+          <ReactQueryDevtools initialIsOpen={true} />
           <MainContainer>
             <HeaderMain />
             <Component {...pageProps} />
