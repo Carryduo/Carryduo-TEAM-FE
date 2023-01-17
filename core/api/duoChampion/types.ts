@@ -1,3 +1,7 @@
+export interface IVersion {
+  version: string;
+}
+
 export interface DuoChampion {
   id: string;
   champNameKo: string;

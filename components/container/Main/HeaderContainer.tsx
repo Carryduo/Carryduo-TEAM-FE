@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useGetVersion } from "../../../core/api/duoChampion/queries";
 import { getCookie } from "../../../util/servers/cookie";
 import Input from "../../common/Input";
 import PickLine from "../../common/PickLine";
@@ -11,6 +12,7 @@ interface FormProps {
 }
 
 const HeaderMain = () => {
+  const { data } = useGetVersion();
   const { register, handleSubmit } = useForm<FormProps>();
   const router = useRouter();
   const onValid: SubmitHandler<FormProps> = ({ nickName }) => {
@@ -39,6 +41,7 @@ const HeaderMain = () => {
             openSearch={true}
           />
         </form>
+        <span>version: {data?.version}</span>
       </div>
       <div className="flex h-7 space-x-12">
         <Link href="/">
