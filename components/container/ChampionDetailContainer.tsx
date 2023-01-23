@@ -26,11 +26,9 @@ const ChampionDetailContainer = ({ champId, line }: Props) => {
         />
       </div>
       <div className="-mt-12 flex h-full w-full items-center justify-center space-x-16">
-        {Champion === undefined ? null : <ChampionData Champion={Champion} />}
+        {Champion && <ChampionData Champion={Champion} />}
         <div className="flex h-[200px] flex-col ">
-          {MostSummoner === undefined ? null : (
-            <MostSummonerData MostSummoner={MostSummoner} />
-          )}
+          {MostSummoner && <MostSummonerData MostSummoner={MostSummoner} />}
         </div>
       </div>
     </>
