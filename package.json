@@ -1,13 +1,13 @@
 {
   "name": "opggnext",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "analyze-bundle" : "ANALYZE=true yarn build"
+    "analyze-bundle": "ANALYZE=true yarn build"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
