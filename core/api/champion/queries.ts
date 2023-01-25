@@ -30,3 +30,11 @@ export const useChampDetail = async (ChampId: string) => {
   const res = await instance.get(`/champ/${ChampId}`);
   return res.data;
 };
+
+export const usePositionChampDetail = async (
+  ChampId: string,
+  Position: string
+) => {
+  const res = await instance.get(`/champ/${ChampId}/position/${Position}`);
+  return res.data;
+};
