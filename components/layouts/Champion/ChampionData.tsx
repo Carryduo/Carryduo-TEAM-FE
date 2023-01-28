@@ -22,13 +22,13 @@ const ChampionData = ({ Champion }: Props) => {
           <span className="text-2xl">{Champion.champNameKo}</span>
           <div className="flex space-x-1">
             <img
-              src={String(Champion.spellInfo[0].spell1Img)}
-              alt={String(Champion.spellInfo[0].spell1Img)}
+              src={String(Champion.spell1Img)}
+              alt={String(Champion.spell1Img)}
               className="h-[42px] w-[42px] rounded-md"
             />
             <img
-              src={String(Champion.spellInfo[0].spell2Img)}
-              alt={String(Champion.spellInfo[0].spell2Img)}
+              src={String(Champion.spell2Img)}
+              alt={String(Champion.spell2Img)}
               className="h-[42px] w-[42px] rounded-md"
             />
           </div>

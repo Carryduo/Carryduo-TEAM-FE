@@ -12,7 +12,7 @@ interface Props {
 }
 
 const ChampionDetailContainer = ({ champId, line }: Props) => {
-  const { data: Champion } = useGetChampDetail(champId);
+  const { data: Champion } = useGetChampDetail(champId, line);
   const { data: MostSummoner } = useGetMostChampSummoner(champId);
   return (
     <>

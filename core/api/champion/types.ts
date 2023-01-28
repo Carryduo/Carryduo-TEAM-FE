@@ -14,24 +14,19 @@ export interface ChampionSkills {
   toolTip: string;
 }
 
-export interface ChampionSpells {
-  total: number;
-  pickRate: number;
-  spell1Img: string;
-  spell2Img: string;
-}
-
 export interface Champion {
   id: string;
   winRate: string;
   banRate: string;
-  pickRate: string;
   champNameKo: string;
   champNameEn: string;
   champImg: string;
+  total: number;
+  pickRate: number;
+  spell1Img: string;
+  spell2Img: string;
   rate: ChampionPosition[];
   skill: ChampionSkills[];
-  spellInfo: ChampionSpells[];
 }
 
 export interface IChampions {

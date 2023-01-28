@@ -80,8 +80,8 @@ export const getStaticProps = async (context: PageProps) => {
   );
   const line = useGetPosition(res.data.rateInfo.rate, num);
   try {
-    await queryClient.prefetchQuery(["Champ", champion], () =>
-      useChampDetail(champion)
+    await queryClient.prefetchQuery(["Champ", champion, line], () =>
+      useChampDetail(champion, String(line))
     );
     await queryClient.prefetchQuery(["DuoChampRank", champion, line], () =>
       getDuoChampRank(champion, String(line))
