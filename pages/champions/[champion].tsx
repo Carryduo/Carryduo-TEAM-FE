@@ -15,6 +15,9 @@ import { queryClient } from "../_app";
 import { useChampDetail } from "../../core/api/champion/queries";
 import { dehydrate } from "react-query";
 import { getDuoChampRank } from "../../core/api/duoChampion/queries";
+import PositionPicker from "../../components/common/Champion/PositionPicker";
+import { useRecoilValue } from "recoil";
+import { PickPosition } from "../../core/config/PickPosition";
 
 interface Prop {
   champion: string;
@@ -28,8 +31,10 @@ interface PageProps {
 const Champion = ({ champion, line }: Prop) => {
   const { query } = useRouter();
   const loading = useLoading();
+  const position = useRecoilValue(PickPosition);
   return (
     <PageContainer space="space-x-4">
+      <PositionPicker line={line} />
       <Seo title={query.name === undefined ? "loading" : String(query.name)} />
       {loading ? (
         <LoadingContainer text="loading..." />
@@ -37,13 +42,13 @@ const Champion = ({ champion, line }: Prop) => {
         <>
           <div className="h-full w-full space-y-4">
             <Grid width="w-[900px]" height="h-1/2">
-              <ChampionDetailContainer line={line} champId={champion} />
+              <ChampionDetailContainer line={position} champId={champion} />
             </Grid>
             <Grid width="w-[900px]" height="h-1/2">
               <ChampionWinRateContainer
                 ChampionName={String(query.name)}
                 category={champion}
-                line={line}
+                line={position}
               />
             </Grid>
           </div>
