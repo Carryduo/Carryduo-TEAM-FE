@@ -11,8 +11,7 @@ interface Props {
 }
 
 const ChampionWinRateContainer = ({ category, line, ChampionName }: Props) => {
-  const [pick, setPick] = useState<string>(line);
-  const { data: Duo } = useGetDuoChampRank(category, pick);
+  const { data: Duo } = useGetDuoChampRank(category, line);
   return (
     <div className=" h-full w-full p-2">
       <header className=" mb-2 flex h-7 w-full justify-around">
@@ -23,8 +22,8 @@ const ChampionWinRateContainer = ({ category, line, ChampionName }: Props) => {
               key={data.id}
               className="flex w-[50px] cursor-pointer flex-col text-center"
             >
-              <span onClick={() => setPick(data.id)}>{data.position}</span>
-              {pick === data.id && <PickLine animate="animate-smLine" />}
+              <span>{data.position}</span>
+              {line === data.id && <PickLine animate="animate-smLine" />}
             </div>
           );
         })}
