@@ -79,11 +79,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = async (context: PageProps) => {
   const { champion } = context.params;
-  const res = await instance.get(`/champ/${champion}`);
-  let num = String(
-    Math.max(...Object.values(res.data.rateInfo.rate).map(Number))
-  );
-  const line = useGetPosition(res.data.rateInfo.rate, num);
+  const res = await instance.get(`/champ/${champion}/position/default`);
+  const line = res.data.position;
   try {
     await queryClient.prefetchQuery(["Champ", champion, line], () =>
       useChampDetail(champion, String(line))
