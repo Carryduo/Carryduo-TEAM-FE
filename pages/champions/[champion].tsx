@@ -34,7 +34,6 @@ const Champion = ({ champion, line }: Prop) => {
   const position = useRecoilValue(PickPosition);
   return (
     <PageContainer space="space-x-4">
-      <PositionPicker line={line} />
       <Seo title={query.name === undefined ? "loading" : String(query.name)} />
       {loading ? (
         <LoadingContainer text="loading..." />
