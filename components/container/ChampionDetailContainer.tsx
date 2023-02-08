@@ -3,6 +3,7 @@ import {
   useGetChampDetail,
   useGetMostChampSummoner,
 } from "../../core/api/champion/queries";
+import PositionPicker from "../common/Champion/PositionPicker";
 import ChampionData from "../layouts/Champion/ChampionData";
 import MostSummonerData from "../layouts/Champion/MostSummonerData";
 
@@ -17,13 +18,7 @@ const ChampionDetailContainer = ({ champId, line }: Props) => {
   return (
     <>
       <div className="flex w-full justify-end">
-        <Image
-          width={48}
-          height={48}
-          alt=""
-          src={`/positionIcon/Position_Challenger-${line}.png`}
-          priority
-        />
+        <PositionPicker line={line} />
       </div>
       <div className="-mt-12 flex h-full w-full items-center justify-center space-x-16">
         {Champion && <ChampionData Champion={Champion} />}
