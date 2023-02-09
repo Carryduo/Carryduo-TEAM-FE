@@ -15,9 +15,9 @@ import { queryClient } from "../_app";
 import { useChampDetail } from "../../core/api/champion/queries";
 import { dehydrate } from "react-query";
 import { getDuoChampRank } from "../../core/api/duoChampion/queries";
-import PositionPicker from "../../components/common/Champion/PositionPicker";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { PickPosition } from "../../core/config/PickPosition";
+import { useEffect } from "react";
 
 interface Prop {
   champion: string;
@@ -31,7 +31,10 @@ interface PageProps {
 const Champion = ({ champion, line }: Prop) => {
   const { query } = useRouter();
   const loading = useLoading();
-  const position = useRecoilValue(PickPosition);
+  const [position, setPosition] = useRecoilState(PickPosition);
+  useEffect(() => {
+    setPosition(line);
+  }, []);
   return (
     <PageContainer space="space-x-4">
       <Seo title={query.name === undefined ? "loading" : String(query.name)} />
