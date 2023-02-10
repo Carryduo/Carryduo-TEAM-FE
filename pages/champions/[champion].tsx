@@ -10,12 +10,11 @@ import ChampionWinRateContainer from "../../components/container/ChampionWinRate
 import { useLoading } from "../../util/hooks/useLoading";
 import LoadingContainer from "../../components/layouts/Handler/LoadingContainer";
 import { Champions } from "../../core/api/champions/types";
-import { useGetPosition } from "../../util/hooks/useGetPosition";
 import { queryClient } from "../_app";
 import { useChampDetail } from "../../core/api/champion/queries";
 import { dehydrate } from "react-query";
 import { getDuoChampRank } from "../../core/api/duoChampion/queries";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { PickPosition } from "../../core/config/PickPosition";
 import { useEffect } from "react";
 
