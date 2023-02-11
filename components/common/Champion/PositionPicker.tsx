@@ -16,7 +16,6 @@ const PositionPicker = ({ line }: IProps) => {
   useEffect(() => {
     if (position === "") setPosition(line);
   }, []);
-  console.log(position, line);
   return (
     <ToggleButtonGroup
       color="success"
