@@ -28,7 +28,6 @@ interface PageProps {
 }
 
 const Champion = ({ champion, line }: Prop) => {
-  console.log(line);
   const { query } = useRouter();
   const loading = useLoading();
   const [position, setPosition] = useRecoilState(PickPosition);
