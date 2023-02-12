@@ -28,12 +28,13 @@ interface PageProps {
 }
 
 const Champion = ({ champion, line }: Prop) => {
+  console.log(line);
   const { query } = useRouter();
   const loading = useLoading();
   const [position, setPosition] = useRecoilState(PickPosition);
   useEffect(() => {
     setPosition(line);
-  }, []);
+  }, [line]);
   return (
     <PageContainer space="space-x-4">
       <Seo title={query.name === undefined ? "loading" : String(query.name)} />
@@ -46,11 +47,7 @@ const Champion = ({ champion, line }: Prop) => {
               <ChampionDetailContainer line={position} champId={champion} />
             </Grid>
             <Grid width="w-[900px]" height="h-1/2">
-              <ChampionWinRateContainer
-                ChampionName={String(query.name)}
-                category={champion}
-                line={position}
-              />
+              <ChampionWinRateContainer category={champion} line={position} />
             </Grid>
           </div>
           <Grid width="w-full min-w-[300px]" height="h-[calc(100%+1rem)]">
