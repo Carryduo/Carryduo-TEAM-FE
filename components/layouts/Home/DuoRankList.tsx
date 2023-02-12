@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useGetDuoRank } from "../../../core/api/duoChampions/queries";
 import DuoRankTier from "../../common/DuoRank/DuoRankTier";
@@ -13,6 +12,7 @@ const DuoRankList = ({ pick }: Props) => {
     <div className=" h-[calc(100%-4rem)] overflow-y-scroll">
       <div className="w-full">
         {DuoRank?.map((data, i) => {
+          console.log(data);
           return (
             <div
               className="grid grid-cols-[100px_380px_1.5fr_1.5fr_1.5fr] grid-rows-[repeat(auto-fill,60px)] items-center font-semibold"
