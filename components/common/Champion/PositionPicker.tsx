@@ -3,6 +3,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { useRecoilState } from "recoil";
 import { PickPosition } from "../../../core/config/PickPosition";
+import Position from "../../../core/config/ChampionPosition.json";
 
 interface IProps {
   line: string;
@@ -25,46 +26,18 @@ const PositionPicker = ({ line }: IProps) => {
       aria-label="Platform"
       className="h-14"
     >
-      <ToggleButton value="top">
-        <img
-          alt="top"
-          src="/positionIcon/Position_Challenger-top.png"
-          width={40}
-          height={40}
-        />
-      </ToggleButton>
-      <ToggleButton value="jungle">
-        <img
-          alt="jungle"
-          src="/positionIcon/Position_Challenger-jungle.png"
-          width={40}
-          height={40}
-        />
-      </ToggleButton>
-      <ToggleButton value="mid">
-        <img
-          alt="mid"
-          src="/positionIcon/Position_Challenger-mid.png"
-          width={40}
-          height={40}
-        />
-      </ToggleButton>
-      <ToggleButton value="ad">
-        <img
-          alt="ad"
-          src="/positionIcon/Position_Challenger-ad.png"
-          width={40}
-          height={40}
-        />
-      </ToggleButton>
-      <ToggleButton value="support">
-        <img
-          alt="support"
-          src="/positionIcon/Position_Challenger-support.png"
-          width={40}
-          height={40}
-        />
-      </ToggleButton>
+      {Position.ChampionWinRatedata.map(({ id }) => {
+        return (
+          <ToggleButton key={id} value={id}>
+            <img
+              alt={id}
+              src={`/positionIcon/Position_Challenger-${id}.png`}
+              width={40}
+              height={40}
+            />
+          </ToggleButton>
+        );
+      })}
     </ToggleButtonGroup>
   );
 };
