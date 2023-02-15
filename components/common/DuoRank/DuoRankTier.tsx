@@ -10,19 +10,38 @@ interface Props {
 }
 
 const DuoRankTier = ({ rank }: Props) => {
-  const DuoRank =
-    rank === 1
-      ? rank1
-      : rank == 2
-      ? rank2
-      : rank === 3
-      ? rank3
-      : rank === 4
-      ? rank4
-      : rank === 5
-      ? rank5
-      : rank5;
-  return <Image alt={String(rank)} src={DuoRank} width={24} height={24} priority layout="fixed"/>;
+  let DuoRank = rank5;
+
+  switch (rank) {
+    case 1:
+      DuoRank = rank1;
+      break;
+    case 2:
+      DuoRank = rank2;
+      break;
+    case 3:
+      DuoRank = rank3;
+      break;
+    case 4:
+      DuoRank = rank4;
+      break;
+    case 5:
+      DuoRank = rank5;
+      break;
+    default:
+      break;
+  }
+
+  return (
+    <Image
+      alt={rank.toString()}
+      src={DuoRank}
+      width={24}
+      height={24}
+      priority
+      layout="fixed"
+    />
+  );
 };
 
 export default DuoRankTier;
