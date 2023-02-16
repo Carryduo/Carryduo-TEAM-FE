@@ -7,19 +7,19 @@ import { Champions } from "../../../core/api/champions/types";
 interface Props {
   pick: Champions[];
   cnt: number;
-  PickNum: number;
+  pickNum: number;
 }
 
-const PickBox = ({ pick, PickNum, cnt }: Props) => {
+const PickBox = ({ pick, pickNum, cnt }: Props) => {
   const { champNameEn } = useRecoilValue(PickChampion);
-  const PickCount = useRecoilValue(PickCnt);
+  const pickCount = useRecoilValue(PickCnt);
   return (
     <div className="h-[232px] w-32 items-center justify-center rounded-md ">
-      {pick[PickNum]?.champNameEn === undefined ? (
+      {pick[pickNum]?.champNameEn === undefined ? (
         <>
-          {cnt !== PickNum ? (
+          {cnt !== pickNum ? (
             <img alt="" src={`/cross.png`} width={128} height={232} />
-          ) : PickCount === 0 ? (
+          ) : pickCount === 0 ? (
             <Box
               sx={{
                 display: "flex",
@@ -43,7 +43,7 @@ const PickBox = ({ pick, PickNum, cnt }: Props) => {
       ) : (
         <img
           alt=""
-          src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${pick[PickNum]?.champNameEn}_0.jpg`}
+          src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${pick[pickNum]?.champNameEn}_0.jpg`}
           width={128}
           height={232}
         />
