@@ -7,21 +7,18 @@ interface Props {
 
 const PickLine = ({ animate }: Props) => {
   const [color] = useShadow(getShadowColor);
-  return (
-    <div
-      className={`h-[2px]  ${
-        color === 1
-          ? "bg-blue-100"
-          : color === 2
-          ? "bg-[#5F99FF]"
-          : color === 3
-          ? "bg-[#00D39E]"
-          : color === 4
-          ? "bg-[#FF7637]"
-          : "bg-gray-700"
-      } ${animate}`}
-    ></div>
-  );
+  const bgColor =
+    color === 1
+      ? "bg-blue-100"
+      : color === 2
+      ? "bg-[#5F99FF]"
+      : color === 3
+      ? "bg-[#00D39E]"
+      : color === 4
+      ? "bg-[#FF7637]"
+      : "bg-gray-700";
+
+  return <div className={`h-[2px] ${bgColor} ${animate}`}></div>;
 };
 
 export default PickLine;
