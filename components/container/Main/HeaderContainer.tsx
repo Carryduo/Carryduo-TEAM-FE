@@ -15,11 +15,13 @@ const HeaderMain = () => {
   const { data } = useGetVersion();
   const { register, handleSubmit } = useForm<FormProps>();
   const router = useRouter();
+
   const onValid: SubmitHandler<FormProps> = ({ nickName }) => {
-    router.push({
-      pathname: `/summoners/${nickName}`,
-    });
+    router.push({ pathname: `/summoners/${nickName}` });
   };
+
+  const isLoggedIn = getCookie("myToken") !== undefined;
+
   return (
     <header className="flex h-24 w-full items-center justify-between">
       <div className="flex space-x-14">
@@ -76,15 +78,15 @@ const HeaderMain = () => {
             </div>
           </a>
         </Link>
-        <Link href={getCookie("myToken") === undefined ? "/login" : "/setting"}>
+        <Link href={isLoggedIn ? "/setting" : "/login"}>
           <a>
-            {getCookie("myToken") === undefined ? (
+            {isLoggedIn ? (
+              <span className="cursor-pointer">설정</span>
+            ) : (
               <div className="relative">
                 <div className="absolute -top-1 -right-2 h-2 w-2 rounded-full bg-blue-500"></div>
                 <span className="cursor-pointer">로그인</span>
               </div>
-            ) : (
-              <span className="cursor-pointer">설정</span>
             )}
           </a>
         </Link>
