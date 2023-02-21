@@ -32,7 +32,6 @@ const ChampionWinRateContainer = ({ category, line }: Props) => {
             <span>데이터가 없거나 부족합니다</span>
           ) : (
             Duo.map((data) => {
-              console.log(data);
               return (
                 <div
                   key={data.id}
