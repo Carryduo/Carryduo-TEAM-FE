@@ -27,7 +27,7 @@ const CommentsFormContainer = ({ category, champId }: CommentsProps) => {
     <div className="relative h-full overflow-hidden">
       <form
         onSubmit={handleSubmit(onValid)}
-        className="sticky top-0 z-50 w-full bg-gray-800 rounded-2xl "
+        className="sticky top-0 z-50 w-full rounded-2xl bg-gray-800 "
       >
         <Input
           rounded="rounded-2xl"
