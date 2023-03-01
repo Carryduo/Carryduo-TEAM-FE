@@ -27,7 +27,7 @@ export interface History {
   lose: number;
   winRate: number;
   positions: Position[];
-  recentChampRate: RecentChamp[];
+  recentChamp: RecentChamp[];
 }
 
 export interface Summoner {

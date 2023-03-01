@@ -9,7 +9,7 @@ interface Props {
 const HistoryPlay = ({ Summoner }: Props) => {
   return (
     <>
-      {Summoner.history.recentChampRate.map((data) => {
+      {Summoner.history.recentChamp.map((data) => {
         return (
           <div key={data.recentChampId} className="flex items-center space-x-2">
             <Link
