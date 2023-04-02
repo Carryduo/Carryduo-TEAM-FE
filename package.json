@@ -9,6 +9,18 @@
     "lint": "next lint",
     "analyze-bundle": "ANALYZE=true yarn build"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,json,css,md}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
@@ -39,9 +51,17 @@
     "@types/node": "18.7.14",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
     "autoprefixer": "^10.4.8",
     "eslint": "8.23.0",
     "eslint-config-next": "12.2.5",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
     "postcss": "^8.4.16",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
