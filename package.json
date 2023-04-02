@@ -7,19 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "analyze-bundle": "ANALYZE=true yarn build"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "lint-staged"
-    }
+    "analyze-bundle": "ANALYZE=true yarn build",
+    "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{js,ts,tsx,json,css,md}": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
-    ]
+    "./*/**/*.{js,jsx,ts,tsx}": "eslint --cache --fix"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
