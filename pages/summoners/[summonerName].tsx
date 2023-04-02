@@ -6,7 +6,6 @@ import SummonerDetailContainer from "../../components/container/SummonerDetailCo
 import LoadingContainer from "../../components/layouts/Handler/LoadingContainer";
 import { useLoading } from "../../util/hooks/useLoading";
 import { getSummoner, useGetSummoner } from "../../core/api/summoner/queries";
-import { GetStaticPaths } from "next";
 import { queryClient } from "../_app";
 import { dehydrate } from "react-query";
 
@@ -55,14 +54,7 @@ const Summoners = ({ summonerName }: Prop) => {
 
 export default Summoners;
 
-export const getStaticPaths: GetStaticPaths = () => {
-  return {
-    paths: [],
-    fallback: "blocking",
-  };
-};
-
-export const getStaticProps = async (context: PageProps) => {
+export const getServerSideProps = async (context: PageProps) => {
   const summonerName = context.params.summonerName;
   try {
     await queryClient.fetchQuery(["Summoner", summonerName], () =>
