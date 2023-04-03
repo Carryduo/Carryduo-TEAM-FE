@@ -79,12 +79,14 @@ export const getStaticProps = async (context: PageProps) => {
   const res = await instance.get(`/champ/${champion}/position/default`);
   const line = res.data.position;
   try {
-    await queryClient.prefetchQuery(["Champ", champion, line], () =>
-      useChampDetail(champion, String(line))
-    );
-    await queryClient.prefetchQuery(["DuoChampRank", champion, line], () =>
-      getDuoChampRank(champion, String(line))
-    );
+    await Promise.all([
+      queryClient.prefetchQuery(["Champ", champion, line], () =>
+        useChampDetail(champion, String(line))
+      ),
+      queryClient.prefetchQuery(["DuoChampRank", champion, line], () =>
+        getDuoChampRank(champion, String(line))
+      ),
+    ]);
     return {
       props: {
         champion,

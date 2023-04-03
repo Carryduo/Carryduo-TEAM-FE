@@ -8,7 +8,7 @@ import {
 } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import React, { useEffect, useState } from "react";
-import { RecoilRoot } from "recoil";
+import { RecoilRoot, RecoilEnv } from "recoil";
 import "../styles/globals.css";
 import "../styles/slick.css";
 import MainContainer from "../components/container/Main/MainContainer";
@@ -29,6 +29,7 @@ const MyApp = ({
   Component,
   pageProps,
 }: AppProps<{ dehydratedState: DehydratedState }>) => {
+  RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
   const [query] = useState(() => queryClient);
   if (typeof window === undefined) return;
   useEffect(() => {
