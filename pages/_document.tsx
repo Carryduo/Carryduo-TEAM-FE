@@ -24,6 +24,11 @@ class MyDocument extends Document {
             httpEquiv="Content-Security-Policy"
             content="upgrade-insecure-requests"
           />
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7197791688601792"
+            crossOrigin="anonymous"
+          ></script>
         </Head>
         <body>
           <Main />
